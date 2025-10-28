@@ -17,9 +17,9 @@
 
   <style>
     :root{
-      --bg:#0b0b12;           /* deep night */
-      --card:#111122;         /* card surface */
-      --muted:#9aa0b3;        /* secondary text */
+      --bg:#0b0b12;           /* deep night */      
+--card: #2f1e6363; /* card background */
+--card-border: rgba(255, 255, 255, .10);      --muted:#9aa0b3;        /* secondary text */
       --text:#f3f5fa;         /* primary text */
       --brand:#8357ff;        /* soft violet */
       --brand-2:#2dd4bf;      /* mint accent */
@@ -38,7 +38,7 @@
     a{color:var(--brand-2); text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:var(--maxw); margin-inline:auto; padding:22px}
-    header{position:sticky; top:0; z-index:20; backdrop-filter:saturate(140%) blur(8px); background:rgba(11,11,18,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    header{position:sticky; top:0; z-index:20; backdrop-filter:saturate(140%) blur(8px); background:rgba(54, 14, 115, 0.6); border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex; align-items:center; justify-content:space-between; gap:14px}
     .brand{display:flex; align-items:center; gap:12px}
     .logo{width:38px; height:38px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:var(--shadow)}
@@ -50,7 +50,8 @@
     .cta.secondary{background:transparent; border:1px solid rgba(255,255,255,.18)}
     .cta.small{padding:9px 12px; font-weight:600}
     .cta .tag{background:rgba(255,255,255,.12); padding:2px 8px; border-radius:999px; font-size:12px}
-    .hero{padding:56px 0 28px}
+/* tighter hero so the creator bio sits closer to the top */
+.hero{padding:20px 0 24px}
     .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:center}
     .badge{display:inline-flex; gap:8px; align-items:center; color:var(--muted); font-size:14px; margin-bottom:10px}
     .title{font-size:38px; line-height:1.1; margin:6px 0 14px}
@@ -107,7 +108,77 @@
     }
     input[type="email"]:focus{outline-color:var(--ring)}
 
-  /* ============== privacy policy ============== */
+  /* ==============  Cards  ============== */
+  .card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow)
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 18px
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+ .card h1,
+        .card h2,
+        .card h3 {
+            margin-top: 0;
+        }    
+
+  /* ===== icon ===== */
+  @supports (background: image-set(url("store_icon.png") 1x)) {
+  .logo{
+    background-image: image-set(
+      url("./store_icon.png") 1x,
+      url("./store_icon.png") 2x
+    );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+/* ---- spacing fixes (override) ---- */
+
+/* tighten the hero top padding */
+.hero { padding: 32px 0 28px !important; }
+
+/* make every section use a consistent rhythm */
+.section { padding: 48px 0 !important; }
+
+/* remove surprise top margins on the first child in each section */
+.section > *:first-child { margin-top: 0 !important; }
+
+/* add steady vertical rhythm inside sections */
+.section > * + * { margin-top: 16px; }
+
+/* make headings not add extra top space */
+h1, h2, h3 { margin-top: 0; }
+
+/* anchor targets won’t hide under sticky header */
+[id] { scroll-margin-top: 88px; }
+
+/* consistent vertical rhythm for all sections */
+.section{padding:48px 0}
+.section>*:first-child{margin-top:0}
+.section>*+*{margin-top:16px}
+
+/* headings never add surprise top margins */
+h1,h2,h3{margin-top:0}
+
+/* anchor targets clear the sticky header */
+[id]{scroll-margin-top:88px}
+
+/* a little space between section heading and the cards grid */
+.cards{margin-top:24px}
 
   </style>
 </head>
@@ -143,8 +214,8 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero container" id="three-sides">
-      <div class="hero-grid">
+    <section id="features" class="section">
+      <div class="container">      <div class="hero-grid">
         <div>
           <div class="badge">✨ Creator bio: 
           Glow Code Studio is an independent developer creating wellness apps, meaningful websites, and Unreal Engine games. Home
@@ -186,8 +257,9 @@
     </section>
 
     <!-- FEATURES -->
-    <section class="section container">
-      <div class="cards">
+    <section id="features" class="section">
+      <div class="container">
+              <div class="cards">
         <div class="card">
           <h3>Theme</h3>
           <p>Pick your favorite color scheme to make the app your own.</p>
@@ -208,8 +280,9 @@
     </section>
 
     <!-- PROJECTS -->
-    <section class="section container" id="projects">
-      <h2 class="title" style="font-size:28px;">Websites I've built</h2>
+    <section id="features" class="section">
+      <div class="container">
+              <h2 class="title" style="font-size:28px;">Websites I've built</h2>
       <p class="muted">A few highlights from my client &amp; personal work.</p>
     
       <div class="grid-2" style="margin-top:14px;">
@@ -273,8 +346,8 @@
     <!-- /PROJECTS -->
     
     <!-- EARLY PROJECTS -->
-    <section class="section container" id="early-work">
-      <h2 class="title" style="font-size:24px;">Early Projects</h2>
+    <section id="features" class="section">
+      <div class="container">      <h2 class="title" style="font-size:24px;">Early Projects</h2>
       <p class="muted">Older work from when I was just starting — still live, but not updated to my current style.</p>
     
       <div class="card" style="margin-top:14px;">
@@ -295,33 +368,36 @@
       </section>
 
     <!-- GAMES -->
-    <section class="section container" id="games">
-      <h2 class="title" style="font-size:28px;">Indie games in Unreal Engine</h2>
+    <section id="features" class="section">
+      <div class="container">
+              <h2 class="title" style="font-size:28px;">Indie games in Unreal Engine</h2>
       <p class="muted">I’ve released 2 small games on itch.io — exploring focus, interaction, and play.</p>
       <!-- TODO: swap link to your itch.io profile -->
       <p style="margin-top:10px;"><a href="#" target="_blank" rel="noopener" class="cta small secondary">See my itch.io ↗</a></p>
     </section>
 
     <!-- ABOUT -->
-    <section class="section container" id="about">
-      <h2 class="title" style="font-size:28px;">About Glow Code Studio</h2>
+    <section id="features" class="section">
+      <div class="container">
+              <h2 class="title" style="font-size:28px;">About Glow Code Studio</h2>
       <p class="muted">
-        ✨ I build wellness apps like <strong>Three Sides</strong> — based on the highs, lows & balance of bipolar life.
+        ⭐️ I build wellness apps like <strong>Three Sides</strong> — based on the highs, lows & balance of bipolar life.
         It’s currently in Google Play closed testing, with iOS coming next. 
         
         <br><br>
-        I’ve built several websites (including one for a church and one for a professional author/speaker). 
+        ⭐️ I’ve built several websites (including one for a church and one for a professional author/speaker). 
         <br><br>
-        Also, i've built some personal projects and released 2 indie games in Unreal Engine on itch.io. 
+        ⭐️ Also, i've built some personal projects and released 2 indie games in Unreal Engine on itch.io. 
         
         <br><br>
-        (More helpful applications are on the way)
+        ⭐️ More helpful applications are on the way.
       </p>
     </section>
 
     <!-- CONTACT -->
-    <section class="section container" id="contact">
-      <h2 class="title" style="font-size:28px;">Get in touch</h2>
+    <section id="features" class="section">
+      <div class="container">     
+         <h2 class="title" style="font-size:28px;">Get in touch</h2>
       <p class="muted">Have feedback, want to test, or just say hi? I’d love to hear from you.</p>
       <div class="field" id="notify">
         <!-- The email capture uses a mailto: by default to keep this zero-dependency. Replace with Formspree or your backend later. -->
