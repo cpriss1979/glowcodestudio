@@ -1,187 +1,961 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Glow Code Studio</title>
-  <meta name="description" content="Glow Code Studio is an independent developer creating wellness apps, meaningful websites, and Unreal Engine games. Home of Three Sides and future digital projects designed to support real life, real emotions, and growth." />
+  <meta name="description"
+    content="Glow Code Studio is an independent developer creating wellness apps, meaningful websites, and Unreal Engine games. Home of Three Sides and future digital projects designed to support real life, real emotions, and growth." />
   <meta name="theme-color" content="#8357ff" />
 
   <!-- Open Graph / Social -->
   <meta property="og:title" content="Glow Code Studio — Three Sides & more" />
-  <meta property="og:description" content="Glow Code Studio is an independent developer creating wellness apps, meaningful websites, and Unreal Engine games. Home of Three Sides and future digital projects designed to support real life, real emotions, and growth.Wellness apps & helpful tools. Three Sides is in Google Play closed testing; iOS coming soon." />
+  <meta property="og:description"
+    content="Glow Code Studio is an independent developer creating wellness apps, meaningful websites, and Unreal Engine games. Home of Three Sides and future digital projects designed to support real life, real emotions, and growth.Wellness apps & helpful tools. Three Sides is in Google Play closed testing; iOS coming soon." />
   <!-- TODO: replace with your hosted cover image -->
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://.com/" />
 
   <style>
-    :root{
-      --bg:#0b0b12;           /* deep night */      
---card: #2f1e6363; /* card background */
---card-border: rgba(255, 255, 255, .10);      --muted:#9aa0b3;        /* secondary text */
-      --text:#f3f5fa;         /* primary text */
-      --brand:#8357ff;        /* soft violet */
-      --brand-2:#2dd4bf;      /* mint accent */
-      --ring:rgba(131,87,255,.35);
-      --ok:#22c55e;
-      --warn:#f59e0b;
-      --danger:#ef4444;
-      --shadow:0 10px 30px rgba(0,0,0,.3);
-      --radius:18px;
-      --radius-sm:12px;
-      --radius-lg:28px;
-      --maxw:1080px;
+    :root {
+      --bg: #0b0b12;
+      --card: #2f1e6363;
+      --card-border: rgba(255, 255, 255, .10);
+      --muted: #9aa0b3;
+      --text: #f3f5fa;
+      --brand: #8357ff;
+      --brand-2: #2dd4bf;
+      --ring: rgba(131, 87, 255, .35);
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .3);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --radius-lg: 28px;
+      --maxw: 1080px;
+
+      /* NEW: section background shades */
+      --surface-dark: #0e0e17;
+      /* darker band */
+      --surface-light: #141424;
+      /* lighter band */
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;background:radial-gradient(1200px 800px at 10% -10%, rgba(131,87,255,.15), transparent 60%), radial-gradient(1000px 700px at 120% 0%, rgba(45,212,191,.10), transparent 55%), var(--bg); color:var(--text); font:500 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";}
-    a{color:var(--brand-2); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--maxw); margin-inline:auto; padding:22px}
-    header{position:sticky; top:0; z-index:20; backdrop-filter:saturate(140%) blur(8px); background:rgba(54, 14, 115, 0.6); border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px}
-    .brand{display:flex; align-items:center; gap:12px}
-    .logo{width:38px; height:38px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:var(--shadow)}
-    .brand h1{font-size:18px; margin:0; letter-spacing:.3px}
-    .nav-links{display:flex; gap:18px; align-items:center}
-    .nav-links a{color:var(--text); opacity:.8}
-    .nav-links a.active, .nav-links a:hover{opacity:1}
-    .cta{display:inline-flex; gap:10px; align-items:center; background:linear-gradient(135deg, var(--brand), #6ea8ff); color:#fff; padding:12px 16px; border-radius:999px; border:1px solid rgba(255,255,255,.1); box-shadow:var(--shadow); text-decoration:none; font-weight:700}
-    .cta.secondary{background:transparent; border:1px solid rgba(255,255,255,.18)}
-    .cta.small{padding:9px 12px; font-weight:600}
-    .cta .tag{background:rgba(255,255,255,.12); padding:2px 8px; border-radius:999px; font-size:12px}
-/* tighter hero so the creator bio sits closer to the top */
-.hero{padding:20px 0 24px}
-    .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:center}
-    .badge{display:inline-flex; gap:8px; align-items:center; color:var(--muted); font-size:14px; margin-bottom:10px}
-    .title{font-size:38px; line-height:1.1; margin:6px 0 14px}
-    .subtitle{color:var(--muted); margin:0 0 20px}
-    .btnrow{display:flex; gap:12px; flex-wrap:wrap}
-    .phone{background:linear-gradient(180deg,#151526,#0e0e18); border:1px solid rgba(255,255,255,.08); border-radius:34px; padding:18px; box-shadow:var(--shadow)}
-    .screen{border-radius:22px; background:radial-gradient(800px 500px at 70% -20%, rgba(131,87,255,.35), transparent), #0a0a12; height:520px; border:1px solid rgba(255,255,255,.06); display:flex; align-items:center; justify-content:center; color:var(--muted); text-align:center; padding:20px}
-    .section{padding:36px 0}
-    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-    .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
-    .card h3{margin:0 0 8px; font-size:18px}
-    .card p{margin:0; color:var(--muted)}
-    .list{display:grid; gap:10px; margin:10px 0 0; padding:0; list-style:none}
-    .list li{display:flex; gap:10px; align-items:start; color:var(--muted)}
-    .dot{width:8px; height:8px; border-radius:50%; background:var(--brand-2); margin-top:8px}
-    .pill{display:inline-flex; align-items:center; gap:8px; font-size:13px; background:rgba(45,212,191,.12); color:#c7fffb; border:1px solid rgba(45,212,191,.25); padding:7px 10px; border-radius:999px}
-    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
-    footer{border-top:1px solid rgba(255,255,255,.06); color:var(--muted)}
-    .footer-grid{display:grid; grid-template-columns:1fr auto; align-items:center; gap:18px}
-    .foot-links{display:flex; gap:14px; flex-wrap:wrap}
-    .note{font-size:13px; color:var(--muted)}
-    .muted{color:var(--muted)}
-    .sep{height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent); margin:22px 0}
-    .kudos{font-size:13px; color:#b8c1d9}
-    .hide{display:none}
+
+    /* unified spacing */
+    /* section padding stays consistent top/bottom */
+    .section {
+      padding: 48px 0
+    }
+
+    .section>*:first-child {
+      margin-top: 0
+    }
+
+    /* single vertical rhythm inside sections */
+    .section>*+* {
+      margin-top: 16px
+    }
+
+    /* tighter, consistent spacing from lead text to grids/cards */
+    .section .title {
+      margin-bottom: 6px
+    }
+
+    .section .title+.muted {
+      margin-top: 8px
+    }
+
+    /* distance from the muted intro to the content grid/cards */
+    .section .muted+.grid-2,
+    .section .muted+.cards,
+    .section .muted+.card {
+      margin-top: 20px
+    }
+
+    /* grids don’t add extra surprise gap */
+    .cards {
+      margin-top: 0
+    }
+
+    /* NEW: modifiers for banding */
+    .section--dark {
+      background: var(--surface-dark)
+    }
+
+    .section--light {
+      background: var(--surface-light)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(131, 87, 255, .15), transparent 60%), radial-gradient(1000px 700px at 120% 0%, rgba(45, 212, 191, .10), transparent 55%), var(--bg);
+      color: var(--text);
+      font: 500 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    a {
+      color: var(--brand-2);
+      text-decoration: none
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding: 22px
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: rgba(54, 14, 115, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, .06)
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: var(--shadow)
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      margin: 0;
+      letter-spacing: .3px
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center
+    }
+
+    .nav-links a {
+      color: var(--text);
+      opacity: .8
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      opacity: 1
+    }
+
+    .cta {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--brand), #6ea8ff);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      font-weight: 700
+    }
+
+    .cta.secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, .18)
+    }
+
+    .cta.small {
+      padding: 9px 12px;
+      font-weight: 600
+    }
+
+    .cta .tag {
+      background: rgba(255, 255, 255, .12);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px
+    }
+
+    /* tighter hero so the creator bio sits closer to the top */
+    .hero {
+      padding: 20px 0 24px
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items: center
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 10px
+    }
+
+    .title {
+      font-size: 38px;
+      line-height: 1.1;
+      margin: 6px 0 14px
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin: 0 0 20px
+    }
+
+    .btnrow {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .phone {
+      background: linear-gradient(180deg, #151526, #0e0e18);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 34px;
+      padding: 18px;
+      box-shadow: var(--shadow)
+    }
+
+    .screen {
+      border-radius: 22px;
+      background: radial-gradient(800px 500px at 70% -20%, rgba(131, 87, 255, .35), transparent), #0a0a12;
+      height: 520px;
+      border: 1px solid rgba(255, 255, 255, .06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 20px
+    }
+
+    .section {
+      padding: 36px 0
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow)
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted)
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none
+    }
+
+    .list li {
+      display: flex;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted)
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-2);
+      margin-top: 8px
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      background: rgba(45, 212, 191, .12);
+      color: #c7fffb;
+      border: 1px solid rgba(45, 212, 191, .25);
+      padding: 7px 10px;
+      border-radius: 999px
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      color: var(--muted)
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 18px
+    }
+
+    .foot-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .sep {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .12), transparent);
+      margin: 22px 0
+    }
+
+    .kudos {
+      font-size: 13px;
+      color: #b8c1d9
+    }
+
+    .hide {
+      display: none
+    }
 
     /* responsive */
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr; gap:22px}
-      .cards{grid-template-columns:1fr; gap:16px}
-      .grid-2{grid-template-columns:1fr}
-      .title{font-size:32px}
-      .screen{height:420px}
-      .nav-links{display:none}
-      .menu-btn{display:inline-flex}
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 22px
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 16px
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr
+      }
+
+      .title {
+        font-size: 32px
+      }
+
+      .screen {
+        height: 420px
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .menu-btn {
+        display: inline-flex
+      }
     }
-    @media (min-width: 981px){
-      .menu-btn{display:none}
+
+    @media (min-width: 981px) {
+      .menu-btn {
+        display: none
+      }
     }
 
     /* simple menu sheet */
-    .sheet{
-      position:fixed; inset:auto 0 0 0; background:rgba(11,11,18,.95);
-      translate:0 100%; transition:translate .26s ease; border-top:1px solid rgba(255,255,255,.08); padding:18px; z-index:50
+    .sheet {
+      position: fixed;
+      inset: auto 0 0 0;
+      background: rgba(11, 11, 18, .95);
+      translate: 0 100%;
+      transition: translate .26s ease;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      padding: 18px;
+      z-index: 50
     }
-    .sheet.open{translate:0 0}
-    .sheet a{display:block; padding:12px 2px; color:var(--text)}
-    .sheet .close{position:absolute; right:12px; top:10px; font-size:24px; line-height:1}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .field{display:flex; gap:10px; flex-wrap:wrap}
-    input[type="email"]{
-      background:#0f0f19; border:1px solid rgba(255,255,255,.14); color:var(--text);
-      padding:12px 14px; border-radius:12px; outline:2px solid transparent; outline-offset:2px; width:280px;
+
+    .sheet.open {
+      translate: 0 0
     }
-    input[type="email"]:focus{outline-color:var(--ring)}
 
-  /* ==============  Cards  ============== */
-  .card {
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, .06);
-            border-radius: var(--radius);
-            padding: 18px;
-            box-shadow: var(--shadow)
-        }
+    .sheet a {
+      display: block;
+      padding: 12px 2px;
+      color: var(--text)
+    }
 
-        .card h3 {
-            margin: 0 0 8px;
-            font-size: 18px
-        }
+    .sheet .close {
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      font-size: 24px;
+      line-height: 1
+    }
 
-        .card p {
-            margin: 0;
-            color: var(--muted)
-        }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
 
- .card h1,
-        .card h2,
-        .card h3 {
-            margin-top: 0;
-        }    
+    .field {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
 
-  /* ===== icon ===== */
-  @supports (background: image-set(url("store_icon.png") 1x)) {
-  .logo{
-    background-image: image-set(
-      url("./store_icon.png") 1x,
-      url("./store_icon.png") 2x
-    );
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+    input[type="email"] {
+      background: #0f0f19;
+      border: 1px solid rgba(255, 255, 255, .14);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 12px;
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      width: 280px;
+    }
+
+    input[type="email"]:focus {
+      outline-color: var(--ring)
+    }
+
+    /* ==============  Cards  ============== */
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow)
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted)
+    }
+
+    .card h1,
+    .card h2,
+    .card h3 {
+      margin-top: 0;
+    }
+
+    /* ===== icon ===== */
+    @supports (background: image-set(url("store_icon.png") 1x)) {
+      .logo {
+        background-image: image-set(url("./store_icon.png") 1x,
+            url("./store_icon.png") 2x);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+
+    /* ---- spacing fixes (override) ---- */
+
+    /* tighten the hero top padding */
+    .hero {
+      padding: 32px 0 28px !important;
+    }
+
+    /* make every section use a consistent rhythm */
+    .section {
+      padding: 48px 0 !important;
+    }
+
+    /* remove surprise top margins on the first child in each section */
+    .section>*:first-child {
+      margin-top: 0 !important;
+    }
+
+    /* add steady vertical rhythm inside sections */
+    .section>*+* {
+      margin-top: 16px;
+    }
+
+    /* make headings not add extra top space */
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+    }
+
+    /* anchor targets won’t hide under sticky header */
+    [id] {
+      scroll-margin-top: 88px;
+    }
+
+    /* consistent vertical rhythm for all sections */
+    .section {
+      padding: 48px 0
+    }
+
+    .section>*:first-child {
+      margin-top: 0
+    }
+
+    .section>*+* {
+      margin-top: 16px
+    }
+
+    /* headings never add surprise top margins */
+    h1,
+    h2,
+    h3 {
+      margin-top: 0
+    }
+
+    /* anchor targets clear the sticky header */
+    [id] {
+      scroll-margin-top: 88px
+    }
+
+    /* a little space between section heading and the cards grid */
+    .cards {
+      margin-top: 24px
+    }
+
+    /* tighten the vertical space between consecutive sections */
+    .section+.section {
+      padding-top: 20px;
+    }
+
+    /* was 48px on both sides */
+
+    .note {
+      font-size: 12px;
+      color: #666;
+      opacity: .9;
+    }
+
+    /* --- Consistent section spacing like "Early Projects" --- */
+    :root {
+      --space-xs: 8px;
+      --space-sm: 12px;
+      --space-md: 16px;
+      --space-lg: 20px;
+    }
+
+    /* 1) Section padding stays the same everywhere */
+    .section {
+      padding: 48px 0 !important;
+    }
+
+    /* 2) One vertical rhythm for everything inside a section */
+    .section .container>*+* {
+      margin-top: var(--space-md) !important;
+    }
+
+    /* 3) Heading → subtext is tight, like your good blocks */
+    .section .title {
+      margin: 0 0 var(--space-sm) !important;
+    }
+
+    .section .muted {
+      margin: 0 !important;
+    }
+
+    /* 4) Subtext → grid/cards gap (same across sections) */
+    .section .muted+.grid-2,
+    .section .muted+.cards,
+    .section .muted+.card {
+      margin-top: var(--space-lg) !important;
+    }
+
+    /* 5) When a card is followed by a trailing line (e.g., "View GitHub") */
+    .card+.muted {
+      margin-top: var(--space-md) !important;
+    }
+
+    /* 6) Remove any surprise space at the very end of a section */
+    .section .container>*:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    /* === Fill the big hero container with the GC logo === */
+    /* Use `contain` to show the whole logo without cropping.
+   If you want edge-to-edge (even if it crops), change `contain` to `cover`. */
+
+    #three-sides .phone .screen {
+      padding: 0;
+      /* remove inner padding so the image can use full area */
+      display: block;
+      background:
+        center / contain no-repeat url("GC.png"),
+        radial-gradient(800px 500px at 70% -20%, rgba(131, 87, 255, .35), transparent),
+        #0a0a12;
+      /* fallback color under the logo */
+    }
+
+    /* optional: slightly taller on desktop; mobile rules below already adjust height */
+    @media (min-width: 981px) {
+      #three-sides .phone .screen {
+        height: 540px;
+      }
+    }
+
+    /* Make the GC logo fill the big hero container nicely */
+    #three-sides .phone .screen {
+      padding: 0;
+      /* remove inner padding so image can breathe */
+    }
+
+    #gcHero {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      /* show whole logo without cropping */
+    }
+
+    /* Center the hero box contents */
+    #three-sides .phone .screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      /* gives breathing room around the circle */
+    }
+
+    /* Circle wrapper that controls the size */
+    .gc-wrap {
+      width: clamp(140px, 28vw, 260px);
+      /* <<< make smaller/bigger by tweaking these */
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      /* crops image perfectly round */
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, .35),
+        inset 0 0 40px rgba(255, 255, 255, .06);
+      background:
+        radial-gradient(60% 60% at 50% 40%, rgba(131, 87, 255, .35), rgba(131, 87, 255, .12) 60%, transparent 70%),
+        #0a0a12;
+      /* subtle glow behind the logo */
+    }
+
+    /* The image itself */
+    #gcHero {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      /* show the whole logo inside the circle */
+    }
+
+    #gcHero {
+      object-fit: cover;
+    }
+
+    /* === Center the hero "screen" and show a large circular GC logo === */
+    #three-sides .phone .screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      /* let the circle sit centered edge-to-edge */
+      min-height: 520px;
+      /* keep the box tall on desktop */
+    }
+
+    /* Circle wrapper controls size — ~3× bigger */
+    .gc-wrap {
+      width: clamp(320px, 42vw, 440px);
+      /* tweak here for size */
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow:
+        0 12px 36px rgba(0, 0, 0, .45),
+        inset 0 0 40px rgba(255, 255, 255, .08);
+      background:
+        radial-gradient(60% 60% at 50% 40%, rgba(131, 87, 255, .35), rgba(131, 87, 255, .12) 60%, transparent 70%),
+        #0a0a12;
+      /* subtle glow behind the logo */
+    }
+
+    #gcHero {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      /* show full logo in the circle */
+    }
+
+    /* keep it nicely sized on phones */
+    @media (max-width: 600px) {
+      #three-sides .phone .screen {
+        min-height: 420px;
+      }
+
+      .gc-wrap {
+        width: clamp(220px, 70vw, 320px);
+      }
+    }
+
+    /* === Remove the phone/frame look behind the logo === */
+    #three-sides .phone {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+    }
+
+    #three-sides .phone .screen {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+
+      /* center the circle */
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+
+      /* keep some height on desktop so it doesn't collapse */
+      min-height: 420px;
+    }
+
+    /* === Circular logo === */
+    .gc-wrap {
+      /* size: tweak the clamp() numbers to taste */
+      width: clamp(260px, 36vw, 420px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 16px auto;
+      /* centers even if flex gets overridden */
+
+      /* optional soft ring & drop shadow */
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, .45),
+        0 0 0 1px rgba(255, 255, 255, .06) inset;
+      background: transparent;
+      /* no background box behind it */
+    }
+
+    #gcHero {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      /* fills the circle edge-to-edge */
+    }
+
+    /* phone-sized screens */
+    @media (max-width: 600px) {
+      #three-sides .phone .screen {
+        min-height: 360px;
+      }
+
+      .gc-wrap {
+        width: clamp(220px, 70vw, 320px);
+      }
+    }
+
+    /* =========================
+   HERO LAYOUT (Three Sides)
+   ========================= */
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.25fr .95fr;     /* logo on the right on desktop */
+  gap: 42px;
+  align-items: center;
 }
 
-/* ---- spacing fixes (override) ---- */
+.hero-copy .title{ margin: 6px 0 12px; }
+.hero-copy .subtitle{ margin: 0 0 20px; }
 
-/* tighten the hero top padding */
-.hero { padding: 32px 0 28px !important; }
+/* round GC logo container */
+.gc-wrap{
+  width: clamp(260px, 36vw, 420px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow:
+    0 18px 48px rgba(0,0,0,.45),
+    0 0 0 1px rgba(255,255,255,.06) inset;
+}
+#gcHero{ width:100%; height:100%; object-fit:cover; display:block; }
 
-/* make every section use a consistent rhythm */
-.section { padding: 48px 0 !important; }
+.hero-media{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-/* remove surprise top margins on the first child in each section */
-.section > *:first-child { margin-top: 0 !important; }
+/* remove old phone frame visuals */
+#three-sides .phone{ background: transparent !important; border:0 !important; padding:0 !important; box-shadow:none !important; }
+#three-sides .screen{
+  background: transparent !important; border:0 !important; box-shadow:none !important; padding:0 !important;
+  display:flex !important; align-items:center; justify-content:center;
+}
 
-/* add steady vertical rhythm inside sections */
-.section > * + * { margin-top: 16px; }
+/* tighten the “tablet-ish” breakpoint so the logo sits closer */
+@media (max-width: 980px){
+  .hero-grid{
+    grid-template-columns: 1fr .9fr;  /* brings the logo closer to the copy */
+    gap: 22px;                        /* tighter gap */
+  }
+  .gc-wrap{ width: clamp(220px, 44vw, 340px); }
+}
 
-/* make headings not add extra top space */
-h1, h2, h3 { margin-top: 0; }
+/* stack on phones */
+@media (max-width: 700px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .hero-media{ order: -1; } /* optional: put logo above the title; remove if you prefer below */
+  .gc-wrap{ width: clamp(220px, 64vw, 320px); }
+}
 
-/* anchor targets won’t hide under sticky header */
-[id] { scroll-margin-top: 88px; }
+/* spacing rhythm inside the hero section */
+#three-sides .features-grid{ margin-top: 26px; }
+#three-sides .built-pill{ margin-top: 16px; }
 
-/* consistent vertical rhythm for all sections */
-.section{padding:48px 0}
-.section>*:first-child{margin-top:0}
-.section>*+*{margin-top:16px}
+h1 {
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
-/* headings never add surprise top margins */
-h1,h2,h3{margin-top:0}
+/* wrapper just to show it centers no matter the parent width */
+  .btn-row {
+    display: flex;
+    justify-content: center;   /* centers children horizontally */
+    padding: 8px 0;
+  }
 
-/* anchor targets clear the sticky header */
-[id]{scroll-margin-top:88px}
+  /* your pill/button */
+  .centered-pill {
+    display: inline-block;     /* lets width hug content */
+    margin: 0 auto;            /* allows centering if parent isn't flex */
+    padding: 10px 18px;        /* <— more left/right padding */
+    border-radius: 9999px;
+    background: #6c63ff;
+    color: #fff;
+    font: 600 14px/1.1 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(108,99,255,.25);
+    white-space: nowrap;       /* keeps text on one line */
+  }
 
-/* a little space between section heading and the cards grid */
-.cards{margin-top:24px}
+  /* optional: slightly larger padding on wider screens */
+  @media (min-width: 480px) {
+    .centered-pill { padding-inline: 14px; }
+  }
+
+  /* status line under the logo */
+#three-sides .post-cta-note{
+  margin: 10px auto 0;                 /* centers the block itself */
+  max-width: 560px;                    /* keeps the line from running super wide */
+  padding-inline: clamp(12px, 4vw, 24px); /* left/right padding that scales on mobile/desktop */
+  color: var(--muted);
+  text-align: left;                    /* keep text left-aligned */
+}
+
+/* make sure the wrapper allows the auto-centering to work */
+.btn-row{
+  width: 100%;
+  display: flex;
+  justify-content: center;             /* centers the paragraph block */
+}
+
+/* status line under the logo */
+.post-cta-note{
+  margin: 10px auto 0;                    /* center the block itself */
+  max-width: 560px;                       /* keep line from going super wide */
+  padding-inline: clamp(12px, 4vw, 24px); /* left/right “breathing room” */
+  color: var(--muted);
+  text-align: left;                       /* stay left-aligned */
+}
+
+/* wrapper so the paragraph centers in the row */
+.btn-row{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* buttons row under the status line — same width & padding as the note */
+.btnrow{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  /* match the paragraph's container feel */
+  width: 100%;
+  max-width: 560px;
+  margin: 12px auto 0;
+  padding-inline: clamp(12px, 4vw, 24px);
+
+  /* left-align buttons inside the narrowed column.
+     If you prefer them centered, change to `center`. */
+  justify-content: flex-start;
+}
 
   </style>
 </head>
+
 <body>
   <header>
     <div class="container nav">
@@ -213,20 +987,32 @@ h1,h2,h3{margin-top:0}
   </div>
 
   <main>
-    <!-- HERO -->
-    <section id="features" class="section">
-      <div class="container">      <div class="hero-grid">
-        <div>
-          <div class="badge">✨ Creator bio: 
-          Glow Code Studio is an independent developer creating wellness apps, meaningful websites, and Unreal Engine games. Home
-          of Three Sides and future digital projects designed to support real life, real emotions, and growth. Three Sides is in Google 
-          Play closed testing; iOS coming soon.✨</div>
-          <!-- TODO: replace with your hosted cover image -->
+    <section id="app-features" class="section section--light">
+      <div class="container">
+        <div class="badge">
+          ✨ Creator bio: Glow Code Studio is an independent developer creating wellness apps,
+          meaningful websites, and Unreal Engine games. Home of Three Sides and future digital
+          projects designed to support real life, real emotions, and growth. Three Sides is in
+          Google Play closed testing; iOS coming soon.✨
+        </div>
+      </div>
+    </section>
+    
+           
+    <h1>GLOW CODE STUDIO</h1>
 
-          <h2 class="title">Three Sides — tools for the highs, lows & balance of bipolar life</h2>
-          <p class="subtitle">
-            Journaling, coping tools, a personal wellness plan, and a little virtual pet for motivation — designed to help you feel seen and supported every day.
-          </p>
+          <!-- RIGHT: round logo -->
+          <div class="hero-media">
+
+            <div class="gc-wrap">
+              <!-- use icon.png or GC.png — your call -->
+              <img id="gcHero" src="icon.png" alt="Glow Code Studio logo" loading="lazy">
+            </div>
+          </div>
+          <div class="btn-row">
+
+          <p class="post-cta-note">Now in closed testing on Google Play. iOS release is in progress.</p>
+</div>
           <div class="btnrow">
             <a class="cta" href="https://play.google.com/apps/testing/io.github.cpriss1979.twa" target="_blank" rel="noopener">
               <span>Join Google Play Closed Test</span>
@@ -237,253 +1023,301 @@ h1,h2,h3{margin-top:0}
               <span class="tag">Get Notified</span>
             </a>
           </div>
-          <p class="note" style="margin-top:10px;">Now in closed testing on Google Play. iOS release is in progress.</p>
-          <div class="sep"></div>
-          <div class="pill">Built by Glow Code Studio — made with care, calm, and honesty</div>
-        </div>
-
-        <!-- phone mock -->
-        <aside class="phone">
-          <div class="screen">
-            <!-- TODO: replace with screenshots of your app -->
-            <div>
-              <div style="font-size:14px; color:#c9cff0; margin-bottom:6px;">App preview</div>
-              <div style="font-size:28px; font-weight:800; margin-bottom:6px;">Three Sides</div>
-              <div class="muted">Drop a 1080×2340 screenshot here later</div>
-            </div>
           </div>
-        </aside>
+
+        </div><!-- /hero-grid -->
+    
+        <!-- Feature cards live in the same (dark) section as requested -->
+        <div class="container">
+          <div class="cards features-grid">
+            <div class="card">
+            <h3>Theme</h3>
+            <p>Pick your favorite color scheme to make the app your own.</p>
+          </div>
+          <div class="card">
+            <h3>Daily Journal</h3>
+            <p>Quick entries, and mood tracking, allowing you to 'feed' your pet each day after you journal.</p>
+          </div>
+          <div class="card">
+            <h3>Coping Tools</h3>
+            <p>Personalized actions that actually help — saved for when you need them most.</p>
+          </div>
+          <div class="card">
+            <h3>Virtual Pet Motivation</h3>
+            <p>Care for your little buddy as you care for yourself — build streaks and earn a variety of badges.</p>
+          </div>
+        </div>
+    <br>
+        <div class="pill built-pill">Built by Glow Code Studio — made with care, calm, and honesty</div>
       </div>
     </section>
-
-    <!-- FEATURES -->
-    <section id="features" class="section">
-      <div class="container">
-              <div class="cards">
-        <div class="card">
-          <h3>Theme</h3>
-          <p>Pick your favorite color scheme to make the app your own.</p>
-        </div>
-        <div class="card">
-          <h3>Daily Journal</h3>
-          <p>Quick entries, and mood tracking, allowing you to 'feed' your pet each day after you journal.</p>
-        </div>
-        <div class="card">
-          <h3>Coping Tools</h3>
-          <p>Personalized actions that actually help — saved for when you need them most.</p>
-        </div>
-        <div class="card">
-          <h3>Virtual Pet Motivation</h3>
-          <p>Care for your little buddy as you care for yourself — build streaks and earn a variety of badges.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="features" class="section">
-      <div class="container">
-              <h2 class="title" style="font-size:28px;">Websites I've built</h2>
-      <p class="muted">A few highlights from my client &amp; personal work.</p>
     
-      <div class="grid-2" style="margin-top:14px;">
-        <div class="card">
-          <h3>Viki Scherer (Professional Author &amp; Speaker)</h3>
-          <p>WordPress site with speaking pages, products, testimonies and a polished brand system.</p>
-          <ul class="list">
-            <li><span class="dot"></span><span>Clean navigation &amp; mobile-first design</span></li>
-            <li><span class="dot"></span><span>Speaking event call-to-actions</span></li>
-          </ul>
-          <p style="margin-top:10px;">
-            <a href="https://vikischerer.com/" target="_blank" rel="noopener">View site ↗</a>
+      <!-- Website PROJECTS -->
+      <section id="projects" class="section section--dark">
+        <div class="container">
+          <h2 class="title" style="font-size:28px;">Websites I've built</h2>
+          <p class="muted">A few highlights from my client &amp; personal work.</p>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>Viki Scherer (Professional Author &amp; Speaker)</h3>
+              <p>WordPress site with speaking pages, products, testimonies and a polished brand system.</p>
+              <ul class="list">
+                <li><span class="dot"></span><span>Clean navigation &amp; mobile-first design</span></li>
+                <li><span class="dot"></span><span>Speaking event call-to-actions</span></li>
+              </ul>
+              <p style="margin-top:10px;">
+                <a href="https://vikischerer.com/" target="_blank" rel="noopener">View site ↗</a>
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Harvest Christian Center (Church Website)</h3>
+              <p>WordPress site focusing on beliefs, sermons &amp; online tithing with a welcoming layout and simple
+                editing
+                for staff.</p>
+              <ul class="list">
+                <li><span class="dot"></span><span>Fast, accessible, mobile-first</span></li>
+                <li><span class="dot"></span><span>Service times &amp; location front and center</span></li>
+              </ul>
+              <p style="margin-top:6px; font-size:12px; color:#666;">
+
+                Original build (since redesigned by the church team).</p>
+            </div>
+
+            <!-- ============= personal website projects ============= -->
+            <div class="card">
+              <h3>Fit to Fab</h3>
+              <p>A lightweight, mobile-first wellness mini-app to explore smart food choices, track simple workouts, and
+                log
+                your progress — fast and private.</p>
+              <ul class="list">
+                <li><span class="dot"></span><span>Sections: Low-Calorie Foods, so-called "Negative-Calorie" Foods*,
+                    Exercises, Calorie Calculator, Personal Progress</span></li>
+                <li><span class="dot"></span><span>Calorie Calculator in pure JS — no sign-in, no backend</span></li>
+                <li><span class="dot"></span><span>Mobile-first layout with an accessible drop-down menu</span></li>
+                <li><span class="dot"></span><span>Personal Progress saved locally for privacy (no data leaves your
+                    device)</span></li>
+              </ul>
+              <p style="margin-top:10px; display:flex; gap:12px; flex-wrap:wrap;">
+                <a class="btn" href="https://cpriss1979.github.io/fittofab.io/" target="_blank" rel="noopener"
+                  aria-label="Open Fit to Fab website">View site ↗</a>
+              </p>
+              <p style="margin-top:6px; font-size:12px; color:#666;">
+                *"Negative-calorie" foods are better described as low-energy-density foods. They don’t literally burn
+                more
+                calories than they contain, but they can support fullness with fewer calories.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>Countdown calculators</h3>
+              <p>I’ve built dozens of personalized countdown calculators — simple, joyful tools that help my family
+                track
+                everything from big events to everyday moments they’re excited for.</p>
+              <!-- Optional: link to a gallery or sample countdown -->
+              <!-- <p style="margin-top:10px;"><a href="#" target="_blank" rel="noopener">See examples ↗</a></p> -->
+            </div>
+          </div> <!-- /grid-2 -->
+        </div> <!-- /container -->
+      </section>
+
+      <!-- EARLY PROJECTS -->
+      <section id="app-features" class="section section--light">
+        <div class="container">
+          <h2 class="title" style="font-size:24px;">Early Projects</h2>
+          <p class="muted" style="margin-top:6px; font-size:12px;">
+            *Early project — originally designed for desktop screens.*
           </p>
-        </div>
-    
-        <div class="card">
-          <h3>Harvest Christian Center (Church Website)</h3>
-          <p>WordPress site focusing on beliefs, sermons &amp; online tithing with a welcoming layout and simple editing for
-            staff.</p>
-          <ul class="list">
-            <li><span class="dot"></span><span>Fast, accessible, mobile-first</span></li>
-            <li><span class="dot"></span><span>Service times &amp; location front and center</span></li>
-          </ul>
-          <p class="note" style="margin-top:10px;">Original build (since redesigned by the church team).</p>
-        </div>
-    
-        <!-- ============= personal projects ============= -->
-        <div class="card">
-          <h3>Fit to Fab</h3>
-          <p>A lightweight, mobile-first wellness mini-app to explore smart food choices, track simple workouts, and log
-            your
-            progress — fast and private.</p>
-          <ul class="list">
-            <li><span class="dot"></span><span>Sections: Low-Calorie Foods, so-called "Negative-Calorie" Foods*, Exercises,
-                Calorie Calculator, Personal Progress</span></li>
-            <li><span class="dot"></span><span>Calorie Calculator in pure JS — no sign-in, no backend</span></li>
-            <li><span class="dot"></span><span>Mobile-first layout with an accessible drop-down menu</span></li>
-            <li><span class="dot"></span><span>Personal Progress saved locally for privacy (no data leaves your
-                device)</span></li>
-          </ul>
-          <p style="margin-top:10px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn" href="https://cpriss1979.github.io/fittofab.io/" target="_blank" rel="noopener"
-              aria-label="Open Fit to Fab website">View site ↗</a>
+                    </p>
+
+          <div class="card" style="margin-top:14px;">
+            <h3>Rick &amp; Crystal Show</h3>
+            <p>My first live website — built for our YouTube channel. It’s simple, but it taught me the foundations of
+              web
+              layout and hosting.</p>
+            <p style="margin-top:10px;">
+              <a href="https://cpriss1979.github.io/rickandcrystalshow.io/" target="_blank" rel="noopener">View
+                Archived Site
+                ↗</a>
+            </p>
+          </div>
+
+          <p class="muted" style="margin-top:16px;">I’ve built several other projects —
+            <a href="https://github.com/cpriss1979?tab=repositories" target="_blank" rel="noopener">View GitHub ↗</a>
           </p>
-          <p style="margin-top:6px; font-size:12px; color:#666;">
-            *"Negative-calorie" foods are better described as low-energy-density foods. They don’t literally burn more
-            calories than they contain, but they can support fullness with fewer calories.
+        </div> <!-- /container -->
+      </section>
+
+      <!-- Games -->
+      <section id="games" class="section section--dark">
+        <div class="container">
+          <h2 class="title" style="font-size:24px;">Game Development</h2>
+          <p class="muted">I’ve released 2 small games on itch.io — exploring focus, interaction, and play.</p>
+
+          <div class="card" style="margin-top:14px;">
+            <h3>Indie Games</h3>
+            <p>Indie games in Unreal Engine</p>
+            <p style="margin-top:10px;">
+              <a href="https://cpriss.itch.io/" target="_blank" rel="noopener">View
+                Archived Site
+                ↗</a>
+            </p>
+          </div>
+        </div> <!-- /container -->
+      </section>
+
+      <!-- ABOUT -->
+      <section id="app-features" class="section section--light">
+        <div class="container">
+          <h2 class="title" style="font-size:28px;">About Glow Code Studio</h2>
+          <p class="muted">
+            ⭐️ I build wellness apps like <strong>Three Sides</strong> — based on the highs, lows & balance of bipolar
+            life.
+            It’s currently in Google Play closed testing, with iOS coming next.
+
+            <br><br>
+            ⭐️ I’ve built several websites (including one for a church and one for a professional author/speaker).
+            <br><br>
+            ⭐️ Also, i've built some personal projects and released 2 indie games in Unreal Engine on itch.io.
+
+            <br><br>
+            ⭐️ More helpful applications are on the way.
           </p>
-        </div>
-    
-        <div class="card">
-          <h3>Countdown calculators</h3>
-          <p>I’ve built dozens of personalized countdown calculators — simple, joyful tools that help my family track
-            everything from big events to everyday moments they’re excited for.</p>
-          <!-- Optional: link to a gallery or sample countdown -->
-          <!-- <p style="margin-top:10px;"><a href="#" target="_blank" rel="noopener">See examples ↗</a></p> -->
-        </div>
+        </div> <!-- /container -->
+      </section>
 
-      </div> <!-- /grid-2 -->
-    </section>
-    <!-- /PROJECTS -->
-    
-    <!-- EARLY PROJECTS -->
-    <section id="features" class="section">
-      <div class="container">      <h2 class="title" style="font-size:24px;">Early Projects</h2>
-      <p class="muted">Older work from when I was just starting — still live, but not updated to my current style.</p>
-    
-      <div class="card" style="margin-top:14px;">
-        <h3>Rick &amp; Crystal Show</h3>
-        <p>My first live website — built for our YouTube channel. It’s simple, but it taught me the foundations of web
-          layout and hosting.</p>
-        <p style="margin-top:10px;">
-          <a href="https://github.com/cpriss1979/bibleVerseGenerator.io" target="_blank" rel="noopener">View
-            Archived Site ↗</a>
-        </p>
-</div>
-
-
-<p class="muted">I’ve built several other projects —
-<a href=https://github.com/cpriss1979?tab=repositories target="_blank" rel="noopener">View GitHub
-  ↗</a></p>
+      <!-- CONTACT -->
+      <section id="three-sides" class="section section--dark">
+        <div class="container">
+          <h2 class="title" style="font-size:28px;">Get in touch</h2>
+          <p class="muted">Have feedback, want to test, or just say hi? I’d love to hear from you.</p>
+          <div class="field" id="notify">
+            <!-- The email capture uses a mailto: by default to keep this zero-dependency. Replace with Formspree or your backend later. -->
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
+            <button class="cta small" id="notifyBtn">Notify me about iOS</button>
+            <a class="cta small secondary" href="mailto:@gmail.com">Email me</a>
+          </div>
+        </div> <!-- /container -->
 
       </section>
 
-    <!-- GAMES -->
-    <section id="features" class="section">
       <div class="container">
-              <h2 class="title" style="font-size:28px;">Indie games in Unreal Engine</h2>
-      <p class="muted">I’ve released 2 small games on itch.io — exploring focus, interaction, and play.</p>
-      <!-- TODO: swap link to your itch.io profile -->
-      <p style="margin-top:10px;"><a href="#" target="_blank" rel="noopener" class="cta small secondary">See my itch.io ↗</a></p>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="features" class="section">
-      <div class="container">
-              <h2 class="title" style="font-size:28px;">About Glow Code Studio</h2>
-      <p class="muted">
-        ⭐️ I build wellness apps like <strong>Three Sides</strong> — based on the highs, lows & balance of bipolar life.
-        It’s currently in Google Play closed testing, with iOS coming next. 
-        
-        <br><br>
-        ⭐️ I’ve built several websites (including one for a church and one for a professional author/speaker). 
-        <br><br>
-        ⭐️ Also, i've built some personal projects and released 2 indie games in Unreal Engine on itch.io. 
-        
-        <br><br>
-        ⭐️ More helpful applications are on the way.
-      </p>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="features" class="section">
-      <div class="container">     
-         <h2 class="title" style="font-size:28px;">Get in touch</h2>
-      <p class="muted">Have feedback, want to test, or just say hi? I’d love to hear from you.</p>
-      <div class="field" id="notify">
-        <!-- The email capture uses a mailto: by default to keep this zero-dependency. Replace with Formspree or your backend later. -->
-        <label class="sr-only" for="email">Email</label>
-        <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
-        <button class="cta small" id="notifyBtn">Notify me about iOS</button>
-        <a class="cta small secondary" href="mailto:@gmail.com">Email me</a>
+        <div class="sep"></div>
       </div>
-    </section>
-
-    <div class="container">
-      <div class="sep"></div>
-    </div>
   </main>
 
   <footer>
     <div class="container footer-grid">
-      <div class="kudos">© <span id="year"></span> Glow Code Studio — Where tech meets heart.</div>
+      <div class="kudos">© <span id="year"></span> <br> Glow Code Studio</div>
       <div class="foot-links">
         <!-- TODO: swap these once you create real policy pages -->
         <a href="privacy.html" class="muted">Privacy</a>
-        <a href="#" class="muted">Terms</a>
-        <a href="#three-sides" class="muted">Back to top ↑</a>
+        <a href="terms.html" class="muted">Terms</a>
+        <a href="#" class="muted">Back to top ↑</a>
       </div>
     </div>
   </footer>
 
   <script>
-    // --- small helpers for UX ---
+    /* =======================
+       Glow Code Studio — Page JS
+       ======================= */
+
+    // tiny helpers
     const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
     // dynamic year
-    $('#year').textContent = new Date().getFullYear();
+    (() => {
+      const y = $('#year');
+      if (y) y.textContent = String(new Date().getFullYear());
+    })();
 
     // mobile menu sheet
-    const menuBtn = $('#menuBtn');
-    const sheet = $('#menuSheet');
-    const closeMenu = $('#closeMenu');
-    function openSheet(){ sheet.classList.add('open'); sheet.setAttribute('aria-hidden','false'); }
-    function hideSheet(){ sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true'); }
-    menuBtn?.addEventListener('click', openSheet);
-    closeMenu?.addEventListener('click', hideSheet);
-    sheet?.addEventListener('click', (e)=>{ if(e.target.matches('a')) hideSheet(); });
+    (() => {
+      const sheet = $('#menuSheet');
+      const openBtn = $('#menuBtn');
+      const closeBtn = $('#closeMenu');
 
-    // smooth-scroll for in-page links
-    document.addEventListener('click', (e)=>{
-      const a = e.target.closest('a[href^="#"]');
-      if(!a) return;
-      const id = a.getAttribute('href');
-      if(id.length > 1 && document.querySelector(id)){
+      if (!sheet || !openBtn || !closeBtn) return;
+
+      const open = () => { sheet.classList.add('open'); sheet.setAttribute('aria-hidden', 'false'); };
+      const close = () => { sheet.classList.remove('open'); sheet.setAttribute('aria-hidden', 'true'); };
+
+      openBtn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+
+      // Close when clicking a link inside
+      sheet.addEventListener('click', (e) => {
+        if (e.target.matches('a')) close();
+      });
+
+      // ESC closes the sheet
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sheet.classList.contains('open')) close();
+      });
+    })();
+
+    // smooth in-page scrolling
+    (() => {
+      document.addEventListener('click', (e) => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+
+        const id = a.getAttribute('href');
+        if (!id || id.length <= 1) return;
+
+        const target = document.querySelector(id);
+        if (!target) return;
+
         e.preventDefault();
-        document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         history.replaceState(null, '', id);
-      }
-    });
+      });
+    })();
 
-    // iOS notify: mailto with prefilled subject/body
-    const notifyBtn = $('#notifyBtn');
-    notifyBtn?.addEventListener('click', ()=>{
-      const email = $('#email').value.trim();
-      // If no email typed, just open a general mailto
-      if(!email){
-        window.location.href = 'mailto:@gmail.com?subject=Notify me about Three Sides on iOS&body=Hi Crystal,%0D%0A%0D%0APlease let me know when the iOS version is ready.%0D%0A%0D%0AThanks!';
-        return;
-      }
-      // If email typed, prefill it in the body so you can capture it manually for now.
-      const body = encodeURIComponent(`Hi Crystal,
+    // iOS notify button (mailto prefill)
+    (() => {
+      const btn = $('#notifyBtn');
+      if (!btn) return;
 
-Please notify me when the iOS version of Three Sides is ready.
+      btn.addEventListener('click', () => {
+        const email = $('#email')?.value.trim() || '';
+        const subject = encodeURIComponent('Notify me about Three Sides on iOS');
 
-My email: ${email}
+        if (!email) {
+          const body = encodeURIComponent(`Hi Crystal,
+      
+      Please let me know when the iOS version is ready.
+      
+      Thanks!`);
+          window.location.href = `mailto:@gmail.com?subject=${subject}&body=${body}`;
+          return;
+        }
 
-Thank you!`);
-      const subject = encodeURIComponent('Notify me about Three Sides on iOS');
-      window.location.href = `mailto:hello@@gmail.com?subject=${subject}&body=${body}`;
-    });
+        const body = encodeURIComponent(`Hi Crystal,
+      
+      Please notify me when the iOS version of Three Sides is ready.
+      
+      My email: ${email}
+      
+      Thank you!`);
+        // NOTE: replace the double-@ with your real address
+        window.location.href = `mailto:hello@@gmail.com?subject=${subject}&body=${body}`;
+      });
+    })();
 
-    // OPTIONAL: swap this to a Formspree/Netlify form submission later
-    // Example:
-    // fetch('https://formspree.io/f/xxxxxx',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})})
-
-    // open external links in new tab for safety (already set on main CTAs, this is a fallback)
-    document.querySelectorAll('a[href^="http"]').forEach(a=>{
-      if(!a.hasAttribute('target')) a.setAttribute('target','_blank');
-      if(!a.hasAttribute('rel')) a.setAttribute('rel','noopener');
-    });
+    // external links safety (fallback)
+    (() => {
+      $$('a[href^="http"]').forEach(a => {
+        if (!a.hasAttribute('target')) a.setAttribute('target', '_blank');
+        if (!a.hasAttribute('rel')) a.setAttribute('rel', 'noopener');
+      });
+    })();
   </script>
+
 </body>
+
 </html>
