@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Glow Code Studio</title>
+    <meta name="description"
+        content="Glow Code Studio builds wellness apps, meaningful websites, and indie games. Home of Three Sides." />
+    <meta name="theme-color" content="#8357ff" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Glow Code Studio — Three Sides & more" />
+    <meta property="og:description"
+        content="Wellness apps & helpful tools. Three Sides is in Google Play closed testing; iOS coming soon." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/" />
+
+    <style>
+        :root {
+            /* base */
+            --bg: #0b0b12;
+            --text: #f3f5fa;
+            --muted: #9aa0b3;
+            --brand: #8357ff;
+            --brand-2: #2dd4bf;
+            --ring: rgba(131, 87, 255, .35);
+            --shadow: 0 10px 30px rgba(0, 0, 0, .30);
+            --radius: 18px;
+            --maxw: 1080px;
+
+            /* section bands */
+            --surface-dark: #0e0e17;
+            /* dark band */
+            --surface-light: #32325b;
+            /* light band */
+
+            /* unified card color (solid so it matches on both bands) */
+            --card-solid: #241b4a;
+            /* tweak later; consistent everywhere */
+            --card-border: rgba(255, 255, 255, .08);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            background:
+                radial-gradient(1200px 800px at 10% -10%, rgba(131, 87, 255, .15), transparent 60%),
+                radial-gradient(1000px 700px at 120% 0%, rgba(45, 212, 191, .10), transparent 55%),
+                var(--bg);
+            color: var(--text);
+            font: 500 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+        }
+
+        a {
+            color: var(--brand-2);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        /* layout */
+        .container {
+            max-width: var(--maxw);
+            margin-inline: auto;
+            padding: 22px
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: saturate(140%) blur(8px);
+            background: rgba(54, 14, 115, .6);
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            box-shadow: var(--shadow)
+        }
+
+        .brand h1 {
+            font-size: 18px;
+            margin: 0;
+            letter-spacing: .3px
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        .nav-links a {
+            color: var(--text);
+            opacity: .8
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            opacity: 1
+        }
+
+        /* ctas */
+        .cta {
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+            background: linear-gradient(135deg, var(--brand), #6ea8ff);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .10);
+            box-shadow: var(--shadow);
+            font-weight: 700;
+        }
+
+        .cta.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, .18)
+        }
+
+        .cta.small {
+            padding: 9px 12px;
+            font-weight: 600
+        }
+
+        .cta .tag {
+            background: rgba(255, 255, 255, .12);
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 12px
+        }
+
+        /* sections */
+        .section {
+            padding: 48px 0
+        }
+
+        .section>*:first-child {
+            margin-top: 0
+        }
+
+        .section>*+* {
+            margin-top: 16px
+        }
+
+        .section--dark {
+            background: var(--surface-dark)
+        }
+
+        .section--light {
+            background: var(--surface-light)
+        }
+
+        .badge {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .title {
+            font-size: 38px;
+            line-height: 1.1;
+            margin: 6px 0 14px
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        /* cards (same look on both bands) */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .card {
+            background: var(--card-solid);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 18px
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .list {
+            display: grid;
+            gap: 10px;
+            margin: 10px 0 0;
+            padding: 0;
+            list-style: none
+        }
+
+        .list li {
+            display: flex;
+            gap: 10px;
+            align-items: start;
+            color: var(--muted)
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--brand-2);
+            margin-top: 8px
+        }
+
+        /* hero bits */
+        h1 {
+            text-align: center;
+            font-weight: 800;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+
+        .hero-media {
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .gc-wrap {
+            width: clamp(260px, 36vw, 420px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .06) inset;
+            background: transparent;
+        }
+
+        #gcHero {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        /* status line + cta row */
+        .btn-row {
+            width: 100%;
+            display: flex;
+            justify-content: center
+        }
+
+        .post-cta-note {
+            margin: 10px auto 0;
+            max-width: 560px;
+            padding-inline: clamp(12px, 4vw, 24px);
+            color: var(--muted);
+            text-align: left;
+        }
+
+        .btnrow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            width: 100%;
+            max-width: 560px;
+            margin: 12px auto 0;
+            padding-inline: clamp(12px, 4vw, 24px);
+            justify-content: flex-start;
+            /* change to center if you want */
+        }
+
+        /* forms */
+        .field {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        input[type="email"] {
+            background: #0f0f19;
+            border: 1px solid rgba(255, 255, 255, .14);
+            color: var(--text);
+            padding: 12px 14px;
+            border-radius: 12px;
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            width: 280px;
+        }
+
+        input[type="email"]:focus {
+            outline-color: var(--ring)
+        }
+
+        /* footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            color: var(--muted)
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 18px
+        }
+
+        .foot-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+
+        /* responsive */
+        @media (max-width:980px) {
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 16px
+            }
+
+            .title {
+                font-size: 32px
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .menu-btn {
+                display: inline-flex
+            }
+        }
+
+        @media (min-width:981px) {
+            .menu-btn {
+                display: none
+            }
+        }
+
+        /* simple mobile sheet */
+        .sheet {
+            position: fixed;
+            inset: auto 0 0 0;
+            background: rgba(11, 11, 18, .95);
+            translate: 0 100%;
+            transition: translate .26s ease;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            padding: 18px;
+            z-index: 50;
+        }
+
+        .sheet.open {
+            translate: 0 0
+        }
+
+        .sheet a {
+            display: block;
+            padding: 12px 2px;
+            color: var(--text)
+        }
+
+        .sheet .close {
+            position: absolute;
+            right: 12px;
+            top: 10px;
+            font-size: 24px;
+            line-height: 1
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        [id] {
+            scroll-margin-top: 88px
+        }
+
+
+        /* === Section spacing: tighten globally, then fine-tune per section === */
+
+        /* Global baseline */
+        :root {
+            --pad-desktop: 40px;
+            /* was 48 */
+            --pad-mobile: 28px;
+            /* was 48 everywhere on mobile */
+            --gap-md: 14px;
+            /* internal vertical rhythm baseline */
+            --gap-lg: 18px;
+        }
+
+        .section {
+            padding-block: var(--pad-desktop) !important;
+        }
+
+        .section .container>*+* {
+            margin-top: var(--gap-md) !important;
+        }
+
+        /* Mobile: shrink a bit more */
+        @media (max-width: 700px) {
+            .section {
+                padding-block: var(--pad-mobile) !important;
+            }
+        }
+
+        /* Hero & “Get in touch” are where most of the extra space lives */
+        #app-features.section.section--light {
+            /* the GC logo + CTAs band */
+            padding-block: 28px !important;
+            /* was big; this feels snappy */
+        }
+
+        #three-sides.section.section--dark {
+            /* Get in touch band */
+            padding-block: 28px !important;
+        }
+
+        /* Top creator-bio line shouldn’t be so tall by itself */
+        #intro.section.section--dark {
+            padding-block: 24px !important;
+        }
+
+        /* Space before/after card grids */
+        .cards {
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        /* was 18/24 */
+
+        /* Remove tail-space at the end of each section */
+        .section .container>*:last-child {
+            margin-bottom: 0 !important;
+        }
+
+        /* Headlines to copy gap (a hair tighter) */
+        .title {
+            margin-bottom: 8px !important;
+        }
+
+        .muted {
+            margin-top: 0 !important;
+        }
+
+        /* Make the CTA row tuck closer to the status line */
+        .btnrow {
+            margin-top: 10px;
+        }
+
+        /* Optional: make the circular logo block not add phantom space */
+        .gc-wrap {
+            margin-block: 8px;
+        }
+
+        /* was 16px auto */
+
+        /* Footer: less top padding so it hugs the contact section */
+        footer .container {
+            padding-block: 16px;
+        }
+
+        /* anchor targets clear sticky header */
+
+        /* --- tighten the seam between the creator-bio (dark) and hero (light) --- */
+        /* remove the global "extra top padding for every next section" just for this pair */
+        #intro+#app-features {
+            padding-top: 0 !important;
+        }
+
+        /* bring the two bands closer together evenly */
+        #intro.section--dark {
+            padding-bottom: 14px !important;
+        }
+
+        #app-features.section--light {
+            padding-top: 14px !important;
+        }
+
+        /* kill any first-child margin inside the hero container */
+        #app-features .container>*:first-child {
+            margin-top: 0 !important;
+        }
+
+        /* make sure the big title itself doesn’t add any space */
+        #app-features h1 {
+            margin: 0 !important;
+            line-height: 1.05;
+        }
+
+        /* slightly tighten the vertical rhythm inside the hero only */
+        #app-features .container>*+* {
+            margin-top: 12px !important;
+        }
+
+        /* keep the status line and buttons tucked in */
+        #app-features .btn-row {
+            margin-top: 10px !important;
+        }
+
+        #app-features .btnrow {
+            margin-top: 10px !important;
+        }
+
+        /* ——— tighten the seam between creator-bio (dark) and hero (light) ——— */
+
+        /* make the two bands meet tighter */
+        #intro.section.section--dark {
+            padding-bottom: 12px !important;
+        }
+
+        #three-sides.section.section--light {
+            padding-top: 12px !important;
+        }
+
+        /* kill any first-child margins inside the hero container */
+        #three-sides .container>*:first-child {
+            margin-top: 0 !important;
+        }
+
+        /* title shouldn’t add any extra top space */
+        #three-sides h1 {
+            margin: 0 0 8px !important;
+            line-height: 1.06;
+        }
+
+        /* slightly tighter vertical rhythm only inside the hero */
+        #three-sides .container>*+* {
+            margin-top: 12px !important;
+        }
+
+        /* keep the status line + buttons tucked in */
+        #three-sides .btn-row {
+            margin-top: 8px !important;
+        }
+
+        #three-sides .btnrow {
+            margin-top: 10px !important;
+        }
+
+        /* prevent the circular logo from adding phantom gap */
+        #three-sides .gc-wrap {
+            margin-block: 6px !important;
+        }
+
+        /* optional: overall band padding for the hero */
+        #three-sides.section.section--light {
+            padding-bottom: 28px !important;
+        }
+
+        /* ensure the “Early Projects” heading doesn’t drift up after the hero */
+        #early.section.section--dark {
+            padding-top: 28px !important;
+        }
+
+        /* global: ensure there’s no stray bottom margin at section ends */
+        .section .container>*:last-child {
+            margin-bottom: 0 !important;
+        }
+
+
+
+        /* === Equal-width CTA buttons === */
+        .btnrow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            width: 100%;
+            max-width: 560px;
+            margin: 12px auto 0;
+            padding-inline: clamp(12px, 4vw, 24px);
+        }
+
+        /* Make BOTH buttons take the same width regardless of text length */
+        .btnrow .cta {
+            flex: 1 1 0;
+            /* equal halves */
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            /* label left, tag right */
+            min-height: 44px;
+            /* consistent height */
+        }
+
+        /* tiny phones: stack full-width */
+        @media (max-width: 460px) {
+            .btnrow {
+                flex-direction: column;
+            }
+
+            .btnrow .cta {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header>
+        <div class="container nav">
+            <div class="brand">
+                <div class="logo" aria-hidden="true"></div>
+                <h1>Glow Code Studio</h1>
+
+            </div>
+            <nav class="nav-links">
+                <a href="#intro" class="active">Intro</a>
+                <a href="#three-sides">Three Sides</a>
+                <a href="#early">Early Projects</a>
+                <a href="#games">Games</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="cta small menu-btn" id="menuBtn" aria-haspopup="true" aria-controls="menuSheet">Menu</button>
+        </div>
+    </header>
+
+    <!-- Mobile menu sheet -->
+    <div class="sheet" id="menuSheet" aria-hidden="true">
+        <button class="close cta small secondary" id="closeMenu" aria-label="Close menu">✕</button>
+        <nav>
+            <a href="#intro">Intro</a>
+            <a href="#three-sides">Three Sides</a>
+            <a href="#early">Early Projects</a>
+            <a href="#games">Games</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- 1) Top creator bio — DARK -->
+        <section id="intro" class="section section--dark">
+            <div class="container">
+                <div class="badge">
+                    ✨ Creator bio: Glow Code Studio is an independent developer creating wellness apps,
+                    meaningful websites, and Unreal Engine games. Home of Three Sides and future digital projects
+                    designed to support real life, real emotions, and growth. Three Sides is in Google Play closed
+                    testing; iOS
+                    coming soon. ✨
+                </div>
+            </div>
+        </section>
+
+        <!-- 2) Glow Code / logo -> pet features — LIGHT -->
+        <section id="three-sides" class="section section--light">
+            <div class="container">
+                <h1>GLOW CODE STUDIO</h1>
+                <br>
+                <!-- round logo -->
+                <div class="hero-media">
+                    <div class="gc-wrap">
+                        <img id="gcHero" src="icon.png" alt="Glow Code Studio logo" loading="lazy">
+                    </div>
+                </div>
+                <br>
+                <!-- status line -->
+                <div class="btn-row">
+                    <p class="post-cta-note">Now in closed testing on Google Play. iOS release is in progress.</p>
+                </div>
+
+                <!-- CTAs (fixed narrow width) -->
+                <div class="btnrow">
+                    <a class="cta" href="https://play.google.com/apps/testing/io.github.cpriss1979.twa" target="_blank"
+                        rel="noopener">
+                        <span>Join Google Play Closed Test</span>
+                        <span class="tag">Android</span>
+                    </a>
+
+                    <a class="cta secondary" href="#contact" id="iosBtn">
+                        <span>iOS Coming Soon</span>
+                        <span class="tag">Get Notified</span>
+                    </a>
+                </div>
+
+                <!-- feature cards (full container width) -->
+                <div class="cards" aria-label="App features">
+                    <div class="card">
+                        <h3>Theme</h3>
+                        <p>Pick your favorite color scheme to make the app your own.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Daily Journal</h3>
+                        <p>Quick entries and mood tracking that unlocks feeding your pet each day.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Coping Tools</h3>
+                        <p>Personalized actions that actually help — saved for when you need them most.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Virtual Pet Motivation</h3>
+                        <p>Care for your little buddy as you care for yourself — build streaks and earn badges.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3) Early Projects (through “I’ve built several…”) — DARK -->
+        <section id="early" class="section section--dark">
+            <div class="container">
+                <h2 class="title" style="font-size:24px;">Early Projects</h2>
+                <p class="muted" style="margin-top:6px; font-size:12px;">*Early project — originally designed for
+                    desktop
+                    screens.*</p>
+
+                <div class="card" style="margin-top:14px;">
+                    <h3>Rick &amp; Crystal Show</h3>
+                    <p>My first live website — built for our YouTube channel. Simple, but it taught me the foundations
+                        of web
+                        layout and hosting.</p>
+                    <p style="margin-top:10px;">
+                        <a href="https://cpriss1979.github.io/rickandcrystalshow.io/" target="_blank"
+                            rel="noopener">View Archived
+                            Site ↗</a>
+                    </p>
+                </div>
+
+                <p class="muted" style="margin-top:16px;">
+                    I’ve built several other projects —
+                    <a href="https://github.com/cpriss1979?tab=repositories" target="_blank" rel="noopener">View GitHub
+                        ↗</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- 4) Game Development (to “View archived site”) — LIGHT -->
+        <section id="games" class="section section--light">
+            <div class="container">
+                <h2 class="title" style="font-size:24px;">Game Development</h2>
+                <p class="muted">I’ve released 2 small games on itch.io — exploring focus, interaction, and play.</p>
+
+                <div class="card" style="margin-top:14px;">
+                    <h3>Indie Games</h3>
+                    <p>Indie games in Unreal Engine</p>
+                    <p style="margin-top:10px;">
+                        <a href="https://cpriss.itch.io/" target="_blank" rel="noopener">View Archived Site ↗</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) About Glow Code — DARK -->
+        <section id="about" class="section section--dark">
+            <div class="container">
+                <h2 class="title" style="font-size:28px;">About Glow Code Studio</h2>
+                <p class="muted">
+                    ⭐️ I build wellness apps like <strong>Three Sides</strong> — based on the highs, lows &amp; balance
+                    of bipolar
+                    life. It’s currently in Google Play closed testing, with iOS coming next.
+                    <br><br>
+                    ⭐️ I’ve built several websites (including one for a church and one for a professional
+                    author/speaker).
+                    <br><br>
+                    ⭐️ I’ve also built personal projects and released 2 indie games in Unreal Engine on itch.io.
+                    <br><br>
+                    ⭐️ More helpful applications are on the way.
+                </p>
+            </div>
+        </section>
+
+        <!-- 6) Get in touch — LIGHT -->
+        <section id="contact" class="section section--light">
+            <div class="container">
+                <h2 class="title" style="font-size:28px;">Get in touch</h2>
+                <p class="muted">Have feedback, want to test, or just say hi? I’d love to hear from you.</p>
+                <div class="field" id="notify">
+                    <label class="sr-only" for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
+                    <button class="cta small" id="notifyBtn">Notify me about iOS</button>
+                    <a class="cta small secondary" href="mailto:@gmail.com">Email me</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="kudos">© <span id="year"></span><br>Glow Code Studio</div>
+            <div class="foot-links">
+                <a href="privacy.html" class="muted">Privacy</a>
+                <a href="terms.html" class="muted">Terms</a>
+                <a href="#intro" class="muted">Back to top ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // helpers
+        const $ = (s, r = document) => r.querySelector(s);
+        const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+        // year
+        (() => { const y = $('#year'); if (y) y.textContent = String(new Date().getFullYear()); })();
+
+        // mobile menu sheet
+        (() => {
+            const sheet = $('#menuSheet'), openBtn = $('#menuBtn'), closeBtn = $('#closeMenu');
+            if (!sheet || !openBtn) return;
+            const open = () => { sheet.classList.add('open'); sheet.setAttribute('aria-hidden', 'false'); };
+            const close = () => { sheet.classList.remove('open'); sheet.setAttribute('aria-hidden', 'true'); };
+            openBtn.addEventListener('click', open);
+            closeBtn?.addEventListener('click', close);
+            sheet.addEventListener('click', e => { if (e.target.matches('a')) close(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet.classList.contains('open')) close(); });
+        })();
+
+        // smooth anchor scroll
+        (() => {
+            document.addEventListener('click', e => {
+                const a = e.target.closest('a[href^="#"]'); if (!a) return;
+                const id = a.getAttribute('href'); if (!id || id.length <= 1) return;
+                const target = document.querySelector(id); if (!target) return;
+                e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                history.replaceState(null, '', id);
+            });
+        })();
+
+        // Notify button (mailto prefill)
+        (() => {
+            const btn = $('#notifyBtn'); if (!btn) return;
+            btn.addEventListener('click', () => {
+                const email = $('#email')?.value.trim() || '';
+                const subject = encodeURIComponent('Notify me about Three Sides on iOS');
+                if (!email) {
+                    const body = encodeURIComponent(`Hi Crystal,
+
+Please let me know when the iOS version is ready.
+
+Thanks!`);
+                    window.location.href = `mailto:@gmail.com?subject=${subject}&body=${body}`;
+                    return;
+                }
+                const body = encodeURIComponent(`Hi Crystal,
+
+Please notify me when the iOS version of Three Sides is ready.
+
+My email: ${email}
+
+Thank you!`);
+                window.location.href = `mailto:hello@@gmail.com?subject=${subject}&body=${body}`; // replace with your real address
+            });
+        })();
+
+        // external link safety (fallback)
+        (() => {
+            $$('a[href^="http"]').forEach(a => {
+                if (!a.hasAttribute('target')) a.setAttribute('target', '_blank');
+                if (!a.hasAttribute('rel')) a.setAttribute('rel', 'noopener');
+            });
+        })();
+    </script>
+</body>
+
+</html>
