@@ -881,7 +881,6 @@
       background: var(--surface-light);
     }
 
-
     /* === Sunset-violet theme tune-up === */
     :root {
       --header: #2B0DF2;
@@ -954,10 +953,6 @@
       box-shadow: 0 18px 48px rgba(0, 0, 0, .45),
         0 0 0 1px rgba(255, 255, 255, .06) inset;
     }
-
-
-
-
 
     /* ==== Card refresh (velvet panel look) ==== */
 
@@ -1228,10 +1223,6 @@
       mix-blend-mode: screen;
     }
 
-
-
-
-
     /* =========================
    CARD SYSTEM — FINAL OVERRIDES
    Put this at the VERY END of <style>
@@ -1298,8 +1289,6 @@
       margin-top: 14px !important;
     }
 
-
-
     /* --- Websites I've built: responsive 2-col grid --- */
     .grid-2 {
       display: grid;
@@ -1341,10 +1330,6 @@
       margin-top: 8px;
     }
 
-
-
-
-
     /* ==== COLOR INTENT OVERRIDES (place at end of <style>) ==== */
 
     /* Project lists: make bullets/text PURE white */
@@ -1354,9 +1339,6 @@
     }
 
     /* First description paragraph in each project card = off-white (muted) */
-    #early .card>p:first-of-type {
-      color: var(--muted) !important;
-    }
 
     /* “Note” lines (Original build…, Negative-calorie note, etc.) = off-white + small */
     .card .note {
@@ -1455,7 +1437,6 @@
       line-height: 1.5;
     }
 
-
     /* Make note lines match normal card body color (same as .card p) */
     .cards .card p.note,
     .section .card p.note,
@@ -1475,6 +1456,188 @@
     #games .card>p:first-of-type {
       color: var(--card-text) !important;
     }
+
+    /* ============================== color for cards (darker text)======================= */
+    /* === FINAL: unify description text color in all cards === */
+    :root {
+      --card-text: #a59ccd;
+    }
+
+    /* this is the lilac/grey you're seeing elsewhere */
+
+    .card p,
+    .card>p:first-of-type,
+    #early .card>p:first-of-type,
+    #games .card>p:first-of-type {
+      color: var(--card-text) !important;
+    }
+
+    /* ====================== play & ios buttons =================== */
+    /* === CTA buttons — final colors & states === */
+    .cta {
+      /* Primary (Android) */
+      --c1: #6CA8FF;
+      /* sky blue */
+      --c2: #8CD0FF;
+      /* light aqua blue */
+      background: linear-gradient(135deg,
+          #6CA8FF 0%,
+          #8CD0FF 60%,
+          #C5E2FF 100%);
+      color: #0a0f1a;
+      /* dark ink for contrast */
+      border: 1px solid rgba(255, 255, 255, .10);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, .06) inset,
+        0 8px 24px rgba(108, 168, 255, .35);
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, .08) inset,
+        0 10px 28px rgba(108, 168, 255, .45);
+      filter: saturate(1.05);
+    }
+
+    .cta:focus-visible {
+      outline: 2px solid rgba(140, 208, 255, .9);
+      outline-offset: 2px;
+    }
+
+    /* Tag pill inside CTAs */
+    .cta .tag {
+      background: rgba(255, 255, 255, .88);
+      color: #0a0f1a;
+      border-radius: 999px;
+    }
+
+    /* Secondary (iOS Coming Soon) */
+    .cta.secondary {
+      --c1: #D8A5FF;
+      /* lavender */
+      --c2: #F4CFFF;
+      /* soft pink-lavender */
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      color: #0a0f1a;
+      border: 1px solid rgba(255, 255, 255, .14);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, .05) inset,
+        0 8px 22px rgba(216, 165, 255, .28);
+    }
+
+    .cta.secondary:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, .08) inset,
+        0 10px 28px rgba(216, 165, 255, .38);
+      filter: saturate(1.05);
+    }
+
+    .cta.secondary .tag {
+      background: rgba(255, 255, 255, .88);
+      color: #0a0f1a;
+    }
+
+
+
+
+    /* HERO APP LOGO — a bit smaller, app-icon shape */
+    #three-sides .gc-wrap {
+      width: clamp(180px, 26vw, 300px);
+      /* was ~360–420px */
+      aspect-ratio: 1;
+      border-radius: 22px;
+      /* rounded-square */
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .38), 0 0 0 1px rgba(255, 255, 255, .05) inset;
+      margin: 8px auto 12px;
+    }
+
+    #three-sides #gcHero {
+      border-radius: inherit;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Title + spacing tighten */
+    #three-sides h1 {
+      margin: 0 0 8px !important;
+    }
+
+    /* Smaller on tiny phones */
+    @media (max-width: 430px) {
+      #three-sides .gc-wrap {
+        width: 64vw;
+      }
+
+      /* keeps it cozy on iPhone */
+    }
+
+    /* HEADER LOGO — keep small and crisp */
+    .brand .brand-logo {
+      width: clamp(28px, 2.6vw, 34px);
+      height: clamp(28px, 2.6vw, 34px);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    #three-sides .gc-wrap {
+      width: clamp(180px, 26vw, 300px) !important;
+      border-radius: 22px !important;
+    }
+
+
+
+    /* Three Sides app-icon block */
+    #three-sides .gc-wrap {
+      width: clamp(180px, 24vw, 280px);
+      /* was 26vw/300px – a touch smaller */
+      aspect-ratio: 1;
+      border-radius: 24px;
+      /* was 22px – matches your card feel */
+      overflow: hidden;
+
+      /* softer, longer shadow + faint inner line for crisp edge */
+      box-shadow:
+        0 18px 34px rgba(0, 0, 0, .32),
+        0 2px 0 rgba(0, 0, 0, .18) inset,
+        0 0 0 1px rgba(255, 255, 255, .06) inset;
+
+      margin: 10px auto 14px;
+      background:
+        radial-gradient(120% 120% at 50% 10%, rgba(255, 255, 255, .06), transparent 60%),
+        linear-gradient(145deg, #4a2fb4, #2a1b48);
+      /* same family as your cards */
+    }
+
+    #three-sides #gcHero {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    /* tighten title and icon spacing */
+    #three-sides h1 {
+      margin: 0 0 8px !important;
+    }
+
+    /* tiny phones: keep it cozy */
+    @media (max-width: 430px) {
+      #three-sides .gc-wrap {
+        width: 62vw;
+      }
+    }
+
+    /* micro tracking so THEE S I D E S doesn’t feel airy */
+    #three-sides h1 {
+      letter-spacing: -0.01em;
+    }
   </style>
 
 </head>
@@ -1486,10 +1649,8 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <span class="logo-ring">
-          <img class="logo-img" src="GC.png" alt="Glow Code Studio" decoding="async" />
-        </span>
-        <h1>✨ Glow Code Studio</h1>
+        <img class="brand-logo" src="GC.png" alt="Glow Code Studio" decoding="async">
+        <h1>Glow Code Studio</h1>
       </div>
 
       <nav class="nav-links">
@@ -1520,28 +1681,38 @@
 
   <main>
     <!-- 1) Top creator bio — DARK -->
-    <section id="intro" class="section section--dark">
-      <div class="container">
-        <div class="badge">
-          Creator Bio:
-          <br>
-          Glow Code Studio is an independent developer creating wellness apps,
-          meaningful websites, and Unreal Engine games. Home of Three Sides and future digital projects
-          designed to support real life, real emotions, and growth. Three Sides is in Google Play closed testing; iOS
-          coming soon.
-        </div>
+
+    <div class="container">
+      <div class="badge">
+        Creator Bio:
+        <br>
+        Glow Code Studio is an independent developer creating wellness apps,
+        meaningful websites, and Unreal Engine games. Home of Three Sides and future digital projects
+        designed to support real life, real emotions, and growth. Three Sides is in Google Play closed testing; iOS
+        coming soon.
       </div>
+    </div>
     </section>
 
-    <!-- 2) Glow Code / logo -> pet features — LIGHT -->
     <section id="three-sides" class="section section--light">
       <div class="container">
-        <h1>THREE SIDES</h1>
+        <h1 style="color:#e7b5ea;margin:0;">THREE SIDES</h1>
 
-        <!-- round logo -->
+        <!-- round logo -> app icon -->
         <div class="hero-media">
-          <div class="gc-wrap">
-            <img id="gcHero" src="icon.png" alt="Glow Code Studio logo" loading="lazy">
+          <div class="gc-wrap" style="
+                         width:clamp(220px,32vw,360px);
+                         aspect-ratio:1/1;
+                         border-radius:28px;            /* <- rounded square */
+                         overflow:hidden;
+                         box-shadow:0 14px 32px rgba(0,0,0,.38),
+                                    0 0 0 1px rgba(255,255,255,.08) inset;
+                         background:
+                            radial-gradient(120% 120% at 50% 10%, rgba(255,255,255,.06), transparent 60%),
+                            linear-gradient(145deg, #3b2a57, #2a1b48); /* subtle panel */
+                       ">
+            <img id="gcHero" src="icon.png" alt="Three Sides app icon"
+              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;">
           </div>
         </div>
         <br>
@@ -1568,24 +1739,28 @@
       </div>
 
       <!-- status line -->
-      <div class="btnrow compact">
-        <p class="post-cta-note">Now in closed testing on Google Play. iOS release is in progress.</p>
-      </div>
+      <p style="max-width:560px;margin:14px auto 10px;padding:0 16px;
+                      color:var(--muted);text-align:center;">
+        Now in closed testing on Google Play. iOS release is in progress.
+      </p>
 
-      <!-- CTAs (fixed narrow width) -->
-      <!-- CTAs -->
-      <div class="btnrow compact shrink">
+      <!-- CTAs (centered, equal width, mobile-friendly) -->
+      <div style="max-width:520px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;
+                        justify-content:center;padding:0 16px;">
         <a class="cta" href="https://play.google.com/apps/testing/io.github.cpriss1979.twa" target="_blank"
-          rel="noopener">
+          rel="noopener" style="flex:1 1 240px;min-height:44px;display:inline-flex;
+                        align-items:center;justify-content:space-between;">
           <span>Join Google Play Closed Test</span>
           <span class="tag">Android</span>
         </a>
 
-        <a class="cta secondary" href="#contact" id="iosBtn">
+        <a class="cta secondary" href="#contact" id="iosBtn" style="flex:1 1 240px;min-height:44px;display:inline-flex;
+                        align-items:center;justify-content:space-between;">
           <span>iOS Coming Soon</span>
           <span class="tag">Get Notified</span>
         </a>
       </div>
+
     </section>
 
     <!-- Website PROJECTS -->
@@ -1675,25 +1850,36 @@
     <!-- 3) Early Projects (through “I’ve built several…”) — DARK -->
     <section id="three-sides" class="section section--dark">
       <div class="container">
-        <h2 class="title" style="font-size:24px;">Early Projects</h2>
-        <p class="muted" style="margin-top:6px; font-size:12px;">*Early project — originally designed for desktop
-          screens.*</p>
+        <h2 class="title" style="font-size:24px;">Earlier Projects</h2>
+        <p class="muted" style="margin-top:6px; font-size:12px;">My first live website — built for our YouTube channel.
+          Simple, but it taught me the foundations of web layout and
+          hosting.
+          <!-- 3) Early Projects (through “I’ve built several…”) — DARK -->
 
-        <div class="card" style="margin-top:14px;">
-          <h3>Rick &amp; Crystal Show</h3>
-          <p>My first live website — built for our YouTube channel. Simple, but it taught me the foundations of web
-            layout and hosting.</p>
-          <p style="margin-top:10px;">
-            <a href="https://cpriss1979.github.io/rickandcrystalshow.io/" target="_blank" rel="noopener">View Archived
-              Site ↗</a>
-          </p>
+          <!-- feature cards (full container width) -->
+        <div class="cards" aria-label="App features">
+          <div class="card">
+            <p>My first live website — built for our YouTube channel. Simple, but it taught me the foundations of web
+              layout and
+              hosting.</p>
+
+            <p style="margin-top:10px;">
+              <a href="https://cpriss1979.github.io/rickandcrystalshow.io/" target="_blank" rel="noopener">View Archived
+                Site ↗</a>
+            </p>
+          </div>
         </div>
 
-        <p class="muted" style="margin-top:16px;">
-          I’ve built several other projects —
-          <a href="https://github.com/cpriss1979?tab=repositories" target="_blank" rel="noopener">View GitHub ↗</a>
-        </p>
-      </div>
+
+
+        <!-- feature cards (full container width) -->
+        <div class="cards" aria-label="App features">
+          <div class="card">
+
+            <p> I’ve built several other projects —</p>
+            <a href="https://github.com/cpriss1979?tab=repositories" target="_blank" rel="noopener">View GitHub ↗</a>
+            </p>
+          </div>
     </section>
 
     <!-- 5) About Glow Code — DARK -->
