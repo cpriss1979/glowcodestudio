@@ -414,9 +414,7 @@
       scroll-margin-top: 88px
     }
 
-
     /* === Section spacing: tighten globally, then fine-tune per section === */
-
     /* Global baseline */
     :root {
       --pad-desktop: 40px;
@@ -489,10 +487,9 @@
 
     /* Optional: make the circular logo block not add phantom space */
     .gc-wrap {
-      margin-block: 8px;
+      margin: 2px auto 8px;
+      /* tighter */
     }
-
-    /* was 16px auto */
 
     /* Footer: less top padding so it hugs the contact section */
     footer .container {
@@ -597,8 +594,6 @@
       margin-bottom: 0 !important;
     }
 
-
-
     /* === Equal-width CTA buttons === */
     .btnrow {
       display: flex;
@@ -632,18 +627,871 @@
         width: 100%;
       }
     }
+
+    /* === Compact CTA row (smaller, same-width buttons) === */
+    .btnrow.compact {
+      max-width: 420px;
+      /* was 560px */
+      gap: 10px;
+      margin-top: 10px;
+      padding-inline: clamp(10px, 4vw, 18px);
+    }
+
+    .btnrow.compact .cta {
+      flex: 1 1 0;
+      /* equal halves */
+      min-height: 40px;
+      /* was 44px */
+      padding: 8px 12px;
+      /* was 12px 16px */
+      font-size: 14px;
+      /* a bit smaller */
+      line-height: 1.1;
+    }
+
+    .btnrow.compact .cta .tag {
+      font-size: 11px;
+      /* scale tag down a touch */
+      padding: 1px 7px;
+    }
+
+    /* tiny phones: still stack full width */
+    @media (max-width: 460px) {
+      .btnrow.compact {
+        flex-direction: column;
+      }
+
+      .btnrow.compact .cta {
+        width: 100%;
+      }
+    }
+
+    /* === Extra-small CTA pills (content-sized) === */
+    .btnrow.compact.shrink {
+      max-width: 270px;
+      /* tighter row */
+      gap: 8px;
+      margin-top: 8px;
+      padding-inline: clamp(8px, 4vw, 16px);
+      justify-content: flex-start;
+      /* or center, if you prefer */
+    }
+
+    .btnrow.compact.shrink .cta {
+      flex: 0 0 auto;
+      /* STOP filling the row */
+      min-height: 40px;
+      /* a bit shorter */
+      padding: 10px 12px;
+      /* slimmer pill */
+      font-size: 14.5px;
+    }
+
+    .btnrow.compact.shrink .tag {
+      font-size: 10.5px;
+      padding: 1px 6px;
+    }
+
+    /* keep header items on one line and centered */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: nowrap;
+      /* don't wrap to a new line */
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      margin: 0;
+      letter-spacing: .3px;
+      white-space: nowrap;
+      /* prevent wrap on small widths */
+    }
+
+    /* circular header logo image */
+    .logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      /* <- circle */
+      object-fit: cover;
+      display: block;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, .08);
+      background: #121212;
+      /* fallback behind transparent PNGs */
+    }
+
+    /* show menu button on mobile, hide on desktop (you already had this) */
+    @media (max-width:980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+        margin-left: auto;
+      }
+
+      /* push it to far-right */
+    }
+
+    @media (min-width:981px) {
+      .menu-btn {
+        display: none;
+      }
+    }
+
+    /* hero logo size (a little smaller) */
+    .gc-wrap {
+      width: clamp(220px, 30vw, 360px);
+      /* was clamp(260px, 36vw, 420px) */
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 6px auto;
+      /* was 0 or larger */
+      box-shadow: 0 14px 32px rgba(0, 0, 0, .38), 0 0 0 1px rgba(255, 255, 255, .04) inset;
+      background: transparent;
+    }
+
+    /* extra small phones: nudge smaller again */
+    @media (max-width: 380px) {
+      .gc-wrap {
+        width: 200px;
+      }
+    }
+
+    /* desktop: still prominent but not oversized */
+    @media (min-width: 1000px) {
+      .gc-wrap {
+        width: 320px;
+      }
+
+      /* was up to 420px */
+    }
+
+    /* hero wrapper only (leave header logo alone) */
+    .gc-wrap {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    /* this is for the BIG hero logo */
+    .logo-img {
+      border-radius: 12px !important;
+      display: block;
+    }
+
+    .logo-img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #cbb7ff, #9ddaff);
+      padding: 3px;
+    }
+
+    .logo-ring {
+      width: 38px;
+      height: 38px;
+      padding: 3px;
+      /* ring thickness */
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #cbb7ff, #9ddaff);
+    }
+
+    .logo-ring .logo-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    /* ===== THEME SWITCHER ===== */
+    :root {
+      --brand: #8357ff;
+      --brand-2: #2dd4bf;
+      --text: #f3f5fa;
+      --muted: #9aa0b3;
+      --card-solid: #241b4a;
+      --card-border: rgba(255, 255, 255, .08);
+    }
+
+    /* base hook vars the site already uses */
+    :root,
+    body {
+      --bg: #0b0b12;
+      /* page background */
+      --surface-dark: #0e0e17;
+      /* dark band */
+      --surface-light: #32325b;
+      /* light band */
+      --header: rgba(54, 14, 115, .6);
+      /* header glass tint */
+    }
+
+    /* Aurora Glow */
+    .theme-aurora {
+      --bg: #0b0b12;
+      --surface-dark: #0e0e17;
+      --surface-light: #3A2E74;
+      --header: #2A155A;
+    }
+
+    /* Seafoam Noir */
+    .theme-seafoam {
+      --bg: #0B1114;
+      --surface-dark: #0B1114;
+      --surface-light: #123A45;
+      --header: #002B36;
+    }
+
+    /* Sunset Ink */
+    .theme-sunset {
+      --bg: #0E0A12;
+      --surface-dark: #0E0A12;
+      --surface-light: #44234D;
+      --header: #2B0F2F;
+    }
+
+    /* make header actually use the header var */
+    header {
+      background: color-mix(in hsl, var(--header) 85%, transparent);
+      backdrop-filter: saturate(140%) blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    /* bands use your existing variables — no markup changes */
+    .section--dark {
+      background: var(--surface-dark);
+    }
+
+    .section--light {
+      background: var(--surface-light);
+    }
+
+
+    /* === Sunset-violet theme tune-up === */
+    :root {
+      --header: #2B0DF2;
+      --surface-dark: #0D0A1A;
+      --surface-light: #3F2A77;
+      --card-solid: #241B4A;
+      --card-border: rgba(255, 255, 255, .08);
+      --text: #F3F5FA;
+      --muted: #9AA0B3;
+    }
+
+    header {
+      background: color-mix(in hsl, var(--header) 85%, transparent);
+      backdrop-filter: saturate(140%) blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .section--dark {
+      background: var(--surface-dark);
+    }
+
+    .section--light {
+      background: var(--surface-light);
+    }
+
+    .card {
+      background: var(--card-solid);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    /* CTA buttons stay bright but on-brand */
+    .cta {
+      background: linear-gradient(135deg, #8357FF, #6EA8FF);
+      border: 1px solid rgba(255, 255, 255, .10);
+    }
+
+    .cta.secondary {
+      background: transparent;
+      border-color: rgba(255, 255, 255, .18);
+    }
+
+    /* Circle header logo with subtle ring */
+    .logo-ring {
+      width: 38px;
+      height: 38px;
+      padding: 3px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #cbb7ff, #9ddaff);
+    }
+
+    .logo-ring .logo-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #121212;
+      display: block;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, .06) inset, 0 6px 16px rgba(0, 0, 0, .35);
+    }
+
+    /* Hero circle keeps that nice lift */
+    .gc-wrap {
+      box-shadow: 0 18px 48px rgba(0, 0, 0, .45),
+        0 0 0 1px rgba(255, 255, 255, .06) inset;
+    }
+
+
+
+
+
+    /* ==== Card refresh (velvet panel look) ==== */
+
+    /* (A) Make sure the card colors are defined */
+    :root {
+      --card-solid: #2e1f52;
+      /* deep berry-indigo base (fallback) */
+      --card-border: rgba(255, 255, 255, .10);
+      --card-title: #F4F6FB;
+      --card-text: #D7CFF6;
+      /* soft lilac body text */
+    }
+
+    /* (B) Override the old card styling with higher specificity */
+    .cards .card {
+      position: relative;
+      background: linear-gradient(145deg, #3A2A63 0%, #261946 100%) !important;
+      border: 1px solid var(--card-border) !important;
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, .32),
+        inset 0 0 0 1px rgba(255, 255, 255, .04);
+    }
+
+    /* (C) Clear, cozy text */
+    .cards .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--card-title) !important;
+    }
+
+    .cards .card p {
+      margin: 0;
+      color: var(--card-text) !important;
+    }
+
+    /* (D) Optional soft inner glow for dimension */
+    .cards .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 0 60px rgba(131, 87, 255, .08);
+    }
+
+    /* ===== Smooth-flow cards (plum glass) ===== */
+
+    /* Harmonize section hues */
+    :root {
+      --surface-dark: #0f0b17;
+      /* deep eggplant (footer / dark bands) */
+      --surface-light: #3b2a57;
+      /* plum for light bands (what your hero sits on) */
+
+      /* Card palette tuned to those bands */
+      --card-bg: rgba(38, 28, 64, .55);
+      /* translucent plum glass */
+      --card-border: rgba(255, 255, 255, .10);
+      --card-title: #f4f6fb;
+      --card-text: #d7cff6;
+      --card-glow: rgba(170, 120, 255, .14);
+    }
+
+    /* slightly brighter */
+
+    /* Make the bands actually use the vars (no markup changes needed) */
+    .section--dark {
+      background: var(--surface-dark);
+    }
+
+    .section--light {
+      background: var(--surface-light);
+    }
+
+    /* ONE authoritative card rule – wins by specificity + being last */
+    .cards .card {
+      position: relative;
+      background: var(--card-bg) !important;
+      /* translucent glass */
+      border: 1px solid var(--card-border) !important;
+      border-radius: 16px;
+      padding: 16px;
+      /* lighter, wider shadow so it feels airy, not heavy */
+      box-shadow:
+        0 10px 24px rgba(0, 0, 0, .28),
+        inset 0 0 0 1px rgba(255, 255, 255, .04);
+      backdrop-filter: saturate(135%) blur(8px);
+      /* glass flow */
+      -webkit-backdrop-filter: saturate(135%) blur(8px);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    /* tiny lift on hover (desktop only) */
+    @media (hover:hover) {
+      .cards .card:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 14px 30px rgba(0, 0, 0, .30),
+          inset 0 0 0 1px rgba(255, 255, 255, .05);
+      }
+    }
+
+    /* Soft inner glow that matches the section hue so it “melts in” */
+    .cards .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 0 60px var(--card-glow);
+    }
+
+    /* Clear, cozy type */
+    .cards .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--card-title) !important;
+    }
+
+    .cards .card p {
+      margin: 0;
+      color: var(--card-text) !important;
+    }
+
+    /* Tighten card grid rhythm a smidge so the flow feels intentional */
+    .cards {
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    /* === Unified card look everywhere === */
+    :root {
+      /* choose your panel purple once */
+      --panel-purple: #3f2a6a;
+      /* tweak if you want a different shade */
+      --panel-border: rgba(255, 255, 255, .10);
+      --panel-title: #f5f7ff;
+      --panel-text: #dcd5ff;
+    }
+
+    /* make ALL .card elements identical (grid or single) */
+    .card {
+      position: relative;
+      background: var(--panel-purple) !important;
+      border: 1px solid var(--panel-border) !important;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .28);
+      backdrop-filter: none !important;
+      /* kill glass so color doesn’t shift */
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--panel-title) !important;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--panel-text) !important;
+    }
+
+    /* optional soft sheen so panels don’t look flat */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .05), transparent 40%);
+    }
+
+    /* === Unified card look everywhere (exact same color + mirror) === */
+
+    :root {
+      /* pick a single purple you love */
+      --card-bg: #3f2a72;
+      /* base card color */
+      --card-border: rgba(255, 255, 255, .10);
+      --card-title: #f5e9ff;
+      --card-text: #d9d2ff;
+      --card-sheen: rgba(255, 255, 255, .10);
+      /* sheen strength */
+      --card-inset: rgba(0, 0, 0, .22);
+      /* inner shadow depth */
+      --card-radius: 18px;
+      --card-shadow: 0 20px 28px rgba(0, 0, 0, .32);
+    }
+
+    /* One rule that ALL cards use (feature cards and the standalone ones) */
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: var(--card-bg) !important;
+      /* force same bg */
+      border: 1px solid var(--card-border) !important;
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow), inset 0 0 1px rgba(255, 255, 255, .05);
+      padding: 18px;
+    }
+
+    /* Clean, consistent type */
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--card-title) !important;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--card-text) !important;
+    }
+
+    /* Mirror/gloss effect – same on every card */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      /* subtle top gloss + soft spotlight */
+      background:
+        linear-gradient(180deg, var(--card-sheen), transparent 38%),
+        radial-gradient(70% 50% at 20% -15%, rgba(255, 255, 255, .14), transparent 60%);
+      /* gentle inner fade so it “melts” into the section */
+      box-shadow: inset 0 60px 80px var(--card-inset);
+      mix-blend-mode: screen;
+      /* keeps it light without changing base color */
+    }
+
+    /* Grid wrapper can keep spacing, but no color here! */
+    .cards {
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    /* Safety: neutralize any older competing rules */
+    .cards .card,
+    .cards .card h3,
+    .cards .card p,
+    .cards .card::before {
+      all: revert-layer;
+      /* if your editor supports cascade layers */
+    }
+
+    /* If revert-layer isn’t supported, these ensure our values win */
+    .cards .card {
+      background: var(--card-bg) !important;
+      border: 1px solid var(--card-border) !important;
+    }
+
+    .cards .card h3 {
+      color: var(--card-title) !important;
+    }
+
+    .cards .card p {
+      color: var(--card-text) !important;
+    }
+
+    .cards .card::before {
+      background:
+        linear-gradient(180deg, var(--card-sheen), transparent 38%),
+        radial-gradient(70% 50% at 20% -15%, rgba(255, 255, 255, .14), transparent 60%);
+      box-shadow: inset 0 60px 80px var(--card-inset);
+      mix-blend-mode: screen;
+    }
+
+
+
+
+
+    /* =========================
+   CARD SYSTEM — FINAL OVERRIDES
+   Put this at the VERY END of <style>
+   ========================= */
+
+    /* 1) Design tokens (one intentional purple across the site) */
+    :root {
+      --card-bg: #3a2768;
+      /* base purple for ALL cards */
+      --card-border: rgba(255, 255, 255, .10);
+      --card-title: #f2eaff;
+      --card-text: #d7cff7;
+      --card-radius: 16px;
+      --card-shadow: 0 12px 28px rgba(0, 0, 0, .35);
+      --card-sheen: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0) 38%);
+    }
+
+    /* 2) One rule to rule them all: every .card looks identical */
+    .cards .card,
+    .section .card,
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: var(--card-bg) !important;
+      /* force same bg */
+      border: 1px solid var(--card-border) !important;
+      border-radius: var(--card-radius) !important;
+      /* fix “square” corners */
+      box-shadow: var(--card-shadow) !important;
+      padding: 18px;
+    }
+
+    /* 3) Text colors inside cards */
+    .cards .card h3,
+    .section .card h3,
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--card-title) !important;
+    }
+
+    .cards .card p,
+    .section .card p,
+    .card p {
+      margin: 0;
+      color: var(--card-text) !important;
+    }
+
+    /* 4) Soft sheen (mirror) layer on every card */
+    .cards .card::before,
+    .section .card::before,
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: var(--card-sheen);
+    }
+
+    /* 5) Grid rhythm stays tidy */
+    .cards {
+      gap: 14px !important;
+      margin-top: 14px !important;
+    }
+
+
+
+    /* --- Websites I've built: responsive 2-col grid --- */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      /* 1 col on phones */
+      gap: 14px;
+      /* match your card rhythm */
+      margin-top: 14px;
+    }
+
+    /* 2 columns on tablets/desktop */
+    @media (min-width: 820px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* make lists inside project cards breathe the same as elsewhere */
+    .grid-2 .list {
+      display: grid;
+      gap: 10px;
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .grid-2 .list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--muted);
+    }
+
+    .grid-2 .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-2);
+      margin-top: 8px;
+    }
+
+
+
+
+
+    /* ==== COLOR INTENT OVERRIDES (place at end of <style>) ==== */
+
+    /* Project lists: make bullets/text PURE white */
+    #early .grid-2 .list li,
+    #early .grid-2 .list li span {
+      color: var(--text) !important;
+    }
+
+    /* First description paragraph in each project card = off-white (muted) */
+    #early .card>p:first-of-type {
+      color: var(--muted) !important;
+    }
+
+    /* “Note” lines (Original build…, Negative-calorie note, etc.) = off-white + small */
+    .card .note {
+      color: var(--muted) !important;
+      font-size: 12px !important;
+      margin-top: 6px !important;
+    }
+
+    /* Early Projects section subtitle (the tiny *Early project…*) already uses .muted — keep it off-white */
+    #three-sides.section.section--dark .muted {
+      color: var(--muted) !important;
+    }
+
+    /* About section body copy should be WHITE, not muted */
+    #about .muted,
+    #about p {
+      color: var(--text) !important;
+    }
+
+    /* Make “View site ↗” look the same everywhere (link, not pill) */
+    #early .card p a,
+    #games .card p a {
+      color: var(--brand-2) !important;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    #early .card p a:hover,
+    #games .card p a:hover {
+      text-decoration: underline;
+    }
+
+    /* If any “View site” kept the .cta classes, strip the button look inside cards */
+    #early .card .cta.small.secondary,
+    #games .card .cta.small.secondary {
+      background: transparent !important;
+      border: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      color: var(--brand-2) !important;
+    }
+
+    /* soft-white tokens (optional but handy) */
+    :root {
+      --ink-soft: #cdd3e3;
+      /* darker white */
+    }
+
+    /* notes/footnotes = darker white */
+    .note {
+      color: var(--ink-soft) !important;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* ========== Darker-white text targets (drop-in patch) ========== */
+
+    /* token */
+    :root {
+      --ink-soft: #cdd3e3;
+    }
+
+    /* “darker white” */
+
+    /* 1) All little note lines (both of yours already use .note) */
+    .note {
+      color: var(--ink-soft) !important;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* 2) Games → Indie Games card: the description line */
+    #games .card>p:first-of-type {
+      color: var(--ink-soft) !important;
+    }
+
+    /* 3) Early Projects → Rick & Crystal card: the description line */
+    #early .card h3+p,
+    #three-sides.section--dark .card h3+p {
+      color: var(--ink-soft) !important;
+    }
+
+    /* --- Force “darker white” on note lines inside cards --- */
+    :root {
+      --ink-soft: #cdd3e3;
+    }
+
+    /* darker white token */
+
+    .card p.note,
+    .card .note {
+      color: var(--ink-soft) !important;
+      /* beats .card p !important */
+      font-size: 12px !important;
+      line-height: 1.5;
+    }
+
+
+    /* Make note lines match normal card body color (same as .card p) */
+    .cards .card p.note,
+    .section .card p.note,
+    .card p.note {
+      color: var(--card-text) !important;
+      /* identical tone as regular body copy */
+      font-size: 12px;
+      /* keep your smaller size */
+      line-height: 1.5;
+    }
+
+    /* ==== FINAL TEXT COLOR FIXES (place last) ==== */
+    /* Make both notes and the first description line in Games
+   match normal card body copy (same as Countdown calculators). */
+    #early .card .note,
+    #early .card p.note,
+    #games .card>p:first-of-type {
+      color: var(--card-text) !important;
+    }
   </style>
+
 </head>
 
-<body>
+<body class="theme-sunset">
+  <!-- change to theme-seafoam or theme-sunset to preview -->
+
   <!-- ======= Header ======= -->
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h1>Glow Code Studio</h1>
-
+        <span class="logo-ring">
+          <img class="logo-img" src="GC.png" alt="Glow Code Studio" decoding="async" />
+        </span>
+        <h1>✨ Glow Code Studio</h1>
       </div>
+
       <nav class="nav-links">
         <a href="#intro" class="active">Intro</a>
         <a href="#three-sides">Three Sides</a>
@@ -652,6 +1500,7 @@
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
+
       <button class="cta small menu-btn" id="menuBtn" aria-haspopup="true" aria-controls="menuSheet">Menu</button>
     </div>
   </header>
@@ -674,10 +1523,12 @@
     <section id="intro" class="section section--dark">
       <div class="container">
         <div class="badge">
-          ✨ Creator bio: Glow Code Studio is an independent developer creating wellness apps,
+          Creator Bio:
+          <br>
+          Glow Code Studio is an independent developer creating wellness apps,
           meaningful websites, and Unreal Engine games. Home of Three Sides and future digital projects
           designed to support real life, real emotions, and growth. Three Sides is in Google Play closed testing; iOS
-          coming soon. ✨
+          coming soon.
         </div>
       </div>
     </section>
@@ -685,8 +1536,8 @@
     <!-- 2) Glow Code / logo -> pet features — LIGHT -->
     <section id="three-sides" class="section section--light">
       <div class="container">
-        <h1>GLOW CODE STUDIO</h1>
-        <br>
+        <h1>THREE SIDES</h1>
+
         <!-- round logo -->
         <div class="hero-media">
           <div class="gc-wrap">
@@ -717,12 +1568,13 @@
       </div>
 
       <!-- status line -->
-      <div class="btn-row">
+      <div class="btnrow compact">
         <p class="post-cta-note">Now in closed testing on Google Play. iOS release is in progress.</p>
       </div>
 
       <!-- CTAs (fixed narrow width) -->
-      <div class="btnrow">
+      <!-- CTAs -->
+      <div class="btnrow compact shrink">
         <a class="cta" href="https://play.google.com/apps/testing/io.github.cpriss1979.twa" target="_blank"
           rel="noopener">
           <span>Join Google Play Closed Test</span>
@@ -734,11 +1586,94 @@
           <span class="tag">Get Notified</span>
         </a>
       </div>
+    </section>
 
+    <!-- Website PROJECTS -->
+    <!-- 3) Early Projects — DARK -->
+    <section id="early" class="section section--dark">
+      <div class="container">
+        <h2 class="title" style="font-size:28px;">Websites I've built</h2>
+        <p class="muted">A few highlights from my client &amp; personal work.</p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Viki Scherer (Professional Author &amp; Speaker)</h3>
+            <p>WordPress site with speaking pages, products, testimonies and a polished brand system.</p>
+            <ul class="list">
+              <li><span class="dot"></span><span>Clean navigation &amp; mobile-first design</span></li>
+              <li><span class="dot"></span><span>Speaking event call-to-actions</span></li>
+            </ul>
+            <p style="margin-top:10px;">
+              <a href="https://vikischerer.com/" target="_blank" rel="noopener">View site ↗</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Harvest Christian Center (Church Website)</h3>
+            <p>WordPress site focusing on beliefs, sermons &amp; online tithing with a welcoming layout and simple
+              editing
+              for staff.</p>
+            <ul class="list">
+              <li><span class="dot"></span><span>Fast, accessible, mobile-first</span></li>
+              <li><span class="dot"></span><span>Service times &amp; location front and center</span></li>
+            </ul>
+            <p class="note" style="margin-top:6px; color:#777488 !important;">
+              Original build (since redesigned by the church team).</p>
+          </div>
+
+          <!-- ============= personal website projects ============= -->
+          <div class="card">
+            <h3>Fit to Fab</h3>
+            <p>A lightweight, mobile-first wellness mini-app to explore smart food choices, track simple workouts, and
+              log
+              your progress — fast and private.</p>
+            <ul class="list">
+              <li><span class="dot"></span><span>Sections: Low-Calorie Foods, so-called "Negative-Calorie" Foods*,
+                  Exercises, Calorie Calculator, Personal Progress</span></li>
+              <li><span class="dot"></span><span>Calorie Calculator in pure JS — no sign-in, no backend</span></li>
+              <li><span class="dot"></span><span>Mobile-first layout with an accessible drop-down menu</span></li>
+              <li><span class="dot"></span><span>Personal Progress saved locally for privacy (no data leaves your
+                  device)</span></li>
+            </ul>
+            <p style="margin-top:10px;">
+              <a href="https://cpriss1979.github.io/fittofab.io/" target="_blank" rel="noopener"
+                aria-label="Open Fit to Fab website">View site ↗</a>
+            </p>
+
+            <p class="note" style="margin-top:6px; color:#777488 !important;">
+              *"Negative-calorie" foods are better described as low-energy-density foods. They don’t literally burn more
+              calories than they contain, but they can support fullness with fewer calories.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Countdown calculators</h3>
+            <p>I’ve built dozens of personalized countdown calculators — simple, joyful tools that help my family track
+              everything from big events to everyday moments they’re excited for.</p>
+
+          </div>
+        </div> <!-- /grid-2 -->
+      </div> <!-- /container -->
+    </section>
+
+    <!-- 4) Game Development (to “View archived site”) — LIGHT -->
+    <section id="games" class="section section--light">
+      <div class="container">
+        <h2 class="title" style="font-size:24px;">Game Development</h2>
+        <p class="muted">I’ve released 2 small games on itch.io — exploring focus, interaction, and play.</p>
+
+        <div class="card">
+          <h3>Indie Games - Unreal Engine</h3>
+          <p>Downloads available at Itch.io</p>
+          <p style="margin-top:10px;">
+            <a href="https://cpriss.itch.io/" target="_blank" rel="noopener">View Archived Site ↗</a>
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- 3) Early Projects (through “I’ve built several…”) — DARK -->
-    <section id="early" class="section section--dark">
+    <section id="three-sides" class="section section--dark">
       <div class="container">
         <h2 class="title" style="font-size:24px;">Early Projects</h2>
         <p class="muted" style="margin-top:6px; font-size:12px;">*Early project — originally designed for desktop
@@ -761,24 +1696,8 @@
       </div>
     </section>
 
-    <!-- 4) Game Development (to “View archived site”) — LIGHT -->
-    <section id="games" class="section section--light">
-      <div class="container">
-        <h2 class="title" style="font-size:24px;">Game Development</h2>
-        <p class="muted">I’ve released 2 small games on itch.io — exploring focus, interaction, and play.</p>
-
-        <div class="card" style="margin-top:14px;">
-          <h3>Indie Games</h3>
-          <p>Indie games in Unreal Engine</p>
-          <p style="margin-top:10px;">
-            <a href="https://cpriss.itch.io/" target="_blank" rel="noopener">View Archived Site ↗</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- 5) About Glow Code — DARK -->
-    <section id="about" class="section section--dark">
+    <section id="about" class="section section--light">
       <div class="container">
         <h2 class="title" style="font-size:28px;">About Glow Code Studio</h2>
         <p class="muted">
@@ -795,7 +1714,7 @@
     </section>
 
     <!-- 6) Get in touch — LIGHT -->
-    <section id="contact" class="section section--light">
+    <section id="contact" class="section section--dark">
       <div class="container">
         <h2 class="title" style="font-size:28px;">Get in touch</h2>
         <p class="muted">Have feedback, want to test, or just say hi? I’d love to hear from you.</p>
@@ -807,12 +1726,11 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
     <div class="container footer-grid">
-      <div class="kudos">© <span id="year"></span><br>Glow Code Studio</div>
+      <div class="kudos">© <span id="year"></span> GCS</div>
       <div class="foot-links">
         <a href="privacy.html" class="muted">Privacy</a>
         <a href="terms.html" class="muted">Terms</a>
