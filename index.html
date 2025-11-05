@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Glow Code Studio</title>
   <meta name="description"
     content="Glow Code Studio builds wellness apps, meaningful websites, and indie games. Home of Three Sides." />
@@ -1497,9 +1497,6 @@ background: linear-gradient(135deg,
   color:#0a0f1a;
 }
 
-
-
-
 /* HERO APP LOGO — a bit smaller, app-icon shape */
   #three-sides .gc-wrap{
     width: clamp(180px, 26vw, 300px);   /* was ~360–420px */
@@ -1531,8 +1528,6 @@ background: linear-gradient(135deg,
   width: clamp(180px, 26vw, 300px) !important;
   border-radius: 22px !important;
 }
-
-
 
 /* Three Sides app-icon block */
 #three-sides .gc-wrap{
@@ -1572,6 +1567,26 @@ background: linear-gradient(135deg,
 /* micro tracking so THEE S I D E S doesn’t feel airy */
 #three-sides h1 { letter-spacing: -0.01em; }
 
+/* --- iOS safe-area fix so the footer never gets clipped --- */
+:root{
+  /* fallbacks first param keep things OK on non-iPhone browsers */
+  --safe-bottom: max(16px, env(safe-area-inset-bottom, 0px));
+}
+
+/* Give the footer a little extra breathing room on devices with a home indicator */
+footer .container{
+  padding-bottom: calc(16px + var(--safe-bottom)) !important;
+}
+
+/* Your bottom sheet menu is fixed to the bottom—pad it too when open */
+.sheet{
+  padding-bottom: calc(18px + var(--safe-bottom));
+}
+
+/* Optional: make sure the very last content block can scroll fully clear */
+.section:last-of-type .container{
+  padding-bottom: calc(var(--pad-mobile, 28px) + var(--safe-bottom));
+}
 
 </style>
 
