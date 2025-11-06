@@ -200,6 +200,30 @@
                 justify-content: space-between
             }
         }
+
+        /* Stack footer content so Back to Home sits UNDER the help line */
+.footer-inner{
+  display: flex;
+  flex-direction: column;   /* stack */
+  align-items: flex-start;
+  gap: 8px;                 /* tight vertical spacing */
+}
+
+/* Tighten spacing between "Need help?" and email, allow wrapping nicely */
+.foot-right{
+  display: flex;
+  gap: 8px;                 /* was 14px — bring closer */
+  align-items: center;
+  flex-wrap: wrap;          /* wrap on small screens without huge gaps */
+}
+
+/* On mobile, make sure they don't spread apart */
+@media (max-width:700px){
+  .foot-right{
+    justify-content: flex-start !important; /* override any space-between */
+    gap: 6px;                                /* a touch tighter on small screens */
+  }
+}
     </style>
 </head>
 
@@ -342,13 +366,14 @@
     <!-- Footer -->
     <footer>
         <div class="footer-inner">
-            <a class="back-link" href="/" aria-label="Back to Home">← Back to Home</a>
             <div class="foot-right">
                 <span class="small muted">Need help? Contact us:</span>
                 <a href="mailto:glowcodestudio@gmail.com">glowcodestudio@gmail.com</a>
             </div>
+    
+            <a class="back-link" href="/" aria-label="Back to Home">← Back to Home</a>
         </div>
-    </footer>
+    </footer>      
 
     <script>
         // To auto-stamp today:
