@@ -4,17 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Glow Code Studio — Terms of Use</title>
-    <meta name="description" content="Terms of Use for glowcodestudio.com and small, client-side tools on this site." />
+    <title>Glow Code Studio — Privacy Policy</title>
     <meta name="theme-color" content="#8357ff" />
 
     <style>
         :root {
-            /* page + brand (identical to privacy.html) */
+            /* page + brand */
             --page-bg: #0f172a;
-            /* dark blue page background */
+            /* same blue as Terms page background */
             --header-bg: #0e0e17;
-            /* almost black — matches footer */
+            /* almost black – matches footer */
             --footer-bg: #0e0e17;
             --text: #e5e7eb;
             --muted: #9aa0b3;
@@ -65,13 +64,15 @@
             max-width: var(--maxw);
             margin: 0 auto;
             padding: 14px 22px;
+            /* even padding */
         }
 
         nav.top {
             display: flex;
             gap: 18px;
-            align-items: center;
             justify-content: flex-start;
+            /* left */
+            align-items: center;
         }
 
         nav.top a {
@@ -80,23 +81,27 @@
             text-decoration: none;
         }
 
-        /* ===== Content: sections with full-bleed divider lines ===== */
+        /* ===== Content: sections with full-bleed dividers ===== */
         .content {
-            flex: 1
+            flex: 1;
+            /* push footer down */
         }
 
         .panel {
             max-width: var(--maxw);
             margin: 0 auto;
-            padding: 0 22px
+            padding: 0 22px;
+            /* page gutters */
         }
 
         .section {
-            padding: 18px 0
+            padding: 18px 0;
+            /* vertical rhythm */
         }
 
+        /* full-bleed divider line ABOVE every section except the first */
         .section+.section {
-            position: relative
+            position: relative;
         }
 
         .section+.section::before {
@@ -105,23 +110,24 @@
             top: 0;
             left: 50%;
             width: 100vw;
+            /* stretch across the viewport */
             transform: translateX(-50%);
             height: 1px;
             background: rgba(255, 255, 255, .10);
         }
 
-        /* typography + blue dots */
+        /* Headings & little blue dots (kept from your style) */
         h1 {
-            margin: 0 0 10px;
+            margin: 0 0 10px 0;
             font-size: 28px;
             font-weight: 800;
-            letter-spacing: .2px
+            letter-spacing: .2px;
         }
 
         .section-title {
             margin: 0;
             font-size: 20px;
-            font-weight: 700
+            font-weight: 700;
         }
 
         p {
@@ -136,7 +142,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin: 8px 0 6px
+            margin: 8px 0 6px;
         }
 
         .dot {
@@ -144,15 +150,10 @@
             height: 10px;
             border-radius: 3px;
             background: #4da3ff;
-            display: inline-block
+            display: inline-block;
         }
 
-        .note {
-            font-size: 13px;
-            color: var(--muted)
-        }
-
-        /* ===== Footer (matches header) ===== */
+        /* ===== Footer (matches header color) ===== */
         footer {
             background: var(--footer-bg);
             border-top: 1px solid rgba(255, 255, 255, .06);
@@ -209,7 +210,7 @@
         <div class="header-inner">
             <nav class="top">
                 <a href="/">Home</a>
-                <a href="/privacy.html">Privacy</a>
+                <a href="/terms.html">Terms</a>
             </nav>
         </div>
     </div>
@@ -218,16 +219,17 @@
     <main class="content">
         <div class="panel">
             <section class="section">
-                <h1>Terms of Use</h1>
-                <p>These Terms apply to <strong>glowcodestudio.com</strong> and any small client-side tools hosted on
-                    this site (the “Site”). By using the Site, you agree to these Terms. If you don’t agree, please
-                    don’t use the Site.</p>
-                <p class="note">Plain English: simple house rules for browsing our site and using our tiny tools.</p>
+                <h1>Privacy Policy</h1>
+                <p>This policy covers <strong>glowcodestudio.com</strong> and any mini-tools hosted on this site (the
+                    “Site”).
+                    It does
+                    <strong>not</strong> apply to other websites or apps unless this page explicitly says so.
+                </p>
             </section>
 
             <section class="section">
                 <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">Owner</h2>
+                    <h2 class="section-title">Who we are</h2>
                 </div>
                 <p>Glow Code Studio (“we”, “us”).</p>
             </section>
@@ -244,97 +246,77 @@
                     <h2 class="section-title">Scope</h2>
                 </div>
                 <ul>
-                    <li><strong>This Site only.</strong> These Terms cover pages and mini-tools hosted under this
-                        domain.</li>
-                    <li><strong>Not included.</strong> Third-party sites we link to (e.g., GitHub, Google Play,
-                        itch.io). Check their policies.</li>
-                    <li><strong>Three Sides app.</strong> Has its <em>own</em> store policy and terms.</li>
-                </ul>
-            </section>
-
-            <section class="section">
-                <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">Accepting the Terms</h2>
-                </div>
-                <p>By accessing or using the Site, you confirm that you’re at least 13 years old and legally able to
-                    enter into these Terms, or you have a parent/guardian’s consent.</p>
-                <p class="note">Plain English: using the Site = agreement to these rules.</p>
-            </section>
-
-            <section class="section">
-                <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">What you can do</h2>
-                </div>
-                <ul>
-                    <li>View pages, read content, and use our simple client-side tools for personal, non-commercial use.
+                    <li><strong>Included:</strong> Pages and mini-tools hosted under <span
+                            class="code">glowcodestudio.com</span>.
                     </li>
-                    <li>Link to the Site in a fair and non-misleading way.</li>
-                    <li>Download any files we clearly publish for download (e.g., PDFs) and keep copyright notices
-                        intact.</li>
+                    <li><strong>Not included:</strong> Third-party sites we link to (e.g., GitHub, Google Play,
+                        itch.io). Check
+                        their policies.</li>
+                    <li><strong>Three Sides app:</strong> uses its <em>own</em> privacy policy. See:
+                        <a href="https://cpriss1979.github.io/3Sides.io/privacy.html" target="_blank"
+                            rel="noopener">Three Sides
+                            Privacy Policy ↗</a>
+                    </li>
                 </ul>
             </section>
 
             <section class="section">
                 <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">What you can’t do</h2>
+                    <h2 class="section-title">What we collect on this Site</h2>
                 </div>
                 <ul>
-                    <li>Copy significant portions of content, design, or code and re-publish as your own.</li>
-                    <li>Use the Site to break the law, harass others, or attempt to hack/disable services.</li>
-                    <li>Use automated scraping that degrades performance or bypasses reasonable protections.</li>
+                    <li><strong>No account required.</strong> Browsing the Site does not require registration.</li>
+                    <li><strong>No server-side personal data storage.</strong> We don’t run a backend that stores your
+                        entries.
+                    </li>
+                    <li><strong>Local-only data for mini-tools.</strong> Some pages may save settings or progress to
+                        your device
+                        (e.g., <span class="code">localStorage</span>).</li>
+                    <li><strong>No analytics or ad trackers by default.</strong> We don’t load Google Analytics or ads
+                        on this
+                        Site.</li>
+                    <li><strong>If you email us,</strong> we receive what you send and use it only to respond.</li>
                 </ul>
             </section>
 
             <section class="section">
                 <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">Content & Ownership</h2>
+                    <h2 class="section-title">Future changes</h2>
                 </div>
-                <p>Unless stated otherwise, the Site’s content (text, visuals, and code) is owned by Glow Code Studio
-                    and protected by applicable laws. You may not use our trademarks or logos without permission.</p>
+                <p>If we add optional features (e.g., sign-in or cloud sync) to the Site, we’ll update this page before
+                    launch
+                    and explain what’s collected, why, and your choices.</p>
             </section>
 
             <section class="section">
                 <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">Availability & Changes</h2>
-                </div>
-                <p>We may update, pause, or discontinue parts of the Site at any time. We may also update these Terms;
-                    when we do, we’ll change the “Last updated” date below.</p>
-            </section>
-
-            <section class="section">
-                <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">Third-Party Links</h2>
-                </div>
-                <p>The Site may link to third-party websites (e.g., GitHub, Google Play, itch.io). We don’t control
-                    those sites and aren’t responsible for their content or policies.</p>
-            </section>
-
-            <section class="section">
-                <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">Disclaimers</h2>
+                    <h2 class="section-title">Your choices</h2>
                 </div>
                 <ul>
-                    <li>The Site is provided “as is” without warranties of any kind.</li>
-                    <li>No medical or mental-health advice is provided on this Site. For personal care, talk to a
-                        qualified professional.</li>
+                    <li><strong>Delete local data:</strong> Clear site data/storage in your browser to remove local
+                        settings and
+                        entries.</li>
+                    <li><strong>Contact us:</strong> Ask questions or request deletion of anything you sent us directly
+                        (e.g.,
+                        email).</li>
                 </ul>
             </section>
 
             <section class="section">
                 <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">Limitation of Liability</h2>
+                    <h2 class="section-title">Children</h2>
                 </div>
-                <p>To the fullest extent permitted by law, Glow Code Studio won’t be liable for any indirect,
-                    incidental, special, or consequential damages arising from your use of the Site.</p>
-                <p class="note">Last updated: <span id="updated">2025-11-04</span></p>
+                <p>The Site is for general audiences and not directed to children under 13. If a child provided personal
+                    information via email, contact us and we’ll delete it.</p>
             </section>
 
             <section class="section">
                 <div class="row"><span class="dot" aria-hidden="true"></span>
-                    <h2 class="section-title">Contact</h2>
+                    <h2 class="section-title">Updates to this policy</h2>
                 </div>
-                <p>Questions about these Terms? Email <a
-                        href="mailto:glowcodestudio@gmail.com">glowcodestudio@gmail.com</a>.</p>
+                <p>We’ll change the “Last updated” date when this policy changes. For significant updates, we may post a
+                    notice
+                    on the Site.</p>
             </section>
         </div>
     </main>
@@ -351,8 +333,7 @@
     </footer>
 
     <script>
-        // To auto-stamp today:
-        // document.getElementById('updated').textContent = new Date().toISOString().slice(0,10);
+        /* no JS needed */
     </script>
 </body>
 

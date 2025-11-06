@@ -3,335 +3,326 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Glow Code Studio — Privacy Policy</title>
   <meta name="theme-color" content="#8357ff" />
 
   <style>
     :root {
-      --bg: #0f172a;
-      --panel: #111827;
-      --ink: #e5e7eb;
-      --muted: #94a3b8;
-      --line: rgba(148, 163, 184, .18);
-      --accent: #22d3ee;
-      --accent-ink: #0b1220;
-      --max: 980px;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(2, 6, 23, .35);
-      --ring: 0 0 0 6px rgba(34, 211, 238, .14);
-      --space: clamp(18px, 2vw, 24px);
+      /* page + brand */
+      --page-bg: #0f172a;
+      /* same blue as Terms page background */
+      --header-bg: #0e0e17;
+      /* almost black – matches footer */
+      --footer-bg: #0e0e17;
+      --text: #e5e7eb;
+      --muted: #9aa0b3;
+      --accent: #2dd4bf;
+
+      /* layout */
+      --maxw: 1080px;
+      --gap: 14px;
+      --safe-bottom: max(16px, env(safe-area-inset-bottom, 0px));
     }
 
-    /* base */
     * {
-      box-sizing: border-box;
+      box-sizing: border-box
     }
 
     html,
     body {
-      margin: 0;
-      padding: 0;
+      height: 100%;
+      margin: 0
     }
 
     body {
-      background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(34, 211, 238, .06), transparent 60%),
-        radial-gradient(1000px 600px at 110% 10%, rgba(168, 85, 247, .05), transparent 60%),
-        var(--bg);
-      color: var(--ink);
-      font: 16px/1.65 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: var(--page-bg);
+      color: var(--text);
+      font: 500 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
     a {
       color: var(--accent);
-      text-decoration: none;
+      text-decoration: none
     }
 
     a:hover {
-      text-decoration: underline;
+      text-decoration: underline
     }
 
-    /* top nav — identical to Terms */
-    nav {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      max-width: var(--max);
+    /* ===== Header (almost black, left-aligned links) ===== */
+    .header-band {
+      background: var(--header-bg)
+    }
+
+    .header-inner {
+      max-width: var(--maxw);
       margin: 0 auto;
-      padding: 8px var(--space) 4px;
+      padding: 14px 22px;
+      /* even padding */
     }
 
-    nav a {
-      color: var(--muted);
-      padding: 8px 10px;
-      border-radius: 10px;
+    nav.top {
+      display: flex;
+      gap: 18px;
+      justify-content: flex-start;
+      /* left */
+      align-items: center;
     }
 
-    nav a:hover {
-      background: rgba(148, 163, 184, .08);
-      color: var(--ink);
+    nav.top a {
+      color: var(--text);
+      font: 600 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
       text-decoration: none;
     }
 
-    /* cards (no vertical gaps between siblings) */
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: calc(var(--space) - 2px);
-      max-width: var(--max);
+    /* ===== Content: sections with full-bleed dividers ===== */
+    .content {
+      flex: 1;
+      /* push footer down */
+    }
+
+    .panel {
+      max-width: var(--maxw);
       margin: 0 auto;
+      padding: 0 22px;
+      /* page gutters */
     }
 
-    .card+.card {
-      margin-top: 0;
+    .section {
+      padding: 18px 0;
+      /* vertical rhythm */
     }
 
-    /* kill inter-card gaps */
+    /* full-bleed divider line ABOVE every section except the first */
+    .section+.section {
+      position: relative;
+    }
 
-    /* headings & lists consistent with Terms */
-    .section-title-row {
+    .section+.section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100vw;
+      /* stretch across the viewport */
+      transform: translateX(-50%);
+      height: 1px;
+      background: rgba(255, 255, 255, .10);
+    }
+
+    /* Headings & little blue dots (kept from your style) */
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 6px 0
+    }
+
+    ul {
+      margin: 8px 0 0
+    }
+
+    .row {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin: 6px 0 6px;
+      margin: 8px 0 6px;
     }
 
-    .section-title-row .dot {
+    .dot {
       width: 10px;
       height: 10px;
-      background: #4da3ff;
       border-radius: 3px;
+      background: #4da3ff;
       display: inline-block;
     }
 
-    h2.section-title {
-      margin: 0;
-      font-size: clamp(16px, 2.4vw, 20px);
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .card h1 {
-      font-size: clamp(22px, 3.4vw, 28px);
-      font-weight: 800;
-      letter-spacing: .2px;
-      margin: 4px 0 6px;
-    }
-
-    .card p {
-      margin: 6px 0;
-      line-height: 1.65;
-    }
-
-    .card ul {
-      margin: 8px 0 0;
-    }
-
-    /* footer card — exactly like Terms */
-    .footer-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      padding: 14px 20px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, .08);
-      background: rgba(255, 255, 255, .02);
-      max-width: var(--max);
-      margin: 24px auto 0;
-      /* top space only */
+    /* ===== Footer (matches header color) ===== */
+    footer {
+      background: var(--footer-bg);
+      border-top: 1px solid rgba(255, 255, 255, .06);
       color: var(--muted);
     }
 
-    .footer-card .contact {
-      display: flex;
+    .footer-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 14px 22px;
+      padding-bottom: calc(var(--gap) + var(--safe-bottom));
+      display: grid;
+      grid-template-columns: 1fr auto;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 18px;
     }
 
-    .footer-card .small.muted {
-      margin: 0;
+    .foot-right {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap
     }
 
-    .footer-card a#pp-contact {
-      text-decoration: none;
-    }
-
-    /* make sure there is ZERO push below the footer */
-    .footer-card+* {
-      display: none !important;
-    }
-
-    /* nothing can follow */
-    .card:last-child {
-      margin-bottom: 0 !important;
-      padding-bottom: 14px;
-    }
-
-    body {
-      padding-bottom: 0 !important;
-    }
-
-    /* optional: link style for the back link (matches your Terms look) */
     .back-link {
-      color: var(--ink);
-      text-decoration: none;
+      color: var(--accent);
+      font-weight: 700
     }
 
-    .back-link:hover {
-      text-decoration: underline;
+    .small {
+      font-size: 14px
     }
 
-    @media (max-width:640px) {
-      .footer-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+    .muted {
+      color: var(--muted)
+    }
+
+    @media (max-width:700px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 10px
+      }
+
+      .foot-right {
+        justify-content: space-between
       }
     }
-
-    :focus-visible {
-      outline: none;
-      box-shadow: var(--ring);
-      border-radius: 10px;
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-      * {
-        transition: none !important;
-        animation: none !important;
-      }
-    }
-
-    /* Back link in footer — match Terms (blue accent link) */
-.card.footer-card a.back-link,
-.card.footer-card a.back-link:visited{
-  color: var(--accent) !important;
-  text-decoration: none;
-  font-weight: 700;
-}
-.card.footer-card a.back-link:hover{
-  text-decoration: underline;
-}
-
   </style>
 </head>
 
 <body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/terms.html">Terms</a>
-  </nav>
-
-  <div class="card">
-    <h1>Privacy Policy</h1>
-    <p class="muted">
-      This policy covers <strong>glowcodestudio.com</strong> and any mini-tools hosted on this site (the “Site”).
-      It does <strong>not</strong> apply to other websites or apps unless this page explicitly says so.
-    </p>
-
-    <div class="section-title-row" style="margin-top:8px">
-      <span class="dot" aria-hidden="true"></span>
-      <h2 class="section-title">Who we are</h2>
-    </div>
-    <p>Glow Code Studio (“we”, “us”).</p>
-
-    <div class="section-title-row" style="margin-top:8px">
-      <span class="dot" aria-hidden="true"></span>
-      <h2 class="section-title">Contact</h2>
-    </div>
-    <p><a id="pp-contact" href="mailto:glowcodestudio@gmail.com">glowcodestudio@gmail.com</a></p>
-
-    <div class="section-title-row" style="margin-top:8px">
-      <span class="dot" aria-hidden="true"></span>
-      <h2 class="section-title">Scope</h2>
-    </div>
-    <ul>
-      <li><strong>Included:</strong> Pages and mini-tools hosted under <span class="code">glowcodestudio.com</span>.
-      </li>
-      <li><strong>Not included:</strong> Third-party sites we link to (e.g., GitHub, Google Play, itch.io). Check their
-        policies.</li>
-      <li><strong>Three Sides app:</strong> uses its <em>own</em> privacy policy. See:
-        <a id="threesides-pp" href="https://cpriss1979.github.io/3Sides.io/privacy.html" target="_blank"
-          rel="noopener">Three Sides Privacy Policy ↗</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <div class="section-title-row">
-      <span class="dot" aria-hidden="true"></span>
-      <h2 class="section-title">What we collect on this Site</h2>
-    </div>
-    <ul>
-      <li><strong>No account required.</strong> Browsing the Site does not require registration.</li>
-      <li><strong>No server-side personal data storage.</strong> We don’t run a backend that stores your entries.</li>
-      <li><strong>Local-only data for mini-tools.</strong> Some pages may save settings or progress to your device
-        (e.g., <span class="code">localStorage</span>).</li>
-      <li><strong>No analytics or ad trackers by default.</strong> We don’t load Google Analytics or ads on this Site.
-      </li>
-      <li><strong>If you email us,</strong> we receive what you send and use it only to respond.</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <div class="section-title-row">
-      <span class="dot" aria-hidden="true"></span>
-      <h2 class="section-title">Future changes</h2>
-    </div>
-    <p>If we add optional features (e.g., sign-in or cloud sync) to the Site, we’ll update this page before launch and
-      explain what’s collected, why, and your choices.</p>
-  </div>
-
-  <div class="card">
-    <div class="section-title-row">
-      <span class="dot" aria-hidden="true"></span>
-      <h2 class="section-title">Your choices</h2>
-    </div>
-    <ul>
-      <li><strong>Delete local data:</strong> Clear site data/storage in your browser to remove local settings and
-        entries.</li>
-      <li><strong>Contact us:</strong> Ask questions or request deletion of anything you sent us directly (e.g., email).
-      </li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <div class="section-title-row">
-      <span class="dot" aria-hidden="true"></span>
-      <h2 class="section-title">Children</h2>
-    </div>
-    <p>The Site is for general audiences and not directed to children under 13. If a child provided personal information
-      via email, contact us and we’ll delete it.</p>
-  </div>
-
-  <div class="card">
-    <div class="section-title-row">
-      <span class="dot" aria-hidden="true"></span>
-      <h2 class="section-title">Updates to this policy</h2>
-    </div>
-    <p>We’ll change the “Last updated” date when this policy changes. For significant updates, we may post a notice on
-      the Site.</p>
-  </div>
-
-  <!-- Footer (matches Terms) -->
-  <div class="card footer-card">
-    <a class="back-link" href="/" aria-label="Back to Home">← Back to Home</a>
-    <div class="contact">
-      <span class="small muted">Need help? Contact us:</span>
-      <a id="pp-contact" href="mailto:glowcodestudio@gmail.com">glowcodestudio@gmail.com</a>
+  <!-- Header (left-aligned, almost black) -->
+  <div class="header-band">
+    <div class="header-inner">
+      <nav class="top">
+        <a href="/">Home</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
     </div>
   </div>
+
+  <!-- Content -->
+  <main class="content">
+    <div class="panel">
+      <section class="section">
+        <h1>Privacy Policy</h1>
+        <p>This policy covers <strong>glowcodestudio.com</strong> and any mini-tools hosted on this site (the “Site”).
+          It does
+          <strong>not</strong> apply to other websites or apps unless this page explicitly says so.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="row"><span class="dot" aria-hidden="true"></span>
+          <h2 class="section-title">Who we are</h2>
+        </div>
+        <p>Glow Code Studio (“we”, “us”).</p>
+      </section>
+
+      <section class="section">
+        <div class="row"><span class="dot" aria-hidden="true"></span>
+          <h2 class="section-title">Contact</h2>
+        </div>
+        <p><a href="mailto:glowcodestudio@gmail.com">glowcodestudio@gmail.com</a></p>
+      </section>
+
+      <section class="section">
+        <div class="row"><span class="dot" aria-hidden="true"></span>
+          <h2 class="section-title">Scope</h2>
+        </div>
+        <ul>
+          <li><strong>Included:</strong> Pages and mini-tools hosted under <span class="code">glowcodestudio.com</span>.
+          </li>
+          <li><strong>Not included:</strong> Third-party sites we link to (e.g., GitHub, Google Play, itch.io). Check
+            their policies.</li>
+          <li><strong>Three Sides app:</strong> uses its <em>own</em> privacy policy. See:
+            <a href="https://cpriss1979.github.io/3Sides.io/privacy.html" target="_blank" rel="noopener">Three Sides
+              Privacy Policy ↗</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="row"><span class="dot" aria-hidden="true"></span>
+          <h2 class="section-title">What we collect on this Site</h2>
+        </div>
+        <ul>
+          <li><strong>No account required.</strong> Browsing the Site does not require registration.</li>
+          <li><strong>No server-side personal data storage.</strong> We don’t run a backend that stores your entries.
+          </li>
+          <li><strong>Local-only data for mini-tools.</strong> Some pages may save settings or progress to your device
+            (e.g., <span class="code">localStorage</span>).</li>
+          <li><strong>No analytics or ad trackers by default.</strong> We don’t load Google Analytics or ads on this
+            Site.</li>
+          <li><strong>If you email us,</strong> we receive what you send and use it only to respond.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="row"><span class="dot" aria-hidden="true"></span>
+          <h2 class="section-title">Future changes</h2>
+        </div>
+        <p>If we add optional features (e.g., sign-in or cloud sync) to the Site, we’ll update this page before launch
+          and explain what’s collected, why, and your choices.</p>
+      </section>
+
+      <section class="section">
+        <div class="row"><span class="dot" aria-hidden="true"></span>
+          <h2 class="section-title">Your choices</h2>
+        </div>
+        <ul>
+          <li><strong>Delete local data:</strong> Clear site data/storage in your browser to remove local settings and
+            entries.</li>
+          <li><strong>Contact us:</strong> Ask questions or request deletion of anything you sent us directly (e.g.,
+            email).</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="row"><span class="dot" aria-hidden="true"></span>
+          <h2 class="section-title">Children</h2>
+        </div>
+        <p>The Site is for general audiences and not directed to children under 13. If a child provided personal
+          information via email, contact us and we’ll delete it.</p>
+      </section>
+
+      <section class="section">
+        <div class="row"><span class="dot" aria-hidden="true"></span>
+          <h2 class="section-title">Updates to this policy</h2>
+        </div>
+        <p>We’ll change the “Last updated” date when this policy changes. For significant updates, we may post a notice
+          on the Site.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <a class="back-link" href="/" aria-label="Back to Home">← Back to Home</a>
+      <div class="foot-right">
+        <span class="small muted">Need help? Contact us:</span>
+        <a href="mailto:glowcodestudio@gmail.com">glowcodestudio@gmail.com</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    /* nothing needed */
+    /* no JS needed */
   </script>
 </body>
 
