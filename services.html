@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Services | Glow Code Studio</title>
+    <meta name="description"
+        content="Services and pricing for websites, web tools/apps, and IT support by Glow Code Studio." />
+    <meta name="theme-color" content="#8357ff" />
+
+    <style>
+        :root {
+            --bg: #0b0b12;
+            --text: #f3f5fa;
+            --muted: #9aa0b3;
+            --brand: #8357ff;
+            --brand2: #2dd4bf;
+            --shadow: 0 18px 46px rgba(0, 0, 0, .38);
+            --maxw: 1080px;
+            --radius: 18px;
+            --header-h: 74px;
+            --surface-dark: #0f0b17;
+            --surface-light: #33264F;
+            --ink-soft: #cdd3e3;
+            --line: rgba(255, 255, 255, .10);
+            --chip: rgba(0, 0, 0, .22);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            background:
+                radial-gradient(1200px 800px at 10% -10%, rgba(131, 87, 255, .18), transparent 60%),
+                radial-gradient(1000px 700px at 120% 0%, rgba(45, 212, 191, .12), transparent 55%),
+                var(--bg);
+            color: var(--text);
+            font: 500 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+        }
+
+        a {
+            color: var(--brand2);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: var(--maxw);
+            margin-inline: auto;
+            padding: 22px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: rgba(54, 14, 115, .55);
+            backdrop-filter: saturate(140%) blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        body {
+            padding-top: var(--header-h);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: nowrap;
+        }
+
+        .brandRow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .brand-logo {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .brandRow h1 {
+            margin: 0;
+            font-size: 18px;
+            letter-spacing: .3px;
+            white-space: nowrap;
+        }
+
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 999px;
+            padding: 12px 16px;
+            font-weight: 800;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: linear-gradient(135deg, rgba(140, 208, 255, .95), rgba(197, 226, 255, .95));
+            color: #0b0b12;
+            box-shadow: 0 10px 24px rgba(108, 168, 255, .30);
+            text-decoration: none;
+            transition: transform .15s ease, filter .15s ease;
+        }
+
+        .cta:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.03);
+            text-decoration: none;
+        }
+
+        .cta.secondary {
+            background: rgba(0, 0, 0, .22);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, .18);
+            box-shadow: none;
+        }
+
+        .section {
+            padding: 54px 0;
+        }
+
+        .section--dark {
+            background: var(--surface-dark);
+        }
+
+        .title {
+            font-size: clamp(28px, 3vw, 40px);
+            line-height: 1.1;
+            margin: 0 0 10px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .soft {
+            color: var(--ink-soft);
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 12px;
+            border: 1px solid rgba(255, 255, 255, .14);
+            background: var(--chip);
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .frame {
+            position: relative;
+            border-radius: 22px;
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(15, 11, 23, .35);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .frame::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 22px;
+            padding: 1px;
+            background: linear-gradient(135deg,
+                    rgba(140, 208, 255, .70),
+                    rgba(216, 165, 255, .70),
+                    rgba(131, 87, 255, .70));
+
+            /* Safari / Chrome */
+            -webkit-mask:
+                linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+
+            /* Standard */
+            mask:
+                linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+            mask-composite: exclude;
+
+            pointer-events: none;
+            opacity: .75;
+        }
+
+        .topRow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .tagRow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, .08);
+            margin: 18px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+            margin-top: 16px;
+            position: relative;
+        }
+
+        .tile {
+            grid-column: span 4;
+            border-radius: 18px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(63, 42, 114, .35);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, .28);
+            backdrop-filter: blur(10px);
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        @media (hover:hover) {
+            .tile:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 18px 38px rgba(0, 0, 0, .32);
+            }
+        }
+
+        .tile h3 {
+            margin: 0 0 6px;
+            font-size: 18px;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .tile p {
+            margin: 0 0 10px;
+            color: var(--ink-soft);
+            line-height: 1.4;
+        }
+
+        .tile ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--ink-soft);
+        }
+
+        .tile li {
+            margin: 6px 0;
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 10px 0 12px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(0, 0, 0, .18);
+            border: 1px solid rgba(255, 255, 255, .10);
+        }
+
+        .price b {
+            font-size: 18px;
+        }
+
+        .price span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .note {
+            margin: 12px 0 0;
+            padding: 12px 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(0, 0, 0, .14);
+            color: var(--ink-soft);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        details {
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(0, 0, 0, .16);
+            padding: 12px 14px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        details p {
+            margin: 10px 0 0;
+            color: var(--ink-soft);
+        }
+
+        @media (max-width: 980px) {
+            .tile {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tile {
+                grid-column: span 12;
+            }
+        }
+
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            color: var(--muted);
+        }
+
+        .footer-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+.note2{
+    color: var(--card-text) !important;  /* identical tone as regular body copy */
+  font-size: 12px;                     /* keep your smaller size */
+  line-height: 1.5;
+}
+    </style>
+</head>
+
+<body class="theme-sunset">
+    <header>
+        <div class="container nav">
+            <div class="brandRow">
+                <img class="brand-logo" src="GC.png" alt="Glow Code Studio">
+                <h1>Glow Code Studio</h1>
+            </div>
+
+            <div style="display:flex; gap:10px; align-items:center;">
+                <a class="cta secondary" href="./index.html#services">Back</a>
+                <a class="cta" href="./index.html#contact">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section section--dark">
+            <div class="container">
+                <div class="frame">
+
+                    <div class="topRow">
+                        <div>
+                            <h2 class="title">Services</h2>
+                            <p class="soft" style="max-width:78ch; margin:0;">
+                                I build websites and tools — and help people set up, fix, and understand their tech.
+                            </p>   
+                            <div class="tagRow" aria-label="Platforms supported">
+                                <span class="chip">Mac</span>
+                                <span class="chip">Windows 10/11</span>
+                                <span class="chip">iOS</span>
+                                <span class="chip">Android</span>
+                            </div>
+                        </div>
+
+                        <span class="chip">Clear scope • Clear quote • No mystery</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- ===== SERVICES (what you do) ===== -->
+                    <div class="grid" aria-label="Service categories">
+
+                        <article class="tile">
+                            <h3>
+                                Software & App Development
+                                <span class="chip">Build • Fix • Improve</span>
+                            </h3>
+                            <p>Custom builds and upgrades — from new features to “please save this mess” debugging.</p>
+                            <ul>
+                                <li>Customized web apps & tools</li>
+                                <li>Android apps (single-purpose or feature-based)</li>
+                                <li>Debugging, updates & stability fixes</li>
+                                <li>Feature enhancements & polish</li>
+                            </ul>
+                        </article>
+
+                        <article class="tile">
+                            <h3>
+                                Web Development
+                                <span class="chip">Design • Build</span>
+                            </h3>
+                            <p>Modern sites that look great, load fast, and are easy to maintain.</p>
+                            <ul>
+                                <li>Website design & build</li>
+                                <li>WordPress setup & cleanup</li>
+                                <li>Landing pages & small business sites</li>
+                                <li>Responsive, mobile-first layout</li>
+                            </ul>
+                        </article>
+
+                        <article class="tile">
+                            <h3>
+                                IT Support
+                                <span class="chip">Hardware • Software</span>
+                            </h3>
+                            <p>Setup and support for real life — devices, installs, troubleshooting, and “why won’t it
+                                work.”</p>
+                            <ul>
+                                <li>Hardware & software setup</li>
+                                <li>System troubleshooting</li>
+                                <li>OS updates & optimization</li>
+                                <li>Network setup & security checks</li>
+                            </ul>
+                        </article>
+
+                        <article class="tile">
+                            <h3>
+                                Extras
+                                <span class="chip">Teach • Maintain</span>
+                            </h3>
+                            <p>If you want to understand it (and keep it running), I can help with that too.</p>
+                            <ul>
+                                <li>Tech training / tutorials</li>
+                                <li>Documentation & walkthroughs</li>
+                                <li>Site maintenance plans</li>
+                                <li>Ongoing support & updates</li>
+                            </ul>
+                        </article>
+
+                        <article class="tile">
+                            <h3>
+                                Web Tools (Installable)
+                                <span class="chip">PWA</span>
+                            </h3>
+                            <p>Trackers, planners, utilities — built with intention, not templates.</p>
+                            <ul>
+                                <li>Installable on phone or desktop</li>
+                                <li>Clean UI + simple UX</li>
+                                <li>Optional Firebase login + data</li>
+                                <li>Performance + reliability focus</li>
+                            </ul>
+
+                        </article>
+
+                        <article class="tile">
+                            <h3>
+                                Maintenance & Updates
+                                <span class="chip">Fixes</span>
+                            </h3>
+                            <p>Perfect when you just want it handled and kept up-to-date.</p>
+                            <ul>
+                                <li>Bug fixes & layout repairs</li>
+                                <li>Content updates</li>
+                                <li>Style refresh / branding polish</li>
+                                <li>Small improvements over time</li>
+                            </ul>
+
+                        </article>            
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- ===== PRICING ===== -->
+                    <h3 style="margin:0;">Pricing (starting points)</h3>
+                    <p class="soft" style="max-width:78ch; margin:8px 0 0;">
+                        These are common ranges so you can ballpark things quickly.
+                    </p>
+
+                    <div class="grid" aria-label="Pricing packages" style="margin-top:14px;">
+
+                        <article class="tile">
+                            <h3>
+                                Websites
+                                <span class="chip">Project</span>
+                            </h3>
+                            <div class="price"><b>$300–$800</b><span>typical small sites</span></div>
+                            <ul>
+                                <li>Portfolio / personal site: <b>$300–$600</b></li>
+                                <li>Simple business website: <b>$400–$800</b></li>
+                                <li>Website updates / fixes: <b>$75/hr</b></li>
+                            </ul>
+                        </article>
+
+                        <article class="tile">
+                            <h3>
+                                Apps & Tools
+                                <span class="chip">Build</span>
+                            </h3>
+                            <div class="price"><b>From $1,500</b><span>small Android apps</span></div>
+                            <ul>
+                                <li>Small Android app (single purpose): <b>starting at $1,500</b></li>
+                                <li>Feature additions / bug fixes: <b>$75/hr</b></li>
+                                <li>Optional login + data storage (Firebase): scoped in quote</li>
+                            </ul>
+                        </article>
+
+                        <article class="tile">
+                            <h3>
+                                IT Support
+                                <span class="chip">Remote / On-site</span>
+                            </h3>
+                            <div class="price"><b>$60–$85/hr</b><span>support & troubleshooting</span></div>
+                            <ul>
+                                <li>On-site or remote support: <b>$60–$85/hr</b></li>
+                                <li>Setup / installs: <b>starting at $75</b></li>
+                                <li>Mac + Windows 10/11 support</li>
+                            </ul>
+                        </article>
+
+                    </div>
+
+                    <p class="note2" style="margin-top:6px; color:#777488 !important;">
+                        <b>Final pricing is based on project scope.</b> You’ll receive a clear quote before work begins.
+                    </p>
+
+                    <div class="row">
+                        <a class="cta" href="./contact.html">Ask about a project</a>
+                        <!-- Update this email before publishing -->
+                        <a class="cta secondary" href="mailto:glowcodestudio@gmail.com">Email me</a>
+                    </div>
+
+                    <div style="margin-top:18px; display:grid; gap:12px;">
+                        <h3 style="margin:0;">FAQs</h3>
+
+                        <details>
+                            <summary>What do you need from me to start?</summary>
+                            <p>
+                                Just a short description, any examples you like, your timeline, and what “success” looks
+                                like to you.
+                                If it’s IT support, tell me what devices you’re using and what’s going wrong.
+                            </p>
+                        </details>
+
+                        <details>
+                            <summary>Do you work with WordPress?</summary>
+                            <p>
+                                Yes — WordPress builds, redesigns, cleanups, and fixes. I can also build custom static
+                                sites if you want
+                                speed + simplicity.
+                            </p>
+                        </details>
+
+                        <details>
+                            <summary>Can you help after launch or after setup?</summary>
+                            <p>
+                                Absolutely. I can do ongoing updates, troubleshooting, and improvements so your site or
+                                system stays solid.
+                            </p>
+                        </details>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>© <span id="year"></span> GCS</div>
+            <div style="display:flex; gap:14px; flex-wrap:wrap;">
+                <a href="./privacy.html" class="muted">Privacy</a>
+                <a href="./terms.html" class="muted">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
