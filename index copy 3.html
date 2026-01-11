@@ -23,7 +23,7 @@
       --text: #f3f5fa;
       --muted: #9aa0b3;
       --brand: #8357ff;
-      --brand-2: #2dd4bf;
+      --brand-2: #141615;
       --ring: rgba(131, 87, 255, .35);
       --shadow: 0 10px 30px rgba(0, 0, 0, .30);
       --radius: 18px;
@@ -861,8 +861,8 @@
     .theme-sunset {
       --bg: #0E0A12;
       --surface-dark: #0E0A12;
-      --surface-light: #33264F;
-      --header: #2B0F2F;
+--surface-light: #33264F;
+--header: #2B0F2F;
     }
 
     /* make header actually use the header var */
@@ -885,8 +885,8 @@
     :root {
       --header: #2B0DF2;
       --surface-dark: #0D0A1A;
-      --surface-light: #33264F;
-      --card-solid: #241B4A;
+--surface-light: #33264F;
+--card-solid: #241B4A;
       --card-border: rgba(255, 255, 255, .08);
       --text: #F3F5FA;
       --muted: #9AA0B3;
@@ -1006,8 +1006,8 @@
     :root {
       --surface-dark: #0f0b17;
       /* deep eggplant (footer / dark bands) */
-      --surface-light: #33264F;
-      /* plum for light bands (what your hero sits on) */
+--surface-light: #33264F;
+/* plum for light bands (what your hero sits on) */
 
       /* Card palette tuned to those bands */
       --card-bg: rgba(38, 28, 64, .55);
@@ -1230,7 +1230,7 @@
 
     /* 1) Design tokens (one intentional purple across the site) */
     :root {
-      --card-bg: #3a2768;
+      --card-bg: #977ed0;
       /* base purple for ALL cards */
       --card-border: rgba(255, 255, 255, .10);
       --card-title: #f2eaff;
@@ -1290,750 +1290,735 @@
     }
 
     /* --- Websites I've built: responsive 2-col grid --- */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr;
-      /* 1 col on phones */
-      gap: 14px;
-      /* match your card rhythm */
-      margin-top: 14px;
-    }
+.grid-2{
+  display:grid;
+  grid-template-columns: 1fr;       /* 1 col on phones */
+  gap:14px;                          /* match your card rhythm */
+  margin-top:14px;
+}
 
-    /* 2 columns on tablets/desktop */
-    @media (min-width: 820px) {
-      .grid-2 {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
+/* 2 columns on tablets/desktop */
+@media (min-width: 820px){
+  .grid-2{ grid-template-columns: 1fr 1fr; }
+}
 
-    /* make lists inside project cards breathe the same as elsewhere */
-    .grid-2 .list {
-      display: grid;
-      gap: 10px;
-      margin: 10px 0 0;
-      padding: 0;
-      list-style: none;
-    }
+/* make lists inside project cards breathe the same as elsewhere */
+.grid-2 .list{ 
+  display:grid; 
+  gap:10px; 
+  margin:10px 0 0; 
+  padding:0; 
+  list-style:none;
+}
+.grid-2 .list li{ 
+  display:flex; 
+  gap:10px; 
+  align-items:flex-start; 
+  color:var(--muted);
+}
+.grid-2 .dot{ 
+  width:8px; height:8px; border-radius:50%; 
+  background:var(--brand-2); margin-top:8px;
+}
 
-    .grid-2 .list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      color: var(--muted);
-    }
+/* ==== COLOR INTENT OVERRIDES (place at end of <style>) ==== */
 
-    .grid-2 .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--brand-2);
-      margin-top: 8px;
-    }
+/* Project lists: make bullets/text PURE white */
+#early .grid-2 .list li,
+#early .grid-2 .list li span { color: var(--text) !important; }
 
-    /* ==== COLOR INTENT OVERRIDES (place at end of <style>) ==== */
+/* First description paragraph in each project card = off-white (muted) */
 
-    /* Project lists: make bullets/text PURE white */
-    #early .grid-2 .list li,
-    #early .grid-2 .list li span {
-      color: var(--text) !important;
-    }
+/* “Note” lines (Original build…, Negative-calorie note, etc.) = off-white + small */
+.card .note { 
+  color: var(--muted) !important; 
+  font-size: 12px !important; 
+  margin-top: 6px !important;
+}
 
-    /* First description paragraph in each project card = off-white (muted) */
+/* Early Projects section subtitle (the tiny *Early project…*) already uses .muted — keep it off-white */
+#three-sides.section.section--dark .muted { color: var(--muted) !important; }
 
-    /* “Note” lines (Original build…, Negative-calorie note, etc.) = off-white + small */
-    .card .note {
-      color: var(--muted) !important;
-      font-size: 12px !important;
-      margin-top: 6px !important;
-    }
+/* About section body copy should be WHITE, not muted */
+#about .muted, 
+#about p { color: var(--text) !important; }
 
-    /* Early Projects section subtitle (the tiny *Early project…*) already uses .muted — keep it off-white */
-    #three-sides.section.section--dark .muted {
-      color: var(--muted) !important;
-    }
+/* Make “View site ↗” look the same everywhere (link, not pill) */
+#early .card p a,
+#games .card p a {
+  color: var(--brand-2) !important;
+  font-weight: 600;
+  text-decoration: none;
+}
+#early .card p a:hover,
+#games .card p a:hover { text-decoration: underline; }
 
-    /* About section body copy should be WHITE, not muted */
-    #about .muted,
-    #about p {
-      color: var(--text) !important;
-    }
+/* If any “View site” kept the .cta classes, strip the button look inside cards */
+#early .card .cta.small.secondary,
+#games .card .cta.small.secondary {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  color: var(--brand-2) !important;
+}
 
-    /* Make “View site ↗” look the same everywhere (link, not pill) */
-    #early .card p a,
-    #games .card p a {
-      color: var(--brand-2) !important;
-      font-weight: 600;
-      text-decoration: none;
-    }
+/* soft-white tokens (optional but handy) */
+:root{
+  --ink-soft: #cdd3e3;  /* darker white */
+}
 
-    #early .card p a:hover,
-    #games .card p a:hover {
-      text-decoration: underline;
-    }
+/* notes/footnotes = darker white */
+.note{
+  color: var(--ink-soft) !important;
+  font-size: 12px;
+  line-height: 1.5;
+}
 
-    /* If any “View site” kept the .cta classes, strip the button look inside cards */
-    #early .card .cta.small.secondary,
-    #games .card .cta.small.secondary {
-      background: transparent !important;
-      border: 0 !important;
-      padding: 0 !important;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-      color: var(--brand-2) !important;
-    }
+/* ========== Darker-white text targets (drop-in patch) ========== */
 
-    /* soft-white tokens (optional but handy) */
-    :root {
-      --ink-soft: #cdd3e3;
-      /* darker white */
-    }
+/* token */
+:root { --ink-soft: #cdd3e3; }  /* “darker white” */
 
-    /* notes/footnotes = darker white */
-    .note {
-      color: var(--ink-soft) !important;
-      font-size: 12px;
-      line-height: 1.5;
-    }
+/* 1) All little note lines (both of yours already use .note) */
+.note{
+  color: var(--ink-soft) !important;
+  font-size: 12px;
+  line-height: 1.5;
+}
 
-    /* ========== Darker-white text targets (drop-in patch) ========== */
+/* 2) Games → Indie Games card: the description line */
+#games .card > p:first-of-type{
+  color: var(--ink-soft) !important;
+}
 
-    /* token */
-    :root {
-      --ink-soft: #cdd3e3;
-    }
+/* 3) Early Projects → Rick & Crystal card: the description line */
+#early .card h3 + p,
+#three-sides.section--dark .card h3 + p{
+  color: var(--ink-soft) !important;
+}
 
-    /* “darker white” */
+/* --- Force “darker white” on note lines inside cards --- */
+:root { --ink-soft: #cdd3e3; } /* darker white token */
 
-    /* 1) All little note lines (both of yours already use .note) */
-    .note {
-      color: var(--ink-soft) !important;
-      font-size: 12px;
-      line-height: 1.5;
-    }
+.card p.note,
+.card .note{
+  color: var(--ink-soft) !important;  /* beats .card p !important */
+  font-size: 12px !important;
+  line-height: 1.5;
+}
 
-    /* 2) Games → Indie Games card: the description line */
-    #games .card>p:first-of-type {
-      color: var(--ink-soft) !important;
-    }
+/* Make note lines match normal card body color (same as .card p) */
+.cards .card p.note,
+.section .card p.note,
+.card p.note{
+  color: var(--card-text) !important;  /* identical tone as regular body copy */
+  font-size: 12px;                     /* keep your smaller size */
+  line-height: 1.5;
+}
 
-    /* 3) Early Projects → Rick & Crystal card: the description line */
-    #early .card h3+p,
-    #three-sides.section--dark .card h3+p {
-      color: var(--ink-soft) !important;
-    }
-
-    /* --- Force “darker white” on note lines inside cards --- */
-    :root {
-      --ink-soft: #cdd3e3;
-    }
-
-    /* darker white token */
-
-    .card p.note,
-    .card .note {
-      color: var(--ink-soft) !important;
-      /* beats .card p !important */
-      font-size: 12px !important;
-      line-height: 1.5;
-    }
-
-    /* Make note lines match normal card body color (same as .card p) */
-    .cards .card p.note,
-    .section .card p.note,
-    .card p.note {
-      color: var(--card-text) !important;
-      /* identical tone as regular body copy */
-      font-size: 12px;
-      /* keep your smaller size */
-      line-height: 1.5;
-    }
-
-    /* ==== FINAL TEXT COLOR FIXES (place last) ==== */
-    /* Make both notes and the first description line in Games
+/* ==== FINAL TEXT COLOR FIXES (place last) ==== */
+/* Make both notes and the first description line in Games
    match normal card body copy (same as Countdown calculators). */
-    #early .card .note,
-    #early .card p.note,
-    #games .card>p:first-of-type {
-      color: var(--card-text) !important;
-    }
+#early .card .note,
+#early .card p.note,
+#games .card > p:first-of-type {
+  color: var(--card-text) !important;
+}
 
-    /* ============================== color for cards (darker text)======================= */
-    /* === FINAL: unify description text color in all cards === */
-    :root {
-      --card-text: #a59ccd;
-    }
+/* ============================== color for cards (darker text)======================= */
+/* === FINAL: unify description text color in all cards === */
+:root { --card-text: #a59ccd; } /* this is the lilac/grey you're seeing elsewhere */
 
-    /* this is the lilac/grey you're seeing elsewhere */
+.card p,
+.card > p:first-of-type,
+#early .card > p:first-of-type,
+#games .card > p:first-of-type {
+  color: var(--card-text) !important;
+}
 
-    .card p,
-    .card>p:first-of-type,
-    #early .card>p:first-of-type,
-    #games .card>p:first-of-type {
-      color: var(--card-text) !important;
-    }
+/* ====================== play =================== */
+/* === CTA buttons — final colors & states === */
+.cta{
+  /* Primary (Android) */
+  --c1:#6CA8FF;   /* sky blue */
+  --c2:#8CD0FF;   /* light aqua blue */
+background: linear-gradient(135deg,
+#6CA8FF 0%,
+#8CD0FF 60%,
+#C5E2FF 100%
+);  color:#0a0f1a;                    /* dark ink for contrast */
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06) inset,
+    0 8px 24px rgba(108,168,255,.35);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.cta:hover{ 
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08) inset,
+    0 10px 28px rgba(108,168,255,.45);
+  filter: saturate(1.05);
+}
+.cta:focus-visible{
+  outline: 2px solid rgba(140,208,255,.9);
+  outline-offset: 2px;
+}
 
-    /* ====================== play =================== */
-    /* === CTA buttons — final colors & states === */
-    .cta {
-      /* Primary (Android) */
-      --c1: #6CA8FF;
-      /* sky blue */
-      --c2: #8CD0FF;
-      /* light aqua blue */
-      background: linear-gradient(135deg,
-          #6CA8FF 0%,
-          #8CD0FF 60%,
-          #C5E2FF 100%);
-      color: #0a0f1a;
-      /* dark ink for contrast */
-      border: 1px solid rgba(255, 255, 255, .10);
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, .06) inset,
-        0 8px 24px rgba(108, 168, 255, .35);
-      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-    }
+/* Tag pill inside CTAs */
+.cta .tag{
+  background: rgba(255,255,255,.88);
+  color:#0a0f1a;
+  border-radius: 999px;
+}
 
-    .cta:hover {
-      transform: translateY(-1px);
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, .08) inset,
-        0 10px 28px rgba(108, 168, 255, .45);
-      filter: saturate(1.05);
-    }
+/* Secondary (iOS Coming Soon) */
+.cta.secondary{
+  --c1:#D8A5FF;   /* lavender */
+  --c2:#F4CFFF;   /* soft pink-lavender */
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color:#0a0f1a;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05) inset,
+    0 8px 22px rgba(216,165,255,.28);
+}
+.cta.secondary:hover{
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08) inset,
+    0 10px 28px rgba(216,165,255,.38);
+  filter: saturate(1.05);
+}
+.cta.secondary .tag{
+  background: rgba(255,255,255,.88);
+  color:#0a0f1a;
+}
 
-    .cta:focus-visible {
-      outline: 2px solid rgba(140, 208, 255, .9);
-      outline-offset: 2px;
-    }
+/* HERO APP LOGO — a bit smaller, app-icon shape */
+  #three-sides .gc-wrap{
+    width: clamp(180px, 26vw, 300px);   /* was ~360–420px */
+    aspect-ratio: 1;
+    border-radius: 22px;                /* rounded-square */
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(255,255,255,.05) inset;
+    margin: 8px auto 12px;
+  }
+  #three-sides #gcHero{ border-radius: inherit; display:block; width:100%; height:100%; object-fit:cover; }
 
-    /* Tag pill inside CTAs */
-    .cta .tag {
-      background: rgba(255, 255, 255, .88);
-      color: #0a0f1a;
-      border-radius: 999px;
-    }
+  /* Title + spacing tighten */
+  #three-sides h1{ margin: 0 0 8px !important; }
 
-    /* Secondary (iOS Coming Soon) */
-    .cta.secondary {
-      --c1: #D8A5FF;
-      /* lavender */
-      --c2: #F4CFFF;
-      /* soft pink-lavender */
-      background: linear-gradient(135deg, var(--c1), var(--c2));
-      color: #0a0f1a;
-      border: 1px solid rgba(255, 255, 255, .14);
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, .05) inset,
-        0 8px 22px rgba(216, 165, 255, .28);
-    }
+  /* Smaller on tiny phones */
+  @media (max-width: 430px){
+    #three-sides .gc-wrap{ width: 64vw; } /* keeps it cozy on iPhone */
+  }
 
-    .cta.secondary:hover {
-      transform: translateY(-1px);
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, .08) inset,
-        0 10px 28px rgba(216, 165, 255, .38);
-      filter: saturate(1.05);
-    }
+  /* HEADER LOGO — keep small and crisp */
+  .brand .brand-logo{
+    width: clamp(28px, 2.6vw, 34px);
+    height: clamp(28px, 2.6vw, 34px);
+    border-radius: 50%;
+    display:inline-block;
+  }
 
-    .cta.secondary .tag {
-      background: rgba(255, 255, 255, .88);
-      color: #0a0f1a;
-    }
+#three-sides .gc-wrap{
+  width: clamp(180px, 26vw, 300px) !important;
+  border-radius: 22px !important;
+}
 
-    /* HERO APP LOGO — a bit smaller, app-icon shape */
-    #three-sides .gc-wrap {
-      width: clamp(180px, 26vw, 300px);
-      /* was ~360–420px */
-      aspect-ratio: 1;
-      border-radius: 22px;
-      /* rounded-square */
-      overflow: hidden;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, .38), 0 0 0 1px rgba(255, 255, 255, .05) inset;
-      margin: 8px auto 12px;
-    }
+/* Three Sides app-icon block */
+#three-sides .gc-wrap{
+  width: clamp(180px, 24vw, 280px);   /* was 26vw/300px – a touch smaller */
+  aspect-ratio: 1;
+  border-radius: 24px;                /* was 22px – matches your card feel */
+  overflow: hidden;
 
-    #three-sides #gcHero {
-      border-radius: inherit;
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  /* softer, longer shadow + faint inner line for crisp edge */
+  box-shadow:
+    0 18px 34px rgba(0,0,0,.32),
+    0 2px 0 rgba(0,0,0,.18) inset,
+    0 0 0 1px rgba(255,255,255,.06) inset;
 
-    /* Title + spacing tighten */
-    #three-sides h1 {
-      margin: 0 0 8px !important;
-    }
+  margin: 10px auto 14px;
+  background:
+    radial-gradient(120% 120% at 50% 10%, rgba(255,255,255,.06), transparent 60%),
+    linear-gradient(145deg, #4a2fb4, #2a1b48); /* same family as your cards */
+}
 
-    /* Smaller on tiny phones */
-    @media (max-width: 430px) {
-      #three-sides .gc-wrap {
-        width: 64vw;
-      }
+#three-sides #gcHero{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:inherit;
+}
 
-      /* keeps it cozy on iPhone */
-    }
+/* tighten title and icon spacing */
+#three-sides h1{ margin: 0 0 8px !important; }
 
-    /* HEADER LOGO — keep small and crisp */
-    .brand .brand-logo {
-      width: clamp(28px, 2.6vw, 34px);
-      height: clamp(28px, 2.6vw, 34px);
-      border-radius: 50%;
-      display: inline-block;
-    }
+/* tiny phones: keep it cozy */
+@media (max-width: 430px){
+  #three-sides .gc-wrap{ width: 62vw; }
+}
 
-    #three-sides .gc-wrap {
-      width: clamp(180px, 26vw, 300px) !important;
-      border-radius: 22px !important;
-    }
+/* micro tracking so THEE S I D E S doesn’t feel airy */
+#three-sides h1 { letter-spacing: -0.01em; }
 
-    /* Three Sides app-icon block */
-    #three-sides .gc-wrap {
-      width: clamp(180px, 24vw, 280px);
-      /* was 26vw/300px – a touch smaller */
-      aspect-ratio: 1;
-      border-radius: 24px;
-      /* was 22px – matches your card feel */
-      overflow: hidden;
+/* --- iOS safe-area fix so the footer never gets clipped --- */
+:root{
+  /* fallbacks first param keep things OK on non-iPhone browsers */
+  --safe-bottom: max(16px, env(safe-area-inset-bottom, 0px));
+}
 
-      /* softer, longer shadow + faint inner line for crisp edge */
-      box-shadow:
-        0 18px 34px rgba(0, 0, 0, .32),
-        0 2px 0 rgba(0, 0, 0, .18) inset,
-        0 0 0 1px rgba(255, 255, 255, .06) inset;
+/* Give the footer a little extra breathing room on devices with a home indicator */
+footer .container{
+  padding-bottom: calc(16px + var(--safe-bottom)) !important;
+}
 
-      margin: 10px auto 14px;
-      background:
-        radial-gradient(120% 120% at 50% 10%, rgba(255, 255, 255, .06), transparent 60%),
-        linear-gradient(145deg, #4a2fb4, #2a1b48);
-      /* same family as your cards */
-    }
+/* Your bottom sheet menu is fixed to the bottom—pad it too when open */
+.sheet{
+  padding-bottom: calc(18px + var(--safe-bottom));
+}
 
-    #three-sides #gcHero {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: inherit;
-    }
+/* Optional: make sure the very last content block can scroll fully clear */
+.section:last-of-type .container{
+  padding-bottom: calc(var(--pad-mobile, 28px) + var(--safe-bottom));
+}
 
-    /* tighten title and icon spacing */
-    #three-sides h1 {
-      margin: 0 0 8px !important;
-    }
-
-    /* tiny phones: keep it cozy */
-    @media (max-width: 430px) {
-      #three-sides .gc-wrap {
-        width: 62vw;
-      }
-    }
-
-    /* micro tracking so THEE S I D E S doesn’t feel airy */
-    #three-sides h1 {
-      letter-spacing: -0.01em;
-    }
-
-    /* --- iOS safe-area fix so the footer never gets clipped --- */
-    :root {
-      /* fallbacks first param keep things OK on non-iPhone browsers */
-      --safe-bottom: max(16px, env(safe-area-inset-bottom, 0px));
-    }
-
-    /* Give the footer a little extra breathing room on devices with a home indicator */
-    footer .container {
-      padding-bottom: calc(16px + var(--safe-bottom)) !important;
-    }
-
-    /* Your bottom sheet menu is fixed to the bottom—pad it too when open */
-    .sheet {
-      padding-bottom: calc(18px + var(--safe-bottom));
-    }
-
-    /* Optional: make sure the very last content block can scroll fully clear */
-    .section:last-of-type .container {
-      padding-bottom: calc(var(--pad-mobile, 28px) + var(--safe-bottom));
-    }
-
-    /* =========================
+/* =========================
    FIXED HEADER (ALWAYS STAYS ON TOP)
    Paste at VERY END of <style>
    ========================= */
 
-    /* adjust this if your header height changes */
-    :root {
-      --header-h: 74px;
-    }
+/* adjust this if your header height changes */
+:root{
+  --header-h: 74px;
+}
 
-    /* lock the header to the top */
-    header {
-      position: fixed !important;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999 !important;
-    }
+/* lock the header to the top */
+header{
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999 !important;
+}
 
-    /* push the page down so content doesn't hide under the fixed header */
-    body {
-      padding-top: var(--header-h);
-    }
+/* push the page down so content doesn't hide under the fixed header */
+body{
+  padding-top: var(--header-h);
+}
 
-    /* make anchor jumps land correctly under the fixed header */
-    [id] {
-      scroll-margin-top: calc(var(--header-h) + 14px);
-    }
+/* make anchor jumps land correctly under the fixed header */
+[id]{
+  scroll-margin-top: calc(var(--header-h) + 14px);
+}
 
-    /* OPTIONAL: on iPhones with a notch, keep header comfy */
-    @supports (padding: env(safe-area-inset-top)) {
-      header {
-        padding-top: env(safe-area-inset-top);
-      }
+/* OPTIONAL: on iPhones with a notch, keep header comfy */
+@supports (padding: env(safe-area-inset-top)){
+  header{
+    padding-top: env(safe-area-inset-top);
+  }
+  body{
+    padding-top: calc(var(--header-h) + env(safe-area-inset-top));
+  }
+  [id]{
+    scroll-margin-top: calc(var(--header-h) + env(safe-area-inset-top) + 14px);
+  }
+}
 
-      body {
-        padding-top: calc(var(--header-h) + env(safe-area-inset-top));
-      }
+/* ============ SERVICES (home preview) ============ */
+.services-preview {
+  padding: 72px 0;
+}
 
-      [id] {
-        scroll-margin-top: calc(var(--header-h) + env(safe-area-inset-top) + 14px);
-      }
-    }
+.services-preview .section-title {
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  margin: 0 0 10px;
+}
 
-    /* ============ SERVICES (home preview) ============ */
-    .services-preview {
-      padding: 72px 0;
-    }
+.services-preview .section-subtitle {
+  opacity: 0.85;
+  margin: 0 0 28px;
+  max-width: 62ch;
+}
 
-    .services-preview .section-title {
-      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
-      margin: 0 0 10px;
-    }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
 
-    .services-preview .section-subtitle {
-      opacity: 0.85;
-      margin: 0 0 28px;
-      max-width: 62ch;
-    }
+.service-card {
+  grid-column: span 4;
+  background: rgba(120, 95, 210, 0.18);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+}
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-    }
+.service-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
 
-    .service-card {
-      grid-column: span 4;
-      background: rgba(120, 95, 210, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(10px);
-    }
+.service-card p {
+  margin: 0 0 12px;
+  opacity: 0.88;
+  line-height: 1.4;
+}
 
-    .service-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
-    }
+.service-card ul {
+  margin: 0;
+  padding-left: 18px;
+  opacity: 0.9;
+}
 
-    .service-card p {
-      margin: 0 0 12px;
-      opacity: 0.88;
-      line-height: 1.4;
-    }
+.service-card li {
+  margin: 6px 0;
+}
 
-    .service-card ul {
-      margin: 0;
-      padding-left: 18px;
-      opacity: 0.9;
-    }
+.services-cta-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
 
-    .service-card li {
-      margin: 6px 0;
-    }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.22);
+  color: #fff;
+  text-decoration: none;
+}
 
-    .services-cta-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-top: 22px;
-      flex-wrap: wrap;
-    }
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.28);
+}
 
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 12px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(0, 0, 0, 0.22);
-      color: #fff;
-      text-decoration: none;
-    }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 12px 18px;
+  border: 0;
+  background: rgba(160, 210, 255, 0.9);
+  color: #0b0b12;
+  font-weight: 700;
+  text-decoration: none;
+}
 
-    .btn-secondary:hover {
-      transform: translateY(-1px);
-      border-color: rgba(255, 255, 255, 0.28);
-    }
+.btn-primary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 12px 18px;
-      border: 0;
-      background: rgba(160, 210, 255, 0.9);
-      color: #0b0b12;
-      font-weight: 700;
-      text-decoration: none;
-    }
+@media (max-width: 980px) {
+  .service-card { grid-column: span 6; }
+}
+@media (max-width: 640px) {
+  .service-card { grid-column: span 12; }
+}
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.03);
-    }
-
-    @media (max-width: 980px) {
-      .service-card {
-        grid-column: span 6;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .service-card {
-        grid-column: span 12;
-      }
-    }
-
-    /* ===================== make services styling special =============== */
-    /* =========================
+/* ===================== make services styling special =============== */
+/* =========================
    SERVICES — SPECIAL LOOK
    ========================= */
 
-    /* Section base */
-    #services.services-preview {
-      position: relative;
-      padding: 64px 0;
-      overflow: hidden;
-    }
+/* Section base */
+#services.services-preview{
+  position: relative;
+  padding: 64px 0;
+  overflow: hidden;
+}
 
-    /* subtle “special” background glow */
-    #services.services-preview::before {
-      content: "";
-      position: absolute;
-      inset: -120px -80px;
-      background:
-        radial-gradient(700px 420px at 10% 20%, rgba(140, 208, 255, .18), transparent 60%),
-        radial-gradient(600px 380px at 90% 25%, rgba(216, 165, 255, .18), transparent 60%),
-        radial-gradient(900px 500px at 50% 110%, rgba(131, 87, 255, .16), transparent 55%);
-      pointer-events: none;
-      filter: blur(2px);
-    }
+/* subtle “special” background glow */
+#services.services-preview::before{
+  content:"";
+  position:absolute;
+  inset:-120px -80px;
+  background:
+    radial-gradient(700px 420px at 10% 20%, rgba(140,208,255,.18), transparent 60%),
+    radial-gradient(600px 380px at 90% 25%, rgba(216,165,255,.18), transparent 60%),
+    radial-gradient(900px 500px at 50% 110%, rgba(131,87,255,.16), transparent 55%);
+  pointer-events:none;
+  filter: blur(2px);
+}
 
-    /* Featured frame that makes it “different” from other sections */
-    #services .services-frame {
-      position: relative;
-      border-radius: 22px;
-      padding: 22px;
-      border: 1px solid rgba(255, 255, 255, .10);
-      background: rgba(15, 11, 23, .35);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 18px 46px rgba(0, 0, 0, .38);
-    }
+/* Featured frame that makes it “different” from other sections */
+#services .services-frame{
+  position: relative;
+  border-radius: 22px;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(15, 11, 23, .35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 18px 46px rgba(0,0,0,.38);
+}
 
-    /* Gradient border glow (special) */
-    #services .services-frame::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      border-radius: 22px;
-      padding: 1px;
-      background: linear-gradient(135deg,
-          rgba(140, 208, 255, .70),
-          rgba(216, 165, 255, .70),
-          rgba(131, 87, 255, .70));
+/* Gradient border glow (special) */
+#services .services-frame::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: 22px;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(140,208,255,.70),
+    rgba(216,165,255,.70),
+    rgba(131,87,255,.70)
+  );
 
-      /* WebKit (Safari/Chrome) */
-      -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
+  /* WebKit (Safari/Chrome) */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
 
-      /* Standard (Firefox + “proper” compatibility) */
-      mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-      mask-composite: exclude;
+  /* Standard (Firefox + “proper” compatibility) */
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
 
-      pointer-events: none;
-      opacity: .75;
-    }
+  pointer-events:none;
+  opacity:.75;
+}
 
-    #services .section-title {
-      font-size: clamp(24px, 3vw, 32px);
-      margin: 0 0 8px;
-    }
+#services .section-title{
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 0 0 8px;
+}
 
-    #services .section-subtitle {
-      margin: 0 0 18px;
-      max-width: 68ch;
-      color: var(--muted);
-    }
+#services .section-subtitle{
+  margin: 0 0 18px;
+  max-width: 68ch;
+  color: var(--muted);
+}
 
-    /* Grid of service tiles (NOT using .card) */
-    #services .services-grid {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-      margin-top: 14px;
-    }
+/* Grid of service tiles (NOT using .card) */
+#services .services-grid{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+  margin-top: 14px;
+}
 
-    #services .service-tile {
-      grid-column: span 4;
-      border-radius: 18px;
-      padding: 16px;
-      border: 1px solid rgba(255, 255, 255, .12);
-      background: rgba(63, 42, 114, .35);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, .28);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: transform .18s ease, box-shadow .18s ease;
-    }
+#services .service-tile{
+  grid-column: span 4;
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(63, 42, 114, .35);
+  box-shadow: 0 14px 30px rgba(0,0,0,.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
 
-    @media (hover:hover) {
-      #services .service-tile:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 18px 38px rgba(0, 0, 0, .32);
-      }
-    }
+@media (hover:hover){
+  #services .service-tile:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 38px rgba(0,0,0,.32);
+  }
+}
 
-    #services .tile-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
+#services .tile-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
 
-    #services .tile-top h3 {
-      margin: 0;
-      font-size: 18px;
-      color: var(--text);
-    }
+#services .tile-top h3{
+  margin:0;
+  font-size: 18px;
+  color: var(--text);
+}
 
-    #services .chip {
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, .14);
-      background: rgba(0, 0, 0, .20);
-      color: var(--ink-soft, #cdd3e3);
-      white-space: nowrap;
-    }
+#services .chip{
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.20);
+  color: var(--ink-soft, #cdd3e3);
+  white-space: nowrap;
+}
 
-    #services .service-tile p {
-      margin: 0 0 10px;
-      color: var(--ink-soft, #cdd3e3);
-      line-height: 1.4;
-    }
+#services .service-tile p{
+  margin: 0 0 10px;
+  color: var(--ink-soft, #cdd3e3);
+  line-height: 1.4;
+}
 
-    #services .service-tile ul {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--ink-soft, #cdd3e3);
-    }
+#services .service-tile ul{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink-soft, #cdd3e3);
+}
+#services .service-tile li{ margin: 6px 0; }
 
-    #services .service-tile li {
-      margin: 6px 0;
-    }
+/* “How it works” strip */
+#services .how-row{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
 
-    /* “How it works” strip */
-    #services .how-row {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-      margin-top: 14px;
-    }
+#services .how{
+  grid-column: span 4;
+  border-radius: 16px;
+  padding: 12px 14px;
+  border: 1px dashed rgba(255,255,255,.18);
+  background: rgba(0,0,0,.16);
+  color: var(--ink-soft, #cdd3e3);
+}
 
-    #services .how {
-      grid-column: span 4;
-      border-radius: 16px;
-      padding: 12px 14px;
-      border: 1px dashed rgba(255, 255, 255, .18);
-      background: rgba(0, 0, 0, .16);
-      color: var(--ink-soft, #cdd3e3);
-    }
+#services .how b{ color: var(--text); }
 
-    #services .how b {
-      color: var(--text);
-    }
+/* CTAs inside services */
+#services .services-cta-row{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
 
-    /* CTAs inside services */
-    #services .services-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
+/* reuse your CTA look but allow a darker “secondary” */
+#services .btn-primary,
+#services .btn-secondary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  border-radius: 999px;
+  padding: 12px 16px;
+  text-decoration:none;
+  font-weight: 700;
+  transition: transform .15s ease, filter .15s ease;
+}
 
-    /* reuse your CTA look but allow a darker “secondary” */
-    #services .btn-primary,
-    #services .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border-radius: 999px;
-      padding: 12px 16px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform .15s ease, filter .15s ease;
-    }
+#services .btn-primary{
+  background: linear-gradient(135deg, rgba(140,208,255,.95), rgba(197,226,255,.95));
+  color: #0b0b12;
+}
 
-    #services .btn-primary {
-      background: linear-gradient(135deg, rgba(140, 208, 255, .95), rgba(197, 226, 255, .95));
-      color: #0b0b12;
-    }
+#services .btn-secondary{
+  background: rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.18);
+  color: var(--text);
+}
 
-    #services .btn-secondary {
-      background: rgba(0, 0, 0, .22);
-      border: 1px solid rgba(255, 255, 255, .18);
-      color: var(--text);
-    }
+#services .btn-primary:hover,
+#services .btn-secondary:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
 
-    #services .btn-primary:hover,
-    #services .btn-secondary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.03);
-    }
+/* Responsive */
+@media (max-width: 980px){
+  #services .service-tile{ grid-column: span 6; }
+  #services .how{ grid-column: span 6; }
+}
+@media (max-width: 640px){
+  #services .service-tile{ grid-column: span 12; }
+  #services .how{ grid-column: span 12; }
+}
 
-    /* Responsive */
-    @media (max-width: 980px) {
-      #services .service-tile {
-        grid-column: span 6;
-      }
+/* ===================== logo to home =============== */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+  text-decoration:none;
+  color: var(--text);
+}
 
-      #services .how {
-        grid-column: span 6;
-      }
-    }
+.brand:hover{
+  text-decoration:none;
+  filter: brightness(1.05);
+}
 
-    @media (max-width: 640px) {
-      #services .service-tile {
-        grid-column: span 12;
-      }
+.brand:focus-visible{
+  outline: 3px solid rgba(140, 208, 255, .55);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
 
-      #services .how {
-        grid-column: span 12;
-      }
-    }
-  </style>
+/* ==================== make navbar match the logo ================= */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(135, 143, 231, 0.817),
+      rgba(255, 255, 255, 0.861)
+    );
+
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.brand h1,
+.brand-name {
+  color: #1b1f3b; /* deep blue-charcoal */
+  font-weight: 900;
+  letter-spacing: .3px;
+}
+
+.cta {
+  background: linear-gradient(
+    135deg,
+    #9FC3F5,
+    #C6DBFA
+  );
+
+  color: #0b1020;
+  font-weight: 900;
+  border-radius: 999px;
+  padding: 12px 16px;
+  border: none;
+
+  box-shadow:
+    0 8px 22px rgba(143,180,232,.45);
+
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+</style>
 
 </head>
 
@@ -2043,11 +2028,11 @@
   <!-- ======= Header ======= -->
   <header>
     <div class="container nav">
-      <div class="brand">
-        <img class="brand-logo" src="GC.png" alt="Glow Code Studio" decoding="async">
-        <h1>Glow Code Studio</h1>
-      </div>
-
+      <a class="brand" href="./index.html" aria-label="Go to homepage">
+  <img class="brand-logo" src="GC.png" alt="Glow Code Studio" decoding="async">
+  <h1>Glow Code Studio</h1>
+</a>
+      
       <nav class="nav-links">
         <a href="#about" class="active">About</a>
         <a href="#three-sides">ThreeSides</a>
@@ -2079,11 +2064,10 @@
   <main>
     <!-- 1) Top creator bio — DARK -->
     <section id="intro" class="section section--dark">
-
-      <div class="container">
-        <div class="badge">
-          Creator Bio:
-          <br>
+    <div class="container">
+      <div class="badge">
+        Creator Bio:
+<br>
           Glow Code Studio is an independent developer creating wellness apps,
           meaningful websites, and Unreal Engine games. Home of Three Sides and future digital projects
           designed to support real life, real emotions, and growth. Three Sides now in the Google Play Store.
@@ -2091,30 +2075,30 @@
       </div>
     </section>
 
-    <!-- 5) About Glow Code — DARK -->
-    <section id="about" class="section section--light">
-      <div class="container">
-        <h2 class="title" style="font-size:28px;">About Glow Code Studio</h2>
-        <p class="muted">
-          ⭐️ I build wellness apps like <strong>Three Sides</strong> — based on the highs, lows &amp; balance of bipolar
-          life. It’s now in the Google Play Store.
-          <br><br>
-          ⭐️ I’ve built several websites (including one for a church and one for a professional author/speaker).
-          <br><br>
-          ⭐️ I’ve also built personal projects and released 2 indie games in Unreal Engine on itch.io.
-          <br><br>
-          ⭐️ More helpful applications are on the way.
-        </p>
-      </div>
-    </section>
+<!-- 5) About Glow Code — DARK -->
+<section id="about" class="section section--light">
+  <div class="container">
+    <h2 class="title" style="font-size:28px;">About Glow Code Studio</h2>
+    <p class="muted">
+      ⭐️ I build wellness apps like <strong>Three Sides</strong> — based on the highs, lows &amp; balance of bipolar
+      life. It’s now in the Google Play Store.
+      <br><br>
+      ⭐️ I’ve built several websites (including one for a church and one for a professional author/speaker).
+      <br><br>
+      ⭐️ I’ve also built personal projects and released 2 indie games in Unreal Engine on itch.io.
+      <br><br>
+      ⭐️ More helpful applications are on the way.
+    </p>
+  </div>
+</section>
 
-    <section id="three-sides" class="section section--dark">
-      <div class="container">
-        <h1 style="color:#e7b5ea;margin:0;">THREE SIDES</h1>
+<section id="three-sides" class="section section--dark">
+  <div class="container">
+    <h1 style="color:#e7b5ea;margin:0;">THREE SIDES</h1>
 
-        <!-- round logo -> app icon -->
-        <div class="hero-media">
-          <div class="gc-wrap" style="
+    <!-- round logo -> app icon -->
+    <div class="hero-media">
+      <div class="gc-wrap" style="
                      width:clamp(220px,32vw,360px);
                      aspect-ratio:1/1;
                      border-radius:28px;            /* <- rounded square */
@@ -2125,254 +2109,247 @@
                         radial-gradient(120% 120% at 50% 10%, rgba(255,255,255,.06), transparent 60%),
                         linear-gradient(145deg, #3b2a57, #2a1b48); /* subtle panel */
                    ">
-            <img id="gcHero" src="icon.png" alt="Three Sides app icon"
-              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;">
-          </div>
-        </div>
-        <br>
-
-        <!-- feature cards (full container width) -->
-        <div class="cards" aria-label="App features">
-          <div class="card">
-            <h3>Theme</h3>
-            <p>Pick your favorite color scheme to make the app your own.</p>
-          </div>
-          <div class="card">
-            <h3>Daily Journal</h3>
-            <p>Quick entries and mood tracking that unlocks feeding your pet each day.</p>
-          </div>
-          <div class="card">
-            <h3>Coping Tools</h3>
-            <p>Personalized actions that actually help — saved for when you need them most.</p>
-          </div>
-          <div class="card">
-            <h3>Virtual Pet Motivation</h3>
-            <p>Care for your little buddy as you care for yourself — build streaks and earn badges.</p>
-          </div>
-        </div>
+        <img id="gcHero" src="icon.png" alt="Three Sides app icon"
+          style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;">
       </div>
+    </div>
+    <br>
 
-      <!-- status line -->
-      <p style="max-width:560px;margin:14px auto 10px;padding:0 16px;
+    <!-- feature cards (full container width) -->
+    <div class="cards" aria-label="App features">
+      <div class="card">
+        <h3>Theme</h3>
+        <p>Pick your favorite color scheme to make the app your own.</p>
+      </div>
+      <div class="card">
+        <h3>Daily Journal</h3>
+        <p>Quick entries and mood tracking that unlocks feeding your pet each day.</p>
+      </div>
+      <div class="card">
+        <h3>Coping Tools</h3>
+        <p>Personalized actions that actually help — saved for when you need them most.</p>
+      </div>
+      <div class="card">
+        <h3>Virtual Pet Motivation</h3>
+        <p>Care for your little buddy as you care for yourself — build streaks and earn badges.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- status line -->
+  <p style="max-width:560px;margin:14px auto 10px;padding:0 16px;
                   color:var(--muted);text-align:center;">
-        Now available on Google Play.
-      </p>
+    Now available on Google Play.
+  </p>
 
-      <!-- CTAs (centered, equal width, mobile-friendly) -->
-      <div style="max-width:520px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;
+  <!-- CTAs (centered, equal width, mobile-friendly) -->
+  <div style="max-width:520px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;
                 justify-content:center;padding:0 16px;">
 
-        <!-- ANDROID: LIVE ON PLAY -->
-        <a class="cta" href="https://play.google.com/store/apps/details?id=io.github.cpriss1979.twa&utm_source=na_Med"
-          target="_blank" rel="noopener" style="flex:1 1 240px;min-height:44px;display:inline-flex;
+    <!-- ANDROID: LIVE ON PLAY -->
+    <a class="cta" href="https://play.google.com/store/apps/details?id=io.github.cpriss1979.twa&utm_source=na_Med"
+      target="_blank" rel="noopener" style="flex:1 1 240px;min-height:44px;display:inline-flex;
               align-items:center;justify-content:space-between;">
-          <span>Get it on Google Play</span>
-          <span class="tag">Android</span>
-        </a>
+      <span>Get it on Google Play</span>
+      <span class="tag">Android</span>
+    </a>
 
-    </section>
-    <!-- Website PROJECTS -->
-    <section id="web" class="section section--light">
-      <div class="container">
-        <h2 class="title" style="font-size:28px;">Websites I've built</h2>
-        <p class="muted">A few highlights from my client &amp; personal work.</p>
+</section>
+<!-- Website PROJECTS -->
+<section id="web" class="section section--light">
+  <div class="container">
+    <h2 class="title" style="font-size:28px;">Websites I've built</h2>
+    <p class="muted">A few highlights from my client &amp; personal work.</p>
 
-        <div class="grid-2">
-          <div class="card">
-            <h3>Viki Scherer (Professional Author &amp; Speaker)</h3>
-            <p>WordPress site with speaking pages, products, testimonies and a polished brand system.</p>
-            <ul class="list">
-              <li><span class="dot"></span><span>Clean navigation &amp; mobile-first design</span></li>
-              <li><span class="dot"></span><span>Speaking event call-to-actions</span></li>
-            </ul>
-            <p style="margin-top:10px;">
-              <a href="https://vikischerer.com/" target="_blank" rel="noopener">View site ↗</a>
-            </p>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Viki Scherer (Professional Author &amp; Speaker)</h3>
+        <p>WordPress site with speaking pages, products, testimonies and a polished brand system.</p>
+        <ul class="list">
+          <li><span class="dot"></span><span>Clean navigation &amp; mobile-first design</span></li>
+          <li><span class="dot"></span><span>Speaking event call-to-actions</span></li>
+        </ul>
+        <p style="margin-top:10px;">
+          <a href="https://vikischerer.com/" target="_blank" rel="noopener">View site ↗</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Harvest Christian Center (Church Website)</h3>
+        <p>WordPress site focusing on beliefs, sermons &amp; online tithing with a welcoming layout and simple editing
+          for staff.</p>
+        <ul class="list">
+          <li><span class="dot"></span><span>Fast, accessible, mobile-first</span></li>
+          <li><span class="dot"></span><span>Service times &amp; location front and center</span></li>
+        </ul>
+        <p class="note" style="margin-top:6px; color:#777488 !important;">
+          (since redesigned by the church team).</p>
+      </div>
+
+      <!-- ============= personal website projects ============= -->
+      <div class="card">
+        <h3>Flab to Fab</h3>
+        <p>A lightweight, mobile-first wellness mini-app to explore smart food choices, track simple workouts, and log
+          your progress — fast and private.</p>
+        <ul class="list">
+          <li><span class="dot"></span><span>Sections: Low-Calorie Foods, so-called "Negative-Calorie" Foods*,
+              Exercises, Calorie Calculator, Personal Progress</span></li>
+          <li><span class="dot"></span><span>Calorie Calculator in pure JS — no sign-in, no backend</span></li>
+          <li><span class="dot"></span><span>Mobile-first layout with an accessible drop-down menu</span></li>
+          <li><span class="dot"></span><span>Personal Progress saved locally for privacy (no data leaves your
+              device)</span></li>
+        </ul>
+        <p style="margin-top:10px;">
+          <a href="https://cpriss1979.github.io/fittofab.io/" target="_blank" rel="noopener"
+            aria-label="Open Flab to Fab website">View site ↗</a>
+        </p>
+
+        <p class="note" style="margin-top:6px; color:#777488 !important;">
+          *"Negative-calorie" foods are better described as low-energy-density foods. They don’t literally burn more
+          calories than they contain, but they can support fullness with fewer calories.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Countdown calculators</h3>
+        <p>I’ve built dozens of personalized countdown calculators — simple, joyful tools that help my family track
+          everything from big events to everyday moments they’re excited for.</p>
+      </div>
+    </div> <!-- /grid-2 -->
+  </div> <!-- /container -->
+</section>
+
+<!-- ============ services section ========= -->
+<section class="services-preview section section--dark" id="services">
+  <div class="container">
+    <div class="services-frame">
+
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">
+        Thoughtful digital work — from clean code to real-world setup.
+        I build things that work <em>and</em> help you use them with confidence.
+      </p>
+
+      <div class="services-grid">
+
+        <!-- Websites -->
+        <article class="service-tile">
+          <div class="tile-top">
+            <h3>Websites & Front-End Builds</h3>
+            <span class="chip">WordPress or Custom</span>
           </div>
-
-          <div class="card">
-            <h3>Harvest Christian Center (Church Website)</h3>
-            <p>WordPress site focusing on beliefs, sermons &amp; online tithing with a welcoming layout and simple
-              editing
-              for staff.</p>
-            <ul class="list">
-              <li><span class="dot"></span><span>Fast, accessible, mobile-first</span></li>
-              <li><span class="dot"></span><span>Service times &amp; location front and center</span></li>
-            </ul>
-            <p class="note" style="margin-top:6px; color:#777488 !important;">
-              (since redesigned by the church team).</p>
-          </div>
-
-          <!-- ============= personal website projects ============= -->
-          <div class="card">
-            <h3>Flab to Fab</h3>
-            <p>A lightweight, mobile-first wellness mini-app to explore smart food choices, track simple workouts, and
-              log
-              your progress — fast and private.</p>
-            <ul class="list">
-              <li><span class="dot"></span><span>Sections: Low-Calorie Foods, so-called "Negative-Calorie" Foods*,
-                  Exercises, Calorie Calculator, Personal Progress</span></li>
-              <li><span class="dot"></span><span>Calorie Calculator in pure JS — no sign-in, no backend</span></li>
-              <li><span class="dot"></span><span>Mobile-first layout with an accessible drop-down menu</span></li>
-              <li><span class="dot"></span><span>Personal Progress saved locally for privacy (no data leaves your
-                  device)</span></li>
-            </ul>
-            <p style="margin-top:10px;">
-              <a href="https://cpriss1979.github.io/fittofab.io/" target="_blank" rel="noopener"
-                aria-label="Open Flab to Fab website">View site ↗</a>
-            </p>
-
-            <p class="note" style="margin-top:6px; color:#777488 !important;">
-              *"Negative-calorie" foods are better described as low-energy-density foods. They don’t literally burn more
-              calories than they contain, but they can support fullness with fewer calories.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Countdown calculators</h3>
-            <p>I’ve built dozens of personalized countdown calculators — simple, joyful tools that help my family track
-              everything from big events to everyday moments they’re excited for.</p>
-          </div>
-        </div> <!-- /grid-2 -->
-      </div> <!-- /container -->
-    </section>
-
-    <!-- ============ services section ========= -->
-    <section class="services-preview section section--dark" id="services">
-      <div class="container">
-        <div class="services-frame">
-
-          <h2 class="section-title">Services</h2>
-          <p class="section-subtitle">
-            Thoughtful digital work — from clean code to real-world setup.
-            I build things that work <em>and</em> help you use them with confidence.
+          <p>
+            Modern, mobile-friendly websites that are fast, clear, and easy to maintain.
           </p>
+          <ul>
+            <li>Small business & personal sites</li>
+            <li>Redesigns, cleanups & layout fixes</li>
+            <li>Performance, accessibility & mobile improvements</li>
+          </ul>
+        </article>
 
-          <div class="services-grid">
-
-            <!-- Websites -->
-            <article class="service-tile">
-              <div class="tile-top">
-                <h3>Websites & Front-End Builds</h3>
-                <span class="chip">WordPress or Custom</span>
-              </div>
-              <p>
-                Modern, mobile-friendly websites that are fast, clear, and easy to maintain.
-              </p>
-              <ul>
-                <li>Small business & personal sites</li>
-                <li>Redesigns, cleanups & layout fixes</li>
-                <li>Performance, accessibility & mobile improvements</li>
-              </ul>
-            </article>
-
-            <!-- Web tools -->
-            <article class="service-tile">
-              <div class="tile-top">
-                <h3>Custom Web Tools & Apps</h3>
-                <span class="chip">HTML / CSS / JS</span>
-              </div>
-              <p>
-                Purpose-built tools that solve real problems — not generic templates.
-              </p>
-              <ul>
-                <li>Trackers, planners, calculators & utilities</li>
-                <li>PWA-ready (installable on phone or desktop)</li>
-                <li>Optional login, data storage & Firebase setup</li>
-              </ul>
-            </article>
-
-            <!-- IT + Support -->
-            <article class="service-tile">
-              <div class="tile-top">
-                <h3>IT Setup & Ongoing Support</h3>
-                <span class="chip">Software • Hardware • Help</span>
-              </div>
-              <p>
-                Support beyond the build — for people who want things explained clearly and set up correctly.
-              </p>
-              <ul>
-                <li>Software installs & configuration</li>
-                <li>Computer, device & peripheral setup</li>
-                <li>Walkthroughs, updates & ongoing help</li>
-              </ul>
-            </article>
+        <!-- Web tools -->
+        <article class="service-tile">
+          <div class="tile-top">
+            <h3>Custom Web Tools & Apps</h3>
+            <span class="chip">HTML / CSS / JS</span>
           </div>
+          <p>
+            Purpose-built tools that solve real problems — not generic templates.
+          </p>
+          <ul>
+            <li>Trackers, planners, calculators & utilities</li>
+            <li>PWA-ready (installable on phone or desktop)</li>
+            <li>Optional login, data storage & Firebase setup</li>
+          </ul>
+        </article>
 
-          <!-- How it works -->
-          <div class="how-row" aria-label="How it works">
-            <div class="how">
-              <b>1) Tell me what you need</b><br>
-              <span class="muted">Your goals, your setup, and your comfort level with tech.</span>
-            </div>
-            <div class="how">
-              <b>2) Simple plan</b><br>
-              <span class="muted">I outline the work, timeline, and next steps clearly.</span>
-            </div>
-            <div class="how">
-              <b>3) Build, set up & support</b><br>
-              <span class="muted">I don’t just deliver — I help you get it working.</span>
-            </div>
+        <!-- IT + Support -->
+        <article class="service-tile">
+          <div class="tile-top">
+            <h3>IT Setup & Ongoing Support</h3>
+            <span class="chip">Software • Hardware • Help</span>
           </div>
+          <p>
+            Support beyond the build — for people who want things explained clearly and set up correctly.
+          </p>
+          <ul>
+            <li>Software installs & configuration</li>
+            <li>Computer, device & peripheral setup</li>
+            <li>Walkthroughs, updates & ongoing help</li>
+          </ul>
+        </article>
+      </div>
 
-          <div class="services-cta-row">
-            <a class="btn-primary" href="./services.html">View all services &amp; pricing</a>
-            <a class="btn-secondary" href="#contact">Ask a question</a>
-          </div>
-
+      <!-- How it works -->
+      <div class="how-row" aria-label="How it works">
+        <div class="how">
+          <b>1) Tell me what you need</b><br>
+          <span class="muted">Your goals, your setup, and your comfort level with tech.</span>
+        </div>
+        <div class="how">
+          <b>2) Simple plan</b><br>
+          <span class="muted">I outline the work, timeline, and next steps clearly.</span>
+        </div>
+        <div class="how">
+          <b>3) Build, set up & support</b><br>
+          <span class="muted">I don’t just deliver — I help you get it working.</span>
         </div>
       </div>
-    </section>
 
-    <!-- 4) Game Development (to “View archived site”) — LIGHT -->
-    <section id="games" class="section section--light">
-      <div class="container">
-        <h2 class="title" style="font-size:24px;">Game Development</h2>
-        <p class="muted">I’ve released 2 small games on itch.io — exploring focus, interaction, and play.</p>
-
-        <div class="card">
-          <h3>Indie Games - Unreal Engine</h3>
-          <p>Downloads available at Itch.io</p>
-          <p style="margin-top:10px;">
-            <a href="https://cpriss.itch.io/" target="_blank" rel="noopener">View Archived Site ↗</a>
-          </p>
-        </div>
+      <div class="services-cta-row">
+        <a class="btn-primary" href="./services.html">View all services &amp; pricing</a>
+        <a class="btn-secondary" href="#contact">Ask a question</a>
       </div>
-    </section>
 
-    <!-- 3) Early Projects (through “I’ve built several…”) — DARK -->
-    <section id="early" class="section section--dark">
-      <div class="container">
-        <h2 class="title" style="font-size:24px;">Earlier Projects</h2>
-        <p class="muted" style="margin-top:6px; font-size:12px;">My first live website — built for our YouTube channel.
-          Simple, but it taught me the foundations of web layout and
+    </div>
+  </div>
+</section>
+
+<!-- 4) Game Development (to “View archived site”) — LIGHT -->
+<section id="games" class="section section--light">
+  <div class="container">
+    <h2 class="title" style="font-size:24px;">Game Development</h2>
+    <p class="muted">I’ve released 2 small games on itch.io — exploring focus, interaction, and play.</p>
+
+    <div class="card">
+      <h3>Indie Games - Unreal Engine</h3>
+      <p>Downloads available at Itch.io</p>
+      <p style="margin-top:10px;">
+        <a href="https://cpriss.itch.io/" target="_blank" rel="noopener">View Archived Site ↗</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 3) Early Projects (through “I’ve built several…”) — DARK -->
+<section id="early" class="section section--dark">
+  <div class="container">
+    <h2 class="title" style="font-size:24px;">Earlier Projects</h2>
+    
+      <!-- feature cards (full container width) -->
+    <div class="cards" aria-label="App features">
+      <div class="card">
+        <p>My first live website — built for our YouTube channel. Simple, but it taught me the foundations of web layout
+          and
           hosting.</p>
-        <!-- 3) Early Projects (through “I’ve built several…”) — DARK -->
 
-        <!-- feature cards (full container width) -->
-        <div class="cards" aria-label="App features">
-          <div class="card">
-            <p>My first live website — built for our YouTube channel. Simple, but it taught me the foundations of web
-              layout
-              and
-              hosting.</p>
+        <p style="margin-top:10px;">
+          <a href="https://cpriss1979.github.io/rickandcrystalshow.io/" target="_blank" rel="noopener">View Archived
+            Site ↗</a>
+        </p>
+      </div>
+    </div>
 
-            <p style="margin-top:10px;">
-              <a href="https://cpriss1979.github.io/rickandcrystalshow.io/" target="_blank" rel="noopener">View Archived
-                Site ↗</a>
-            </p>
-          </div>
-        </div>
+    <!-- feature cards (full container width) -->
+    <div class="cards" aria-label="App features">
+      <div class="card">
 
-        <!-- feature cards (full container width) -->
-        <div class="cards" aria-label="App features">
-          <div class="card">
-
-            <p> I’ve built several other projects —</p>
-            <a href="https://github.com/cpriss1979?tab=repositories" target="_blank" rel="noopener">View GitHub ↗</a>
-            </p>
-          </div>
-    </section>
+        <p>I’ve built several other projects — feel free to visit my GitHub to explore more of what I’ve made.</p>
+        <a href="https://github.com/cpriss1979?tab=repositories" target="_blank" rel="noopener">View GitHub ↗</a>
+        </p>
+      </div>
+</section>
 
     <!-- 6) Get in touch — LIGHT -->
     <section id="contact" class="section section--light">
@@ -2407,17 +2384,48 @@
     // year
     (() => { const y = $('#year'); if (y) y.textContent = String(new Date().getFullYear()); })();
 
-    // mobile menu sheet
-    (() => {
-      const sheet = $('#menuSheet'), openBtn = $('#menuBtn'), closeBtn = $('#closeMenu');
-      if (!sheet || !openBtn) return;
-      const open = () => { sheet.classList.add('open'); sheet.setAttribute('aria-hidden', 'false'); };
-      const close = () => { sheet.classList.remove('open'); sheet.setAttribute('aria-hidden', 'true'); };
-      openBtn.addEventListener('click', open);
-      closeBtn?.addEventListener('click', close);
-      sheet.addEventListener('click', e => { if (e.target.matches('a')) close(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape' && sheet.classList.contains('open')) close(); });
-    })();
+    // mobile menu sheet (fixes aria-hidden focus warning)
+      (() => {
+        const sheet = $('#menuSheet');
+        const openBtn = $('#menuBtn');
+        const closeBtn = $('#closeMenu');
+        if (!sheet || !openBtn || !closeBtn) return;
+
+        // Start closed + unfocusable
+        sheet.setAttribute('aria-hidden', 'true');
+        sheet.inert = true;
+
+        const open = () => {
+          sheet.classList.add('open');
+          sheet.inert = false;
+          sheet.setAttribute('aria-hidden', 'false');
+
+          // Move focus into the sheet so nothing “hidden” is focused
+          closeBtn.focus();
+        };
+
+        const close = () => {
+          sheet.classList.remove('open');
+          sheet.setAttribute('aria-hidden', 'true');
+          sheet.inert = true;
+
+          // Return focus to the menu button
+          openBtn.focus();
+        };
+
+        openBtn.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
+
+        // Close when clicking a menu link
+        sheet.addEventListener('click', (e) => {
+          if (e.target.closest('a')) close();
+        });
+
+        // Escape closes
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && sheet.classList.contains('open')) close();
+        });
+      })();
 
     // smooth anchor scroll
     (() => {

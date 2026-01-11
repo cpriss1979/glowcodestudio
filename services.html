@@ -25,6 +25,7 @@
             --ink-soft: #cdd3e3;
             --line: rgba(255, 255, 255, .10);
             --chip: rgba(0, 0, 0, .22);
+            --header: #2B0F2F;  /* same “sunset” header tint */
         }
 
         * {
@@ -63,7 +64,7 @@
             left: 0;
             right: 0;
             z-index: 9999;
-            background: rgba(54, 14, 115, .55);
+            background: white;
             backdrop-filter: saturate(140%) blur(8px);
             border-bottom: 1px solid rgba(255, 255, 255, .06);
         }
@@ -361,6 +362,53 @@
   font-size: 12px;                     /* keep your smaller size */
   line-height: 1.5;
 }
+
+/* ===================== logo to home =============== */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+  text-decoration:none;
+  color: var(--text);
+}
+
+.brand:hover{
+  text-decoration:none;
+  filter: brightness(1.05);
+}
+
+.brand:focus-visible{
+  outline: 3px solid rgba(140, 208, 255, .55);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+  /* HEADER LOGO — keep small and crisp */
+  .brand .brand-logo{
+    width: clamp(28px, 2.6vw, 34px);
+    height: clamp(28px, 2.6vw, 34px);
+    border-radius: 50%;
+    display:inline-block;
+  }
+
+  /* ======== header ============== */
+  header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  /* MATCH index.html glass header */
+  background: color-mix(in hsl, var(--header) 85%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+
     </style>
 </head>
 
@@ -368,12 +416,12 @@
     <header>
         <div class="container nav">
             <div class="brandRow">
-                <img class="brand-logo" src="GC.png" alt="Glow Code Studio">
-                <h1>Glow Code Studio</h1>
-            </div>
-
+                <a class="brand" href="./index.html" aria-label="Go to homepage">
+                    <img class="brand-logo" src="GC.png" alt="Services" decoding="async">                
+                    <h1>Glow Code Studio</h1></div>
+                </a>
             <div style="display:flex; gap:10px; align-items:center;">
-                <a class="cta secondary" href="./index.html#services">Back</a>
+
                 <a class="cta" href="./index.html#contact">Contact</a>
             </div>
         </div>
